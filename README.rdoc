@@ -2,6 +2,7 @@
 - Apache
     version 2.4.18-1
 - Passenger
+    version 5.0.23
 - RVM
     version -> 1.26.11
 - Ruby
