@@ -4,10 +4,16 @@
 - RVM
 - Ruby
 - Rails
+    http://api.rubyonrails.org/
 - Mongoid - Database
+    https://docs.mongodb.org/ecosystem/tutorial/ruby-mongoid-tutorial/
+    http://requiremind.com/riding-rails-4-along-with-mongoid-and-ruby-2-dot-0/
 - Devise - User Authentication and Session Handling
+    http://suvankar.svbtle.com/devise-and-mongoid-in-rails-4
 - Postfix - SMTP server
+    http://www.postfix.org/documentation.html
 - Materialize - CSS and HTML framework
+    http://materializecss.com/
 
 == README
 
