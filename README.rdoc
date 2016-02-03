@@ -1,7 +1,9 @@
 == Setup
 - Apache
+    version 2.4.18-1
 - Passenger
 - RVM
+    version -> 1.26.11
 - Ruby
     version -> 2.2.1p85
 - Rails
