@@ -1,3 +1,13 @@
+== Setup
+- Apache
+- Passenger
+- RVM
+- Ruby
+- Rails
+- Mongoid - Database
+- Devise - User Authentication and Session Handling
+- Postfix - SMTP server
+
 == README
 
 This README would normally document whatever steps are necessary to get the
