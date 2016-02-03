@@ -3,9 +3,12 @@
 - Passenger
 - RVM
 - Ruby
+    version -> 2.2.1p85
 - Rails
+    version -> 4.2.5.1
     http://api.rubyonrails.org/
 - Mongoid - Database
+    version -> 5.1.0
     https://docs.mongodb.org/ecosystem/tutorial/ruby-mongoid-tutorial/
     http://requiremind.com/riding-rails-4-along-with-mongoid-and-ruby-2-dot-0/
 - Devise - User Authentication and Session Handling
