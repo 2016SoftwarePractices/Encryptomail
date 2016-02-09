@@ -1,0 +1,2 @@
+class EmailRelayController < ApplicationController
+end
