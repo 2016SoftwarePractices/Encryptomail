@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Fix to help windows users be able to run stuff
-gem 'tzinfo-data'
+# gem 'tzinfo-data'
 
 # Materialize to make things pretty
 gem 'materialize-sass'
