@@ -3,11 +3,11 @@ class User
   
   has_and_belongs_to_many :groups
   
-  field :userName, type: String
-  field :passHash, type: String
+  field :user_name, type: String
+  field :pass_hash, type: String
   
   field :email, type: String
-  field :pubKey, type: String
+  field :pub_key, type: String
   
   
   
