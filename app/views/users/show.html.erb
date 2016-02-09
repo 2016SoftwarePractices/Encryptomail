@@ -8,21 +8,16 @@
 		</div>
 	</div>
 
-  <div class="row">
-		<div class="col s12">
+	<div class="row">
+		<div class="col s12" >
 			<h3>Public Key:</h3>
 		</div>
-    <div class="col s12">
-      <div class="row">
-        <div class="input-field col s12">
-          <textarea id="textarea1" class="materialize-textarea">
-						<i class="material-icons">vpn_key</i><%= @user.pubKey %></textarea>
-          <label for="textarea1"></label>
-        </div>
-      </div>
-    </div>
-  </div>
-	
+		<div class="col s12">
+			<%= @user.pubKey %>
+		</div>
+	</div>
+
+
 	<div class="row">
 		<div class="col s12">
 			<h3>Groups:</h3>
