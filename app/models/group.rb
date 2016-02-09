@@ -3,7 +3,7 @@ class Group
   
   #name of group when entered
   field :group_name, type: String
-  has_many :user
+  has_many :users
   #If we want to let groups set their email
   #field :custom_email, String
   #otherwise, the group email is used
