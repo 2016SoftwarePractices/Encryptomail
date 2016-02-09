@@ -1,86 +1,86 @@
 <nav class="light-blue lighten-1" role="navigation">
 	<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EncryptoMail</a>
 		<ul class="right hide-on-med-and-down">
-			<li><a class="waves-effect waves-light btn"><i class="material-icons right">exit_to_app</i>Logout</a></li>
+			<li><a class="waves-effect waves-light btn light-blue darken-4"><i class="material-icons">exit_to_app</i>Logout</a></li>
 		</ul>
 
 		<ul id="nav-mobile" class="side-nav">
-			<li><a class="waves-effect waves-light btn"><i class="material-icons right">exit_to_app</i>Logout</a></li>
+			<li><a class="waves-effect waves-light btn light-blue darken-4"><i class="material-icons">exit_to_app</i>Logout</a></li>
 		</ul>
 		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 	</div>
 </nav>
 
-<p id="notice"><%= notice %></p>
-
-	<div class="row">
-		<div class="col s12">
-			<h1><%= @user.userName %></h1>
-			<h6>Email: <%= @user.email %></h6>
-			<h6>Joined: <%= @user.register_date %> </h6>
+	<p id="notice"><%= notice %></p>
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<h1><%= @user.userName %></h1>
+				<h6>Email: <%= @user.email %></h6>
+				<h6>Joined: <%= @user.register_date %> </h6>
+			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="col s12" >
-			<h3>Public Key:</h3>
+		<div class="row">
+			<div class="col s12" >
+				<h3>Public Key:</h3>
+			</div>
+			<div class="col s12">
+				<%= @user.pubKey %>
+				<br>
+				<br>
+				<a class="waves-effect waves-light btn"><i class="material-icons right">vpn_key</i>Copy Key</a>
+			</div>
 		</div>
-		<div class="col s12">
-			<%= @user.pubKey %>
-			<br>
-			<br>
-			<a class="waves-effect waves-light btn"><i class="material-icons right">vpn_key</i>Copy Key</a>
-		</div>
-	</div>
 
 
-	<div class="row">
-		<div class="col s12">
-			<h3>Groups:</h3>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="card" style="background-color: #97272C;">
-				<div class="card-content white-text">
-					<span class="card-title">Group Name 1</span>
-					<p>Brief editable description of group</p>
+		<div class="row">
+			<div class="col s12">
+				<h3>Groups:</h3>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="card" style="background-color: #97272C;">
+					<div class="card-content white-text">
+						<span class="card-title">Group Name 1</span>
+						<p>Brief editable description of group</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Link to group page</a>
+					</div>
 				</div>
-				<div class="card-action">
-					<a href="#">Link to group page</a>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="card" style="background-color: #97272C;">
+					<div class="card-content white-text">
+						<span class="card-title">Group Name 2</span>
+						<p>These will repeat for every group the user is a part of</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Link to group page</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="card" style="background-color: #97272C;">
+					<div class="card-content white-text">
+						<span class="card-title">Group Name 3</span>
+						<p>Brief editable description of group</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Link to group page</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m6 l4">
+				<div class="card" style="background-color: #97272C;">
+					<div class="card-content white-text">
+						<span class="card-title">Group Name 4</span>
+						<p>Brief editable description of group</p>
+					</div>
+					<div class="card-action">
+						<a href="#">Link to group page</a>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col s12 m6 l4">
-			<div class="card" style="background-color: #97272C;">
-				<div class="card-content white-text">
-					<span class="card-title">Group Name 2</span>
-					<p>These will repeat for every group the user is a part of</p>
-				</div>
-				<div class="card-action">
-					<a href="#">Link to group page</a>
-				</div>
-			</div>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="card" style="background-color: #97272C;">
-				<div class="card-content white-text">
-					<span class="card-title">Group Name 3</span>
-					<p>Brief editable description of group</p>
-				</div>
-				<div class="card-action">
-					<a href="#">Link to group page</a>
-				</div>
-			</div>
-		</div>
-		<div class="col s12 m6 l4">
-			<div class="card" style="background-color: #97272C;">
-				<div class="card-content white-text">
-					<span class="card-title">Group Name 4</span>
-					<p>Brief editable description of group</p>
-				</div>
-				<div class="card-action">
-					<a href="#">Link to group page</a>
-				</div>
-			</div>
-		</div>
-		
-	</div>
+</div>
