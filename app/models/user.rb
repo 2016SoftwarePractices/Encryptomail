@@ -1,7 +1,7 @@
 class User
   include Mongoid::Document
   
-  belongs_to_many :group
+  has_and_belongs_to_many :group
   
   field :userName, type: String
   field :passHash, type: String
