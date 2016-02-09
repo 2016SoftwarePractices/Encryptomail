@@ -17,7 +17,7 @@
 	<div class="container black-text">
 		<div class="row">
 			<div class="col s12">
-				<h1><%= @user.userName %></h1>
+				<h1><%= @user.user_name %></h1>
 				<h6>Email: <%= @user.email %></h6>
 				<h6>Joined: <%= @user.register_date %> </h6>
 			</div>
@@ -28,7 +28,7 @@
 				<h3>Public Key:</h3>
 			</div>
 			<div class="col s12" id="pubkey">
-				<%= @user.pubKey %>
+				<%= @user.pub_key %>
 				<br>
 				<br>
 				<a class="waves-effect waves-light btn green darken-3"  id="pubkey_btn">
