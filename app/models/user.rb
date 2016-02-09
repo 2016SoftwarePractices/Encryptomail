@@ -11,7 +11,7 @@ class User
   
   
   
-  field :register_date, type: DateTime
+  field :register_date, type: DateTime, :default => DateTime.now
   
   
   
