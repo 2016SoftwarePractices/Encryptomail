@@ -1,0 +1,1 @@
+rails console -e development
