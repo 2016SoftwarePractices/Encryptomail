@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
+<div class="container light-blue darken-4">
 	<div class="col s12">
 		<h1><%= @user.userName %></h1>
+		<h5>Email: <%= @user.email %></h5>
+		<h5>Public Key: <%= @user.pubKey %></h5>
 	</div>
-	
-	<h1>Groups</h1>
+		
 	<div class="row">
 		
 		<div class="col s12 m6">
-			<div class="card blue-grey darken-1">
+			<div class="card orange darken-4">
 				<div class="card-content white-text">
 					<span class="card-title">Group Name 1</span>
 					<p>Brief editable description of group</p>
@@ -20,7 +21,7 @@
 			</div>
 		</div>
 		<div class="col s12 m6">
-			<div class="card blue-grey darken-1">
+			<div class="card orange darken-4">
 				<div class="card-content white-text">
 					<span class="card-title">Group Name 2</span>
 					<p>These will repeat for every group the user is a part of</p>
@@ -31,7 +32,7 @@
 			</div>
 		</div>
 		<div class="col s12 m6">
-			<div class="card blue-grey darken-1">
+			<div class="card orange darken-4">
 				<div class="card-content white-text">
 					<span class="card-title">Group Name 3</span>
 					<p>Brief editable description of group</p>
@@ -42,7 +43,7 @@
 			</div>
 		</div>
 		<div class="col s12 m6">
-			<div class="card blue-grey darken-1">
+			<div class="card orange darken-4">
 				<div class="card-content white-text">
 					<span class="card-title">Group Name 4</span>
 					<p>Brief editable description of group</p>
@@ -58,5 +59,5 @@
 </div>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<!--<%= #link_to 'Edit', edit_user_path(@user) %> |
+<%= #link_to 'Back', users_path %>--->
