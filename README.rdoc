@@ -44,7 +44,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* Security: see https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet 
 
 
 Please feel free to use a different markup language if you do not plan to run
