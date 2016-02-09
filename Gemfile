@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Fix to help windows users be able to run stuff
+gem 'tzinfo-data'
+
 # Materialize to make things pretty
 gem 'materialize-sass'
 
