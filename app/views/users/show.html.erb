@@ -1,7 +1,7 @@
-<nav style="background-color: #2C3E50" role="navigation">
+<nav class="grey darken-3" role="navigation">
 	<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EncryptoMail</a>
 		<ul class="right hide-on-med-and-down">
-			<li><a class="waves-effect waves-light btn" style="background-color: #2C3E50">Logout<i class="material-icons">exit_to_app</i></a></li>
+			<li><a class="waves-effect waves-light btn red darken-3">Logout<i class="material-icons">exit_to_app</i></a></li>
 		</ul>
 
 		<ul id="nav-mobile" class="side-nav">
@@ -12,7 +12,7 @@
 </nav>
 
 	<p id="notice"><%= notice %></p>
-	<div class="container">
+	<div class="container black-text">
 		<div class="row">
 			<div class="col s12">
 				<h1><%= @user.userName %></h1>
@@ -29,57 +29,69 @@
 				<%= @user.pubKey %>
 				<br>
 				<br>
-				<a class="waves-effect waves-light btn">
-					<i class="material-icons right" style="background-color: #2C3E50">vpn_key</i>Copy Key</a>
+				<a class="waves-effect waves-light btn green darken-3">
+					<i class="material-icons right">vpn_key</i>Copy Key
+				</a>
 			</div>
 		</div>
 
 
 		<div class="row">
 			<div class="col s12">
-				<h3>Groups:</h3>
+				<h3>Groups:</h3>				
+				<a class="waves-effect waves-light btn green darken-3">
+					<i class="material-icons right">group_add</i>Create Group
+				</a>
 			</div>
 			<div class="col s12 m6 l4">
-				<div class="card" style="background-color: #97272C;">
+				<div class="card grey darken-3">
 					<div class="card-content white-text">
 						<span class="card-title">Group Name 1</span>
 						<p>Brief editable description of group</p>
 					</div>
 					<div class="card-action">
-						<a href="#">Link to group page</a>
+						<a class="waves-effect waves-light btn green darken-3">
+							<i class="material-icons right">keyboard_arrow_right</i>Group Page
+						</a>
 					</div>
 				</div>
 			</div>
 			<div class="col s12 m6 l4">
-				<div class="card" style="background-color: #97272C;">
+				<div class="card grey darken-3">
 					<div class="card-content white-text">
 						<span class="card-title">Group Name 2</span>
-						<p>These will repeat for every group the user is a part of</p>
+						<p>These can be dynamically made</p>
 					</div>
 					<div class="card-action">
-						<a href="#">Link to group page</a>
+						<a class="waves-effect waves-light btn green darken-3">
+							<i class="material-icons right">keyboard_arrow_right</i>Group Page
+						</a>
 					</div>
 				</div>
 			</div>
 			<div class="col s12 m6 l4">
-				<div class="card" style="background-color: #97272C;">
+				<div class="card grey darken-3">
 					<div class="card-content white-text">
 						<span class="card-title">Group Name 3</span>
 						<p>Brief editable description of group</p>
 					</div>
 					<div class="card-action">
-						<a href="#">Link to group page</a>
+						<a class="waves-effect waves-light btn green darken-3">
+							<i class="material-icons right">keyboard_arrow_right</i>Group Page
+						</a>
 					</div>
 				</div>
 			</div>
 			<div class="col s12 m6 l4">
-				<div class="card" style="background-color: #97272C;">
+				<div class="card grey darken-3">
 					<div class="card-content white-text">
 						<span class="card-title">Group Name 4</span>
 						<p>Brief editable description of group</p>
 					</div>
 					<div class="card-action">
-						<a href="#">Link to group page</a>
+						<a class="waves-effect waves-light btn green darken-3">
+							<i class="material-icons right">keyboard_arrow_right</i>Group Page
+						</a>
 					</div>
 				</div>
 			</div>
