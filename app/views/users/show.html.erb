@@ -1,7 +1,9 @@
 <nav class="grey darken-3" role="navigation">
 	<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EncryptoMail</a>
 		<ul class="right hide-on-med-and-down">
-			<li><a class="waves-effect waves-light btn red darken-3">Logout<i class="material-icons">exit_to_app</i></a></li>
+			<li>
+				<a class="waves-effect waves-light btn red darken-3">Logout</a>
+			</li>
 		</ul>
 
 		<ul id="nav-mobile" class="side-nav">
@@ -25,12 +27,12 @@
 			<div class="col s12" >
 				<h3>Public Key:</h3>
 			</div>
-			<div class="col s12">
+			<div class="col s12" id="pubkey">
 				<%= @user.pubKey %>
 				<br>
 				<br>
-				<a class="waves-effect waves-light btn green darken-3">
-					<i class="material-icons right">vpn_key</i>Copy 
+				<a class="waves-effect waves-light btn green darken-3"  id="pubkey_btn">
+					<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
 				</a>
 			</div>
 		</div>
@@ -97,3 +99,20 @@
 			</div>
 		</div>
 </div>
+
+<script>
+	var copyBtn = document.querySelector('#pubkey_btn');
+	copyBtn.addEventListener('click', function () {
+		var urlField = document.querySelector('#pubkey');
+
+		// create a Range object
+		var range = document.createRange();  
+		// set the Node to select the "range"
+		range.selectNode(urlField);
+		// add the Range to the set of window selections
+		window.getSelection().addRange(range);
+
+		// execute 'copy', can't 'cut' in this case
+		document.execCommand('copy');
+	}, false);
+</script>
