@@ -11,7 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
-
-#ignore gemfile
-Gemfile
-Gemfile.lock
+/Gemfile
+/Gemfile.lock
