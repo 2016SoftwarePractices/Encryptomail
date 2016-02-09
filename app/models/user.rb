@@ -13,6 +13,9 @@ class User
   
   field :register_date, type: DateTime, :default => DateTime.now
   
+  validates_presence_of :passHash
+  validates_uniqueness_of :email
+  validates_uniqueness_of :pubKey
   
   
 end
