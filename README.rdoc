@@ -24,9 +24,8 @@
 == Cloud9
 - Pull code in from git 
 
-- Run bundle 
+- Run bundle, this downloads all the gems that we are currently using
     bundle install
-    this downloads all the gems that we are currently using
 
 - Setup the local mongo database for C9
     mongod --bind_ip=$IP --dbpath=data --rest "$@"
