@@ -1,0 +1,47 @@
+<div class="slider fullscreen">
+  <ul class="slides">
+    <li>
+		<%= image_tag("EncryptoMailWallpaper.jpg")%>
+      <div class="caption center-align">
+        <h3>EncryptoMail</h3>
+				<h5 class="light grey-text text-lighten-3">Time to get crypted.</h5>
+				
+				<div class="row">
+					<form class="col s12">
+						<div class="row">
+							<div class="input-field col s6 offset-s3">
+								<input id="email" type="email" class="validate">
+								<label for="email">
+									<h6 class="cyan-text text-accent-2 left-align">Email</h6>
+								</label>
+							</div>
+						</div>
+					</form>
+					<form class="col s12">
+						<div class="row">
+							<div class="input-field col s6 offset-s3">
+								<input id="password" type="password" class="validate">
+								<label for="password">
+									<h6 class="cyan-text text-accent-2 left-align">Password</h6>
+							  </label>
+							</div>
+						</div>
+					</form>
+					<div class="col s6 offset-s3">
+						<div class="row">
+							<a class="waves-effect waves-light btn">
+								<%= button_to "Login", home_index_path, method: :get %>
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</li>
+  </ul>
+</div>
+<script>
+   $(document).ready(function(){
+      $('.slider').slider({full_width: true, indicators: false});
+    });
+</script>
