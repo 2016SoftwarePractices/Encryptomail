@@ -22,18 +22,17 @@
     http://materializecss.com/
     
 == Cloud9
--Pull code in from git 
+- Pull code in from git 
 
--run 'bundle install'
---this downloads all the gems that we are currently using
+- Run bundle 
+    `bundle install`
+    *this downloads all the gems that we are currently using*
 
-** Must have the next two commands both running at the same time **
+- Setup the local mongo database for C9
+    `mongod --bind_ip=$IP --dbpath=data --rest "$@"`
 
--run 'mongod --bind_ip=$IP --dbpath=data --rest "$@"'
---creates a local db
-
--run 'rails s -b $IP -p $PORT'
---connects to the local db and hosts the front end
+- Run Rails
+    `rails s -b $IP -p $PORT`
 
 
 == README
