@@ -23,8 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-case RUBY_PLATFORM
-when /win32/
+if Gem.win_platform?
   gem 'tzinfo-data'
 end
 
