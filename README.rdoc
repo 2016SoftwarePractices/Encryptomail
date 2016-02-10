@@ -38,7 +38,7 @@
         apt-get install mongodb
     Arch
         pacman -S mongodb
-- You should now be able to run the mongo shell
+- You should now be able to run the mongo shell to ensure the service is running
     mongo
 - Move into the Encryptomail directory you created
     cd Encryptomail/
