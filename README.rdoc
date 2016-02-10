@@ -25,14 +25,14 @@
 - Pull code in from git 
 
 - Run bundle 
-    `bundle install`
-    *this downloads all the gems that we are currently using*
+    bundle install
+    this downloads all the gems that we are currently using
 
 - Setup the local mongo database for C9
-    `mongod --bind_ip=$IP --dbpath=data --rest "$@"`
+    mongod --bind_ip=$IP --dbpath=data --rest "$@"
 
 - Run Rails
-    `rails s -b $IP -p $PORT`
+    rails s -b $IP -p $PORT
 
 
 == README
