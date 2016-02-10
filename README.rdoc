@@ -21,6 +21,11 @@
 - Materialize - CSS and HTML framework
     http://materializecss.com/
 
+== Gemfile
+
+Based on your OS. Rename Gemfile_win or Gemfile_lin to Gemfile, then `bundle install`
+
+
 == README
 
 This README would normally document whatever steps are necessary to get the
