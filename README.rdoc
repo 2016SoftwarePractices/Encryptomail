@@ -20,10 +20,44 @@
     http://www.postfix.org/documentation.html
 - Materialize - CSS and HTML framework
     http://materializecss.com/
+== Linux
+- Make a directory for the project
+    mkdir Encryptomail
+- Clone the git repo into the directory
+    git clone https://github.com/2016SoftwarePractices/Encryptomail.git Encryptomail
+- Ensure that mongodb service is running
+    Arch
+        systemctl enable mongodb.service
+        systemctl start mongodb.service
+    Ubuntu
+        service mongodb start
+    Ubuntu upstart
+        start mongodb
+- IF you haven't installed mongodb you will need to
+    Ubuntu
+        apt-get install mongodb
+    Arch
+        pacman -S mongodb
+- You should now be able to run the mongo shell to ensure the service is running
+    mongo
+- Move into the Encryptomail directory you created
+    cd Encryptomail/
+- Run bundle
+    bundle install
+- Serve the rails project
+    rails s
 
-== Gemfile
+== Cloud9
+- Pull code in from git 
 
-Based on your OS. Rename Gemfile_win or Gemfile_lin to Gemfile, then `bundle install`
+- Run bundle, this downloads all the gems that we are currently using
+    bundle install
+
+- Setup the local mongo database for C9
+    mongod --bind_ip=$IP --dbpath=data --rest "$@"
+
+- Run Rails
+    rails s -b $IP -p $PORT
 
 
 == README
