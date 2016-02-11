@@ -11,16 +11,17 @@
 				</div>
 
 				<div class="row">
-					<!-- single form tag to wrap the entire form -->
-					<form action="#">
+					<%= form_for(@user) do |f| %>
+					
 						<div class="col s12">
 
 							<div class="row">
 								<div class="input-field col s12">
-										<input id="email" type="email" class="validate">
 										<label for="email">
 											<h6 class="cyan-text text-accent-2 left-align">Email</h6>
 										</label>
+										<%= f.text_field :email, :input_html => { :id => 'email', :type => 'email', :class => 'validate' } %> 
+										<!-- input id="email" type="email" class="validate"-->
 								</div>
 							</div>
 
@@ -59,7 +60,10 @@
 								</div>
 							</div>
 						</div>
-					</form>
+					<!-- /form -->
+					<% end %>
+					
+					
 				</div>
 			</div>
 		</li>
