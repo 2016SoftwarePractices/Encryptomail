@@ -2,46 +2,47 @@
   <ul class="slides">
 		<li>
 			<img src="/assets/EncryptoMailWallpaper.jpg">
-			<h3>EncryptoMail</h3>
-			<h5 class="light grey-text text-lighten-3">Time to get crypted.</h5>
-			<div class="row">
-				
-				<!-- single form tag to wrap the entire form -->
-				<form>
-					<div class="col s12">
+			<div class="caption">	
+				<div class="row">
+					<div class="col s12 center">
+						<h3>EncryptoMail</h3>
+						<h5 class="light grey-text text-lighten-3">Time to get crypted.</h5>
+					</div>
+				</div>
 
-						<div class="row">
-							<div class="input-field col s12">
-									<input id="email" type="email" class="validate">
-									<label for="email">
-										<h6 class="cyan-text text-accent-2 left-align">Email</h6>
-									</label>
+				<div class="row">
+					<!-- single form tag to wrap the entire form -->
+					<form>
+						<div class="col s12">
+
+							<div class="row">
+								<div class="input-field col s12">
+										<input id="email" type="email" class="validate">
+										<label for="email">
+											<h6 class="cyan-text text-accent-2 left-align">Email</h6>
+										</label>
+								</div>
 							</div>
-						</div>
 
-						<div class="row">
-							<div class="input-field col s12">
-									<input id="password" type="password" class="validate">
-									<label for="password">
-										<h6 class="cyan-text text-accent-2 left-align">Password</h6>
-									</label>
+							<div class="row">
+								<div class="input-field col s12 m6">
+										<input id="password" type="password" class="validate">
+										<label for="password">
+											<h6 class="cyan-text text-accent-2 left-align">Password</h6>
+										</label>
+								</div>
+								<div class="input-field col s12 m6">
+										<input id="password" type="password" class="validate">
+										<label for="password">
+											<h6 class="cyan-text text-accent-2 left-align">Confirm Password</h6>
+										</label>
+								</div>
 							</div>
-						</div>
 
-						<div class="row">
-							<div class="input-field col s12">
-									<input id="password" type="password" class="validate">
-									<label for="password">
-										<h6 class="cyan-text text-accent-2 left-align">Confirm Password</h6>
-									</label>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="input-field col s12">
-								<div class="file-field input-field">
+							<div class="row">
+								<div class="col s12 file-field input-field center">
 									<div class="btn">
-										<span>PGP key</span>
+										PGP Key
 										<input type="file">
 									</div>
 									<div class="file-path-wrapper">
@@ -49,19 +50,17 @@
 									</div>
 								</div>
 							</div>
-						</div>
 
-						<div class="col s6 offset-s3">
-							<div class="row">
-								<a class="waves-effect waves-light btn">
-									<%= button_to "Register", home_index_path, method: :get %>
-								</a>
+							<div class="row center">
+								<div class="col s12">
+									<a class="waves-effect waves-light btn">
+										<%= button_to "Register", home_index_path, method: :get %>
+									</a>
+								</div>
 							</div>
 						</div>
-
-					</div>
-				</form>
-				
+					</form>
+				</div>
 			</div>
 		</li>
 	</ul>
