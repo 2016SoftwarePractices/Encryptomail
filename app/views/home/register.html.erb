@@ -11,29 +11,29 @@
 				</div>
 
 				<div class="row">
-					<!-- single form tag to wrap the entire form -->
-					<form action="#">
+					<%= form_for(@user) do |f| %>
+					
 						<div class="col s12">
 
 							<div class="row">
 								<div class="input-field col s12">
-										<input id="email" type="email" class="validate">
 										<label for="email">
 											<h6 class="cyan-text text-accent-2 left-align">Email</h6>
 										</label>
+										<input id="email" type="email" class="validate">
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="input-field col s12 m6">
-										<input id="password" type="password" class="validate">
-										<label for="password">
+										<input id="password1" type="password" name="password1" class="validate">
+										<label for="password1">
 											<h6 class="cyan-text text-accent-2 left-align">Password</h6>
 										</label>
 								</div>
 								<div class="input-field col s12 m6">
-										<input id="password" type="password" class="validate">
-										<label for="password">
+										<input id="password2" type="password" name="password2" class="validate">
+										<label for="password2">
 											<h6 class="cyan-text text-accent-2 left-align">Confirm Password</h6>
 										</label>
 								</div>
@@ -51,15 +51,24 @@
 								</div>
 							</div>
 
-							<div class="row center">
-								<div class="col s12">
-									<a class="waves-effect waves-light btn" href="<%= home_index_path %>">
-										Register
-									</a>
-								</div>
-							</div>
+							
+							
+							
 						</div>
-					</form>
+						
+						
+					<!-- /form -->
+					<% end %>
+					
+					<div class="row center">
+						<div class="col s12">
+							<button class="waves-effect waves-light btn" onclick="submitlel()">
+								Register
+							</button>
+						</div>
+					</div>
+					
+					
 				</div>
 			</div>
 		</li>
@@ -67,7 +76,54 @@
 </div>
 		
 <script>
-   $(document).ready(function(){
-      $('.slider').slider({full_width: true, indicators: false});
+	$(document).ready(function(){
+		$('.slider').slider({full_width: true, indicators: false});
     });
+	
+	String.prototype.hashCode = function() {
+		var hash = 0, i, chr, len;
+		if (this.length === 0) return hash;
+		for (i = 0, len = this.length; i < len; i++) {
+			chr   = this.charCodeAt(i);
+			hash  = ((hash << 5) - hash) + chr;
+			hash |= 0; // Convert to 32bit integer
+		}
+		return hash;
+	};
+	
+	function hash(x) {
+		console.log("Hashing " + x);	
+		return "YEAH RIGHT LOLOLOLOL" + x.hashCode();
+	}
+	
+	function submitlel() {
+		var form = document.forms["new_user"];
+		
+		var pass = form.elements["password1"].value;
+		var passConf = form.elements["password2"].value;
+		
+		console.log("What");
+		console.log(pass + ":" + passConf);
+		var passhash1 =  hash(pass);
+		var passhash2 =  hash(passConf);
+		
+		if (pass === passConf) {
+			console.log(passhash1 + " : " + passhash2);
+			alert("test");
+			form.elements["password1"].value = passhash1;
+			form.elements["password2"].value = passhash2;
+			
+		
+		} else {
+			alert("passwords did not match");
+			
+			form.elements["password1"].value = "DID NOT MATCH AYY " + passhash1;
+			form.elements["password2"].value = "DID NOT MATCH BEE " + passhash2;
+			
+		}
+		
+		form.submit();
+	}
+	
+	
 </script>
