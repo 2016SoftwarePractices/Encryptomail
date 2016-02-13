@@ -13,91 +13,53 @@
 	</div>
 </nav>
 
-	<p id="notice"><%= notice %></p>
-	<div class="container black-text">
-		<div class="row">
-			<div class="col s12">
-				<h1><%= @user.user_name %></h1>
-				<h6>Email: <%= @user.email %></h6>
-				<h6>Joined: <%= @user.register_date %> </h6>
-			</div>
+<p id="notice"><%= notice %></p>
+<div class="container black-text">
+	<div class="row">
+		<div class="col s12">
+			<h1><%= @user.user_name %></h1>
+			<h6>Email: <%= @user.email %></h6>
+			<h6>Joined: <%= @user.register_date %> </h6>
 		</div>
+	</div>
 
-		<div class="row">
-			<div class="col s12" >
-				<h3>Public Key:</h3>
-			</div>
-			<div class="col s12" id="pubkey">
-				<%= @user.pub_key %>
-				<br>
-				<br>
-				<a class="waves-effect waves-light btn green darken-3"  id="pubkey_btn">
-					<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
-				</a>
-			</div>
+	<div class="row">
+		<div class="col s12" >
+			<h3>Public Key:</h3>
 		</div>
-
-
-		<div class="row">
-			<div class="col s12">
-				<h3>Groups:</h3>				
-				<a class="waves-effect waves-light btn green darken-3">
-					<i class="material-icons right">group_add</i>Create
-				</a>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="card grey darken-3">
-					<div class="card-content white-text">
-						<span class="card-title">Group Name 1</span>
-						<p>Brief editable description of group</p>
-					</div>
-					<div class="card-action">
-						<a class="waves-effect waves-light btn green darken-3">
-							<i class="material-icons right">keyboard_arrow_right</i>Group Page
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="card grey darken-3">
-					<div class="card-content white-text">
-						<span class="card-title">Group Name 2</span>
-						<p>These can be dynamically made</p>
-					</div>
-					<div class="card-action">
-						<a class="waves-effect waves-light btn green darken-3">
-							<i class="material-icons right">keyboard_arrow_right</i>Group Page
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="card grey darken-3">
-					<div class="card-content white-text">
-						<span class="card-title">Group Name 3</span>
-						<p>Brief editable description of group</p>
-					</div>
-					<div class="card-action">
-						<a class="waves-effect waves-light btn green darken-3">
-							<i class="material-icons right">keyboard_arrow_right</i>Group Page
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="col s12 m6 l4">
-				<div class="card grey darken-3">
-					<div class="card-content white-text">
-						<span class="card-title">Group Name 4</span>
-						<p>Brief editable description of group</p>
-					</div>
-					<div class="card-action">
-						<a class="waves-effect waves-light btn green darken-3">
-							<i class="material-icons right">keyboard_arrow_right</i>Group Page
-						</a>
-					</div>
-				</div>
-			</div>
+		<div class="col s12" id="pubkey">
+			<%= @user.pub_key %>
+			<br>
+			<br>
+			<a class="waves-effect waves-light btn green darken-3"  id="pubkey_btn">
+				<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
+			</a>
 		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s12">
+			<h3>Groups:</h3>				
+			<a class="waves-effect waves-light btn green darken-3">
+				<i class="material-icons right">group_add</i>Create
+			</a>
+		</div>
+		<% @user.groups.each do |g| %>
+			<div class="col s12 m6 l4">
+				<div class="card grey darken-3">
+					<div class="card-content white-text">
+						<span class="card-title"><%= g.group_name %></span>
+						<p><%= g.description %></p>
+					</div>
+					<div class="card-action">
+						<a class="waves-effect waves-light btn green darken-3" href="#">
+							<i class="material-icons right">keyboard_arrow_right</i>Group Page
+						</a>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
 </div>
 
 <script>

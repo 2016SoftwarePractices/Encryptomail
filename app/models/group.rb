@@ -30,7 +30,7 @@ class Group
   field :private, type: Boolean
   
   
-  
+	field :description, type: String
   
   
 end
