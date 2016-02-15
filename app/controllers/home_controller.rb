@@ -7,10 +7,6 @@ class HomeController < ApplicationController
   
   def register
 	@user = User.new
-	@user.email = 'enter email here'
-	@user.pub_key = 'Paste ASCII-Armored PGP key here'
-	@user.password1 = ''
-	@user.password2 = ''
 	
   end
   
