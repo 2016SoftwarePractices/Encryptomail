@@ -4,6 +4,9 @@ class User
   has_and_belongs_to_many :groups
   
   field :user_name, type: String
+  
+  field :pass_hash, type: String
+
   field :password1, type: String
   field :password2, type: String
   
@@ -14,8 +17,7 @@ class User
   
   field :register_date, type: DateTime, :default => DateTime.now
   
-  validates_presence_of :password1
-  validates_presence_of :password2
+  validates_presence_of :pass_hash
   
   validates_uniqueness_of :email
   validates_uniqueness_of :pub_key
