@@ -28,13 +28,13 @@
 
 							<div class="row">
 								<div class="input-field col s12 m6">
-										<input id="password1" type="password" name="password1" class="validate">
+										<input id="password1" type="password" name="password1" class="validate" onchange="checkPasswords()">
 										<label for="password1">
 											<h6 class="cyan-text text-accent-2 left-align">Password</h6>
 										</label>
 								</div>
 								<div class="input-field col s12 m6">
-										<input id="password2" type="password" name="password2" class="validate">
+										<input id="password2" type="password" name="password2" class="validate" onchange="checkPasswords()">
 										<label for="password2">
 											<h6 class="cyan-text text-accent-2 left-align">Confirm Password</h6>
 										</label>
@@ -87,6 +87,26 @@
 		return hash;
 	};
 	
+	function checkPasswords() {
+		var form = document.forms["new_user"];
+		var pass = form.elements["password1"].value;
+		var passConf = form.elements["password2"].value;
+		
+		if (pass === passConf) {
+			form.elements["password1"].style.borderBottom = "1px solid #4CAF50";
+			form.elements["password2"].style.borderBottom = "1px solid #4CAF50";
+			form.elements["password1"].style.boxShadow = "0 1px 0 0 #4CAF50";
+			form.elements["password2"].style.boxShadow = "0 1px 0 0 #4CAF50";
+			
+		} else {
+			form.elements["password1"].style.borderBottom = "1px solid #F44336";
+			form.elements["password2"].style.borderBottom = "1px solid #F44336";
+			form.elements["password1"].style.boxShadow = "0 1px 0 0 #F44336";
+			form.elements["password2"].style.boxShadow = "0 1px 0 0 #F44336";
+		}
+		
+	}
+	
 	function hash(x) {
 		console.log("Hashing " + x);	
 		return "YEAH RIGHT LOLOLOLOL" + x.hashCode();
@@ -112,6 +132,8 @@
 		
 		} else {
 			alert("passwords did not match");
+			
+			
 			
 			form.elements["password1"].value = "DID NOT MATCH AYY " + passhash1;
 			form.elements["password2"].value = "DID NOT MATCH BEE " + passhash2;
