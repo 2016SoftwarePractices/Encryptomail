@@ -43,8 +43,9 @@
 		var groupName = form.elements["group_group_name"].value;
 		//var groupEmail = form.elements["group_email"].value;
 		//strip white space
-		groupName = groupName.replace(" ","");
-		var groupEmail = groupName.concat("<%= Encryptomail::Application.Domain %>");
+		groupName = groupName.replace(/\s+/g, '');
+		
+		var groupEmail = groupName.concat("<%= $Domain %>");
 		form.elements["group_email"].value = groupEmail
 	}
 	
