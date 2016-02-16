@@ -19,7 +19,7 @@
 		<div class="col s12">
 			<h1><%= @user.user_name %></h1>
 			<h6>Email: <%= @user.email %></h6>
-			<h6>Joined: <%= @user.register_date %> </h6>
+			<h6>Joined: <%= @user.register_date.strftime('%x') %> </h6>
 			<br>
 			<a href="<%= edit_user_path(@user) %>" class="waves-effect waves-light btn green darken-3"  id="edit">
 				<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Profile 
