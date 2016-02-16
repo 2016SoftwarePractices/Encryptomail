@@ -1,17 +1,52 @@
 <%= form_for(@group) do |f| %>
-  <% if @group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+	<div class="col s12">
+		<% if @group.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@group.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @group.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+				<ul>
+				<% @group.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
+	</div>
+	<div class="col s12">
+		<div class="field">
+			<%= f.label :group_name %>
+			<%= f.text_field :group_name, {:onChange=>"emailMaker();"} %>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="field">
+			<input type="text" value="" name="group[email]" id="group_email" class="hide">
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="field">
+			<%= f.label :pub_key %>
+			<%= f.text_field :pub_key %>
+		</div>
+	</div>
+	<div class="col s12">
+		<div class="actions">
+			<%= f.submit nil, :class => "waves-effect waves-light btn green darken-3" %>
+		</div>
+	</div>
 <% end %>
+
+
+<script>
+	function emailMaker() {
+		var form = document.forms["new_group"];
+		var groupName = form.elements["group_group_name"].value;
+		//var groupEmail = form.elements["group_email"].value;
+		//strip white space
+		groupName = groupName.replace(/\s+/g, '');
+		
+		var groupEmail = groupName.concat("<%= $Domain %>");
+		form.elements["group_email"].value = groupEmail
+	}
+	
+</script>
