@@ -10,7 +10,8 @@ class Group
   
   #automagically generate emails for groups based on their group name and the domain (default = "@encryptomail.net")
   def email 
-     group_name + Encryptomail::Application.Domain
+		#this is causing an error, commented out for testing of other stuff 
+		#group_name + Encryptomail::Application.Domain
   end
   
   
