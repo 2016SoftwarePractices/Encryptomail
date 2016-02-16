@@ -56,8 +56,9 @@
 						<p><%= g.description %></p>
 					</div>
 					<div class="card-action">
-						<%= link_to 'Group Page', g, class: "waves-effect waves-light btn green darken-3" %>
-							<i class="material-icons right">keyboard_arrow_right</i>
+						<a href="<%= group_path(g) %>" class="waves-effect waves-lilght btn green darken-3">
+							Group Page <i class="material-icons right">keyboard_arrow_right</i>
+						</a>
 					</div>
 				</div>
 			</div>
