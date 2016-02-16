@@ -20,7 +20,5 @@ class User
   validates_presence_of :pass_hash
   
   validates_uniqueness_of :email
-  validates_uniqueness_of :pub_key
-  
-  
+  validates_uniqueness_of :pub_key  
 end
