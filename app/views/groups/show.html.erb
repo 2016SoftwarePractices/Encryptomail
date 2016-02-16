@@ -1,3 +1,78 @@
-<p id="notice"><%= notice %></p>
+<nav class="grey darken-3" role="navigation">
+	<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EncryptoMail</a>
+		<ul class="right hide-on-med-and-down">
+			<li>
+				<a class="waves-effect waves-light btn red darken-3">Logout</a>
+			</li>
+		</ul>
 
-<%= link_to 'Back', groups_path %>
+		<ul id="nav-mobile" class="side-nav">
+			<li><a class="waves-effect waves-light btn">Logout</a></li>
+		</ul>
+		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+	</div>
+</nav>
+
+<div class="container black-text">
+	<p id="notice"><%= notice %></p>
+	<div class="row">
+		<div class="col s12">
+			<h1><%= @group.group_name %></h1>
+			<h6>Email: <%= @group.email %></h6>
+			<br>
+			<a href="<%= edit_group_path(@group) %>" class="waves-effect waves-light btn green darken-3"  id="edit">
+				<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Group 
+			</a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s12" >
+			<h3>Public Key:</h3>
+		</div>
+		<div class="col s12" id="pubkey">
+			<%= @group.pub_key %>
+			<br>
+			<br>
+			<a class="waves-effect waves-light btn green darken-3"  id="pubkey_btn">
+				<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
+			</a>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col s12">
+			<h3>Users:</h3>
+		</div>
+		<% @group.users.each do |user| %>
+			<div class="col s12 m6 l4">
+				<div class="card grey darken-3">
+					<div class="card-content white-text">
+						<span class="card-title"><%= user.user_name %></span>
+						<p><%= user.pub_key %></p>
+					</div>
+					<div class="card-action">
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<script>
+	<!-- Code from http://codetheory.in/javascript-copy-to-clipboard-without-flash-using-cut-and-copy-commands-with-document-execcommand/ -->
+	var copyBtn = document.querySelector('#pubkey_btn');
+	copyBtn.addEventListener('click', function () {
+		var urlField = document.querySelector('#pubkey');
+
+		// create a Range object
+		var range = document.createRange();  
+		// set the Node to select the "range"
+		range.selectNode(urlField);
+		// add the Range to the set of window selections
+		window.getSelection().addRange(range);
+
+		// execute 'copy', can't 'cut' in this case
+		document.execCommand('copy');
+	}, false);
+</script>
