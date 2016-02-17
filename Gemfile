@@ -30,6 +30,8 @@ end
 # Materialize to make things pretty
 gem 'materialize-sass'
 
+gem 'devise'
+
 # CanCan authorization library
 gem "cancan"
 
