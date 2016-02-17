@@ -20,6 +20,18 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+    
+    <div class="row">
+        <div class="col s12 file-field input-field center">
+            <div class="green darken-3 btn">
+                PGP Key
+                <input name="pub_key" type="file">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+    </div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
