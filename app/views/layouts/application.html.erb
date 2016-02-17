@@ -17,10 +17,13 @@
 					<li>
                         Welcome Back, <%= current_user.email %>, you jerk!
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
+                        
 					</li>
 				<% else %>
 					<li>
-						<%= link_to('Login', new_user_session_path, :class => "btn green darken-3 white-text") %>
+                        You're new here
+                        <%= link_to('Sign Up', new_user_registration_path, :class => "btn green darken-3 white-text") %>
+						<%= link_to('Sign In', new_user_session_path, :class => "btn green darken-3 white-text") %>
 					</li>
 				<% end %>
             </ul>

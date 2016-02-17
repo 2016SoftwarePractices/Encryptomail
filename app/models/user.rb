@@ -43,7 +43,7 @@ class User
   field :register_date, type: DateTime, :default => DateTime.now
   
   validates_uniqueness_of :email
-  #validates_uniqueness_of :pub_key
+  validates_uniqueness_of :pub_key
   
   
 end
