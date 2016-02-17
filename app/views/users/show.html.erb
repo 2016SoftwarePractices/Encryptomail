@@ -1,12 +1,16 @@
 
 
-<p id="notice"><%= notice %></p>
 <div class="container black-text">
+	<p id="notice"><%= notice %></p>
 	<div class="row">
 		<div class="col s12">
 			<h1><%= @user.user_name %></h1>
 			<h6>Email: <%= @user.email %></h6>
-			<h6>Joined: <%= @user.register_date %> </h6>
+			<h6>Joined: <%= @user.register_date.strftime('%x') %> </h6>
+			<br>
+			<a href="<%= edit_user_path(@user) %>" class="waves-effect waves-light btn green darken-3"  id="edit">
+				<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Profile 
+			</a>
 		</div>
 	</div>
 
@@ -27,7 +31,7 @@
 	<div class="row">
 		<div class="col s12">
 			<h3>Groups:</h3>				
-			<a class="waves-effect waves-light btn green darken-3">
+			<a class="waves-effect waves-light btn green darken-3" href="<%= new_group_path %>">
 				<i class="material-icons right">group_add</i>Create
 			</a>
 		</div>
@@ -39,8 +43,8 @@
 						<p><%= g.description %></p>
 					</div>
 					<div class="card-action">
-						<a class="waves-effect waves-light btn green darken-3" href="#">
-							<i class="material-icons right">keyboard_arrow_right</i>Group Page
+						<a href="<%= group_path(g) %>" class="waves-effect waves-lilght btn green darken-3">
+							Group Page <i class="material-icons right">keyboard_arrow_right</i>
 						</a>
 					</div>
 				</div>

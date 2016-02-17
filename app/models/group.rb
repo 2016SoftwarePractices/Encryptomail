@@ -9,10 +9,12 @@ class Group
   #otherwise, the group email is used
   
   #automagically generate emails for groups based on their group name and the domain (default = "@encryptomail.net")
-  def email 
-     group_name + Encryptomail::Application.Domain
-  end
+	#The problem is 	
+	#def email
+	#	group_name + Encryptomail::Application.Domain
+  #end
   
+	field :email, type: String
   
   #Encryption keys
   field :pub_key, type: String

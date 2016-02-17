@@ -1,6 +1,30 @@
-<h1>Editing Group</h1>
+<nav class="grey darken-3" role="navigation">
+	<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EncryptoMail</a>
+		<ul class="right hide-on-med-and-down">
+			<li>
+				<a class="waves-effect waves-light btn red darken-3">Logout</a>
+			</li>
+		</ul>
 
-<%= render 'form' %>
+		<ul id="nav-mobile" class="side-nav">
+			<li><a class="waves-effect waves-light btn">Logout</a></li>
+		</ul>
+		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+	</div>
+</nav>
 
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+<div class="container black-text">
+	<div class="row">
+		<div class="col s12">
+			<h1>Editing <%= @group.group_name %></h1>
+		</div>
+	</div>
+	<div class="row">
+		<%= render 'form2' %>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<%= link_to 'Show Profile', @group, :class => "waves-effect waves-light btn green darken-3" %>
+		</div>
+	</div>
+</div>
