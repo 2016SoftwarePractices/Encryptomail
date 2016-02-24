@@ -31,7 +31,11 @@ class Group
 	#True if only group members can send to group email, false if open for everyone.
 	field :private, type: Boolean
 
-field :description, type: String
+	field :description, type: String
 	
+	validates_uniqueness_of :group_name
+	
+	index({ group_name: 1 }, { unique: true, name: "group_name_index" })
+	index({ email: 1 }, { unique: true, name: "email_index" })
 	
 end
