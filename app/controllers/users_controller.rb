@@ -14,7 +14,7 @@ class UsersController < EndUserBaseController
 	# GET /users/1.json
 	def show
 		if @user.id != current_user.id
-			redirect_to "/users/"+current_user.id
+			redirect_to "/users/"+current_user.id, alert: "You are not allowed to view that page."
 		end
 	end
 

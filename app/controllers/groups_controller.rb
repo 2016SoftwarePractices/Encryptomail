@@ -6,10 +6,13 @@ class GroupsController < EndUserBaseController
 	def index
 		@groups = current_user.groups
 	end
-
+	
 	# GET /groups/1
 	# GET /groups/1.json
 	def show
+		if !@group.users.include? current_user
+			redirect_to "/users/"+current_user.id, alert: "You are not allowed to view that page."
+		end
 	end
 
 	# GET /groups/new
