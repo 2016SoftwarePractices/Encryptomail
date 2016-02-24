@@ -25,7 +25,12 @@ class GroupsController < ApplicationController
 	# POST /groups.json
 	def create
 		@group = Group.new(group_params)
-
+		
+		@group.users << current_user
+		@group.email = @group.group_name + $Domain
+		
+		current_user.save
+		
 		respond_to do |format|
 			if @group.save
 				format.html { redirect_to @group, notice: 'Group was successfully created.' }
