@@ -13,6 +13,9 @@ class UsersController < EndUserBaseController
 	# GET /users/1
 	# GET /users/1.json
 	def show
+		if @user.id != current_user.id
+			redirect_to "/users/"+current_user.id
+		end
 	end
 
 	# GET /users/new
