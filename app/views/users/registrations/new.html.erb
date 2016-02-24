@@ -1,44 +1,39 @@
 <div class="center">
-<h2>Sign Up</h2>
-</div>
-    
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-	<%= devise_error_messages! %>
+  <h3>Sign Up</h3>
 
-	<div class="field">
-		<%= f.label :email %><br />
-		<%= f.email_field :email, autofocus: true %>
-	</div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="row field container">
+      <div class="col s6 offset-s3">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
 
-	<div class="field">
-		<%= f.label :password %>
-		<% if @minimum_password_length %>
-		<em>(<%= @minimum_password_length %> characters minimum)</em>
-		<% end %><br />
-		<%= f.password_field :password, autocomplete: "off" %>
-	</div>
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off" %>
 
-	<div class="field">
-		<%= f.label :password_confirmation %><br />
-		<%= f.password_field :password_confirmation, autocomplete: "off" %>
-	</div>
-		
-		<div class="field">
-				<div class="col s12 file-field input-field center">
-						<div class="green darken-3 btn">
-								PGP Key
-								<input name="pub_key" type="file">
-						</div>
-						<div class="file-path-wrapper">
-								<input class="file-path validate" type="text">
-						</div>
-				</div>
-		</div>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
 
-	<div class="actions">
-		<%= f.submit "Sign up" %>
-	</div>
-<% end %>
-<div class="center">
-<%= render "users/shared/links" %>
+          <div class="file-field input-field">
+              <div class="green darken-3 btn">
+                  PGP Key
+                  <input name="pub_key" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+              </div>
+          </div>
+      </div>
+    </div>
+      <div class="actions">
+        <button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
+          Register
+        </button>
+      </div>
+    <% end %>
+    </br>
+  <%= render "users/shared/links" %>
 </div>
