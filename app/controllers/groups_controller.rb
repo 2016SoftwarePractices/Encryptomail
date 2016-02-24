@@ -1,10 +1,11 @@
-class GroupsController < ApplicationController
+class GroupsController < EndUserBaseController
+	before_filter :authenticate_user!
 	before_action :set_group, only: [:show, :edit, :update, :destroy]
 
 	# GET /groups
 	# GET /groups.json
 	def index
-		@groups = Group.all
+		@groups = current_user.groups
 	end
 
 	# GET /groups/1
@@ -29,7 +30,7 @@ class GroupsController < ApplicationController
 		@group.users << current_user
 		@group.email = @group.group_name + $Domain
 		
-		current_user.save
+		current_user.save	
 		
 		respond_to do |format|
 			if @group.save
