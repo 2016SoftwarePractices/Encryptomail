@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 	def index
-	  	if current_user
+		if current_user
 			redirect_to "/users/"+current_user.id
 		end
 		
@@ -24,5 +24,5 @@ class HomeController < ApplicationController
 		params.require(:user).permit(:email, :pub_key, :password1, :password2)
 	end
 
-  
+	
 end
