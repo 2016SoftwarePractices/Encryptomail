@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Encryptomail</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>Encryptomail</title>
+	<%= stylesheet_link_tag		'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body class="grey lighten-2">
-    
-    <nav class="grey darken-3" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EncryptoMail</a>
-            <ul class="right hide-on-med-and-down">
-                <% if user_signed_in? %>
+		
+		<nav class="grey darken-3" role="navigation">
+				<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">EncryptoMail</a>
+						<ul class="right hide-on-med-and-down">
+								<% if user_signed_in? %>
 					<li>
-                        Welcome Back, <%= current_user.email %>, you jerk!
+												Welcome Back, <%= current_user.email %>, you jerk!
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
-                        
+												
 					</li>
 				<% else %>
 					<li>
-                        You're new here
-                        <%= link_to('Sign Up', new_user_registration_path, :class => "btn green darken-3 white-text") %>
+												You're new here
+												<%= link_to('Sign Up', new_user_registration_path, :class => "btn green darken-3 white-text") %>
 						<%= link_to('Sign In', new_user_session_path, :class => "btn green darken-3 white-text") %>
 					</li>
 				<% end %>
-            </ul>
+						</ul>
 
-            <ul id="nav-mobile" class="side-nav">
-                <% if user_signed_in? %>
+						<ul id="nav-mobile" class="side-nav">
+								<% if user_signed_in? %>
 					<li>
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
 					</li>
@@ -38,14 +38,14 @@
 						<%= link_to('Login', new_user_session_path, :class => "btn green darken-3 white-text") %>
 					</li>
 				<% end %>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+						</ul>
+						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+				</div>
+		</nav>
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
 
-    <%= yield %>
+		<%= yield %>
 
 </body>
 </html>

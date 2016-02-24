@@ -1,5 +1,5 @@
 <div class="slider fullscreen">
-  <ul class="slides">
+	<ul class="slides">
 		<li>
 			<img src="<%= image_path('EncryptoMailWallpaper.jpg') %>">
 			<div class="caption">	
@@ -74,14 +74,14 @@
 <script>
 	$(document).ready(function(){
 		$('.slider').slider({full_width: true, indicators: false});
-    });
+		});
 	
 	String.prototype.hashCode = function() {
 		var hash = 0, i, chr, len;
 		if (this.length === 0) return hash;
 		for (i = 0, len = this.length; i < len; i++) {
-			chr   = this.charCodeAt(i);
-			hash  = ((hash << 5) - hash) + chr;
+			chr	 = this.charCodeAt(i);
+			hash	= ((hash << 5) - hash) + chr;
 			hash |= 0; // Convert to 32bit integer
 		}
 		return hash;
@@ -120,8 +120,8 @@
 		
 		console.log("What");
 		console.log(pass + ":" + passConf);
-		var passhash1 =  hash(pass);
-		var passhash2 =  hash(passConf);
+		var passhash1 =	hash(pass);
+		var passhash2 =	hash(passConf);
 		
 		if (pass === passConf) {
 			console.log(passhash1 + " : " + passhash2);
