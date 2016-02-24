@@ -20,7 +20,7 @@
 			<h1><%= @group.group_name %></h1>
 			<h6>Email: <%= @group.email %></h6>
 			<br>
-			<a href="<%= edit_group_path(@group) %>" class="waves-effect waves-light btn green darken-3"  id="edit">
+			<a href="<%= edit_group_path(@group) %>" class="waves-effect waves-light btn green darken-3"	id="edit">
 				<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Group 
 			</a>
 		</div>
@@ -34,7 +34,7 @@
 			<%= @group.pub_key %>
 			<br>
 			<br>
-			<a class="waves-effect waves-light btn green darken-3"  id="pubkey_btn">
+			<a class="waves-effect waves-light btn green darken-3"	id="pubkey_btn">
 				<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
 			</a>
 		</div>
@@ -66,7 +66,7 @@
 		var urlField = document.querySelector('#pubkey');
 
 		// create a Range object
-		var range = document.createRange();  
+		var range = document.createRange();	
 		// set the Node to select the "range"
 		range.selectNode(urlField);
 		// add the Range to the set of window selections
