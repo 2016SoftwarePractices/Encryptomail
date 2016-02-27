@@ -1,0 +1,90 @@
+== Setup
+- Apache
+    version -> 2.4.18-1
+- Passenger
+    version -> 5.0.23
+- RVM
+    version -> 1.26.11
+- Ruby
+    version -> 2.2.1p85
+- Rails
+    version -> 4.2.5.1
+    http://api.rubyonrails.org/
+- Mongoid - Database
+    version -> 5.1.0
+    https://docs.mongodb.org/ecosystem/tutorial/ruby-mongoid-tutorial/
+    http://requiremind.com/riding-rails-4-along-with-mongoid-and-ruby-2-dot-0/
+- Devise - User Authentication and Session Handling
+    http://suvankar.svbtle.com/devise-and-mongoid-in-rails-4
+- Postfix - SMTP server
+    http://www.postfix.org/documentation.html
+- Materialize - CSS and HTML framework
+    http://materializecss.com/
+== Linux
+- Make a directory for the project
+    mkdir Encryptomail
+- Clone the git repo into the directory
+    git clone https://github.com/2016SoftwarePractices/Encryptomail.git Encryptomail
+- Ensure that mongodb service is running
+    Arch
+        systemctl enable mongodb.service
+        systemctl start mongodb.service
+    Ubuntu
+        service mongodb start
+    Ubuntu upstart
+        start mongodb
+- IF you haven't installed mongodb you will need to
+    Ubuntu
+        apt-get install mongodb
+    Arch
+        pacman -S mongodb
+- You should now be able to run the mongo shell to ensure the service is running
+    mongo
+- Move into the Encryptomail directory you created
+    cd Encryptomail/
+- Run bundle
+    bundle install
+- Serve the rails project
+    rails s
+
+== Cloud9
+- Pull code in from git 
+
+- Run bundle, this downloads all the gems that we are currently using
+    bundle install
+
+- Setup the local mongo database for C9
+    mongod --bind_ip=$IP --dbpath=data --rest "$@"
+
+- Run Rails
+    rails s -b $IP -p $PORT
+
+
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* Security: see https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet 
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

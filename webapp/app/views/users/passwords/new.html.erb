@@ -1,0 +1,22 @@
+<div class="center">
+  <h3>Forgot your password?</h3>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="row field container">
+      <div class="col s6 offset-s3">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
+        Send me reset password instructions
+      </button>
+    </div>
+  <% end %>
+  </br>
+  <%= render "users/shared/links" %>
+</div>

@@ -1,0 +1,30 @@
+<div class="center">
+  <h3>Sign In</h3>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="row field container">
+      <div class="col s6 offset-s3">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off" %>
+        <% if devise_mapping.rememberable? -%>
+
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+        <% end -%>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
+          Log In
+        </button>
+    </div>
+  <% end %>
+  </br>
+  <%= render "users/shared/links" %>
+</div>

@@ -1,0 +1,37 @@
+<div class="center">
+  <h3>Sign Up</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="row field container">
+      <div class="col s6 offset-s3">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
+
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off" %>
+
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+          <div class="file-field input-field">
+              <div class="green darken-3 btn">
+                  PGP Key
+                  <input name="pub_key" type="file">
+              </div>
+              <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+              </div>
+          </div>
+      </div>
+    </div>
+      <div class="actions">
+        <button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
+          Register
+        </button>
+      </div>
+    <% end %>
+</div>
