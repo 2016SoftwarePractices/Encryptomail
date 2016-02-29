@@ -12,10 +12,10 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.password_field :password, autocomplete: "off", class: "validate", onchange: "checkPasswords()" %>
 
         <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "validate", onchange: "checkPasswords()" %>
 
           <div class="file-field input-field">
               <div class="green darken-3 btn">
@@ -35,3 +35,25 @@
       </div>
     <% end %>
 </div>
+
+<script>
+
+  function checkPasswords(){
+    var form = document.forms["new_user"];
+    var pass = form.elements["user_password"].value;
+    var passConf = form.elements["user_password_confirmation"].value;
+    
+    if (pass === passConf){
+      form.elements["user_password"].style.borderBottom = "1px solid #4CAF50";
+			form.elements["user_password_confirmation"].style.borderBottom = "1px solid #4CAF50";
+			form.elements["user_password"].style.boxShadow = "0 1px 0 0 #4CAF50";
+			form.elements["user_password_confirmation"].style.boxShadow = "0 1px 0 0 #4CAF50";
+    } else {
+      form.elements["user_password"].style.borderBottom = "1px solid #F44336";
+			form.elements["user_password_confirmation"].style.borderBottom = "1px solid #F44336";
+			form.elements["user_password"].style.boxShadow = "0 1px 0 0 #F44336";
+			form.elements["user_password_confirmation"].style.boxShadow = "0 1px 0 0 #F44336";
+      
+    }
+  };
+</script>
