@@ -40,7 +40,7 @@
     var pass = form.elements["user_password"].value;
     var passConf = form.elements["user_password_confirmation"].value;
     
-    if (pass === passConf){
+    if (pass === passConf && pass && passConf){
       form.elements["user_password"].style.borderBottom = "1px solid #4CAF50";
 			form.elements["user_password_confirmation"].style.borderBottom = "1px solid #4CAF50";
 			form.elements["user_password"].style.boxShadow = "0 1px 0 0 #4CAF50";
