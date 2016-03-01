@@ -33,9 +33,20 @@ class Group
 
 	field :description, type: String
 	
+	field :leaders, type: Array
+	
+	
 	validates_uniqueness_of :group_name
 	
 	index({ group_name: 1 }, { unique: true, name: "group_name_index" })
 	index({ email: 1 }, { unique: true, name: "email_index" })
+	
+	def leader?(user)
+		if leaders.nil? 
+			false	
+		else
+			leaders.include?( user.id.to_s)		
+		end
+	end
 	
 end

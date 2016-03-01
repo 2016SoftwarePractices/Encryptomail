@@ -30,6 +30,7 @@ class GroupsController < EndUserBaseController
 		@group = Group.new(group_params)
 		
 		@group.users << current_user
+		@group.leaders = [current_user.id.to_s]
 		@group.email = @group.group_name + $Domain
 		
 		current_user.save	
