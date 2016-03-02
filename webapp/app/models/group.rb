@@ -39,7 +39,7 @@ class Group
 	validates_uniqueness_of :group_name
 	
 	index({ group_name: 1 }, { unique: true, name: "group_name_index" })
-	index({ email: 1 }, { unique: true, name: "email_index" })
+	index({ email: 1 }, { unique: true, name: "email_index" })	
 	
 	def leader?(user)
 		if leaders.nil? 
@@ -48,5 +48,16 @@ class Group
 			leaders.include?( user.id.to_s)		
 		end
 	end
+	
+	def addUser(email)
+		if email.nil?
+			false
+		else
+			u = users.all.find{ |us| us.email == email }
+			u.group_ids << :group
+		end
+	
+	end
+
 	
 end

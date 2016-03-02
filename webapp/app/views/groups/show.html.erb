@@ -5,9 +5,11 @@
 			<h1><%= @group.group_name %></h1>
 			<h6>Email: <%= @group.email %></h6>
 			<br>
+			<% if @group.leader? current_user %>
 			<a href="<%= edit_group_path(@group) %>" class="waves-effect waves-light btn green darken-3"	id="edit">
 				<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Group 
 			</a>
+		   <% end %>
 		</div>
 	</div>
 
@@ -23,15 +25,6 @@
 				<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
 			</a>
 		</div>
-	</div>
-	
-	<div class="row">
-		<% if @group.leader? current_user %>
-			ayy lmao<br />
-			<a class ="waves-effect waves-light green darken-3 btn" href="#">
-				Cohen'sHiddenButton
-			</a>
-		<% end %>
 	</div>
 	
 	<div class="row">
