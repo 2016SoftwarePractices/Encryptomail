@@ -42,10 +42,13 @@
 						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 				</div>
 		</nav>
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
+		<div class="container">
+			<div class="col s8">
+				<p class="notice"><%= notice %></p>
+				<p class="alert"><%= alert %></p>
+			</div>
+			<%= yield %>
 
-		<%= yield %>
-
+		</div>
 </body>
 </html>
