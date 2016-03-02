@@ -53,7 +53,12 @@ class Group
 		if email.nil?
 			false
 		else
-			u = users.all.find{ |us| us.email == email }
+			if User.exists?(email: email) 
+				u = User.find_by(email: email)
+			else
+				u = nil
+				#TBD: Send invite email to email
+			end
 			u.group_ids << :group
 		end
 	
