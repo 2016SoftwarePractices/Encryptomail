@@ -3,7 +3,16 @@ require "../webapp/config/environment"
 #pull in testing framework
 #runs all functions in all classes defined in this file
 #if those functions start with 'test_'
+
+#puts Group.all.count
+#Group.all.each do |g|
+#	puts g.inspect
+#end
+
+
 require "minitest/autorun"
+
+require_relative "group_lookup"
 
 #note:
 #normally, run this file with 
@@ -51,14 +60,15 @@ class Tests3 < MiniTest::Test
 
 end
 
-class Tests4 < MiniTest::Test
-		
+class TestGroupLookup < MiniTest::Test
+	include GroupLookup
 	def setup
-		@x = 4
+		
 	end	
 	
-	def test_thing
-		assert_equal(@x, 4)
+	def test_group_lookup
+		group = group_lookup('test_unlocked_group_1@encryptomail.xyz')
+		assert_equal(false, group.nil?)
 	end
 	
 end

@@ -233,7 +233,7 @@ mTc8XjmREAV2Cs+eYcQTVV7CU1dQ+oFeRYGlKu77kD6YY4dbPV5/hbg+8Bo=
 ', 
 lock_members: 'true',
 visible: 'false', 
-private_group: 'true', 
+private: 'true', 
 description: 'This is a locked group, with locked members/hidden visibility/Private relay')
 
 #Seed data for a group with options selected:
@@ -421,7 +421,7 @@ Arnk
 ', 
 lock_members: 'false',
 visible: 'true', 
-private_group: 'false', 
+private: 'false', 
 description: 'This is an unlocked group, with Unlocked Members/Global Visibility/Open Relay')
 
 
@@ -515,3 +515,13 @@ m68cEw7yVTZI
 ',
     register_date: '',
     )
+    
+    
+    
+users.each do |u|
+   u.save 
+end
+
+groups.each do |g|
+   g.save 
+end
