@@ -12,3 +12,7 @@
 !/log/.keep
 /tmp
 /Gemfile.lock
+
+
+# Ignore application specific stuff
+/public
