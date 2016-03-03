@@ -52,19 +52,18 @@
 	<% end %>
 </div>
 
+<!-- This script allows you to press a button to copy the PGP key -->
 <script>
 	<!-- Code from http://codetheory.in/javascript-copy-to-clipboard-without-flash-using-cut-and-copy-commands-with-document-execcommand/ -->
 	var copyBtn = document.querySelector('#pubkey_btn');
 	copyBtn.addEventListener('click', function () {
 		var urlField = document.querySelector('#pubkey');
-
 		// create a Range object
 		var range = document.createRange();	
 		// set the Node to select the "range"
 		range.selectNode(urlField);
 		// add the Range to the set of window selections
 		window.getSelection().addRange(range);
-
 		// execute 'copy', can't 'cut' in this case
 		document.execCommand('copy');
 	}, false);

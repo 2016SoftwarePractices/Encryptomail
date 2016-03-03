@@ -16,41 +16,38 @@
 
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "validate", onchange: "checkPasswords()", placeholder: "Confirm Password" %>
-		
-		
-		PGP Key
-		<div class="input-field">
-			<textarea placeholder="PASTE YOUR PGP KEY HERE" rows="8" id="pub_key" name="pub_key" class="validate" type="text" style="height:8em;resize: vertical;"></textarea>
-			
-		</div>
+				PGP Key
+				<div class="input-field">
+					<textarea placeholder="PASTE YOUR PGP KEY HERE" rows="8" id="pub_key" name="pub_key" class="validate" type="text" style="height:8em;resize: vertical;"></textarea>
+				</div>
       </div>
     </div>
-      <div class="actions">
-        <button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
-          Register
-        </button>
-      </div>
-    <% end %>
+		<div class="actions">
+			<button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
+				Register
+			</button>
+		</div>
+   <% end %>
 </div>
 
 <script>
-
   function checkPasswords(){
     var form = document.forms["new_user"];
     var pass = form.elements["user_password"].value;
     var passConf = form.elements["user_password_confirmation"].value;
     
     if (pass === passConf && pass && passConf){
-      form.elements["user_password"].style.borderBottom = "1px solid #4CAF50";
-			form.elements["user_password_confirmation"].style.borderBottom = "1px solid #4CAF50";
-			form.elements["user_password"].style.boxShadow = "0 1px 0 0 #4CAF50";
-			form.elements["user_password_confirmation"].style.boxShadow = "0 1px 0 0 #4CAF50";
+      //form.elements["user_password"].style.borderBottom = "1px solid #4CAF50";
+			//form.elements["user_password_confirmation"].style.borderBottom = "1px solid #4CAF50";
+			//form.elements["user_password"].style.boxShadow = "0 1px 0 0 #4CAF50";
+			//form.elements["user_password_confirmation"].style.boxShadow = "0 1px 0 0 #4CAF50";
+			
+			// We should just be able to string these together, just looks a little cleaner, in fact these both can probably be combined into one line
+			form.elements["user_password"].setAttribute("style", "border-bottom: 1px solid #4CAF50; box-shadow: 0 1px 0 0 #4CAF50");
+			form.elements["user_password_confirmation"].setAttribute("style", "border-bottom: 1px solid #4CAF50; box-shadow: 0 1px 0 0 #4CAF50");
     } else {
-      form.elements["user_password"].style.borderBottom = "1px solid #F44336";
-			form.elements["user_password_confirmation"].style.borderBottom = "1px solid #F44336";
-			form.elements["user_password"].style.boxShadow = "0 1px 0 0 #F44336";
-			form.elements["user_password_confirmation"].style.boxShadow = "0 1px 0 0 #F44336";
-      
+			form.elements["user_password"].setAttribute("style", "border-bottom: 1px solid #F44336; box-shadow: 0 1px 0 0 #F44336");
+			form.elements["user_password_confirmation"].setAttribute("style", "border-bottom: 1px solid #F44336; box-shadow: 0 1px 0 0 #F44336");      
     }
   };
 </script>

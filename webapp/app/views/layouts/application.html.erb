@@ -9,27 +9,26 @@
 </head>
 
 <body class="grey lighten-2">
-		
-		<nav class="grey darken-3" role="navigation">
-      <div class="nav-wrapper container"><a id="logo-container" href="<%= home_index_path %>" class="brand-logo">EncryptoMail</a>
-						<ul class="right hide-on-med-and-down">
-								<% if user_signed_in? %>
+	
+	<nav class="grey darken-3" role="navigation">
+		<div class="nav-wrapper container"><a id="logo-container" href="<%= home_index_path %>" class="brand-logo">EncryptoMail</a>
+			<ul class="right hide-on-med-and-down">
+				<% if user_signed_in? %>
 					<li>
-												Welcome Back, <%= current_user.email %>, you jerk!
-						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
-												
+						Welcome Back, <%= current_user.email %>, you jerk!
+						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>					
 					</li>
 				<% else %>
 					<li>
-												You're new here
-												<%= link_to('Sign Up', new_user_registration_path, :class => "btn green darken-3 white-text") %>
+						You're new here
+						<%= link_to('Sign Up', new_user_registration_path, :class => "btn green darken-3 white-text") %>
 						<%= link_to('Sign In', new_user_session_path, :class => "btn green darken-3 white-text") %>
 					</li>
 				<% end %>
-						</ul>
+			</ul>
 
-						<ul id="nav-mobile" class="side-nav">
-								<% if user_signed_in? %>
+			<ul id="nav-mobile" class="side-nav">
+				<% if user_signed_in? %>
 					<li>
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
 					</li>
@@ -38,17 +37,24 @@
 						<%= link_to('Login', new_user_session_path, :class => "btn green darken-3 white-text") %>
 					</li>
 				<% end %>
-						</ul>
-						<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-				</div>
-		</nav>
-		<div class="container black-text">
-			<div class="col s6">
-				<p class="notice"><%= notice %></p>
-				<p class="alert"><%= alert %></p>
-			</div>
-			<%= yield %>
-
+			</ul>
+			<a href="#" data-activates="nav-mobile" class="button-collapse">
+				<i class="material-icons">menu</i>
+			</a>
 		</div>
+	</nav>
+	
+	<div class="container black-text">
+
+		<div class="col s12 center-align">
+			<!-- I made alerts red, and let notices be green. Since usually alerts bad and notices are not -->
+			<p class="notice green-text"><%= notice %></p>
+			<p class="alert red-text"><%= alert %></p>
+		</div>
+
+		<%= yield %>
+
+	</div>
+	
 </body>
 </html>

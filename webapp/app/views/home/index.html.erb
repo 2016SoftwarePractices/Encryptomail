@@ -1,14 +1,15 @@
 <div class="slider fullscreen">
 	<ul class="slides">
 		<li>
-			<%= image_tag('EncryptoMailWallpaper.jpg') %>
+			<!-- all images need to have an alt value for compliance with accessability -->
+			<%= image_tag('EncryptoMailWallpaper.jpg', :alt => "Encryptomail Background") %>
 		 		<div class="caption center-align">
 					<h3>EncryptoMail</h3>
 					<h5 class="light grey-text text-lighten-3">Time to get crypted.</h5>
-								<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_registration_path %>">
+					<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_registration_path %>">
 						Register
 					</a>
-								<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_session_path %>">
+					<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_session_path %>">
 						Login
 					</a>
 				</div>
