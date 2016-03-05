@@ -1,0 +1,54 @@
+HOW TO SET UP EMAILER through GMAIL:
+
+Configure
+
+config/environment.rb:
+
+	ActionMailer::Base.smtp_settings = {
+		:address              => "smtp.gmail.com",
+		:domain               => "mail.gmail.com",
+		:port                 => 587,
+		:user_name            => 'encryptomail@gmail.com',
+		:password             => 'WALMARTskypeROPELAPTOPlaptophuluTOKYO', // NOTE - this was moved to 'password.txt'
+		:authentication       => :login,
+		:enable_starttls_auto => true
+	}
+ENV['']
+	
+Run command
+
+webapp/ $ rails g mailer UserMailer 
+
+Generates files in 
+app/mailers/
+				application_mailer.rb
+				user_mailer.rb
+
+add in user_mailer.rb -> controller for mail
+
+	def welcome_email(user) 
+		@user = user
+		@url = 'http://encryptomail.xyz'
+		mail(to: @user.email, subject: 'Welcome to Encryptomail')
+	end
+	
+make file: 
+app/views/user_mailer/welcome_email.html.erb
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+		</head>
+		<body>
+			<h1>Welcome to example.com, <%= @user.email %></h1>
+			<p>
+				You have successfully signed up to To encryptomail
+			</p>
+			<p>
+				To login to the site, just follow this link: <%= @url %>.
+			</p>
+			<p>
+				Thanks for joining and have a great day!
+			</p>
+		</body>
+	</html>
