@@ -13,6 +13,8 @@
 /tmp
 /Gemfile.lock
 
+#ignore password for email account
+password.txt
 
 # Ignore application specific stuff
 /public
