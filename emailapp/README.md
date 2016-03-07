@@ -1,0 +1,1 @@
+We assume that an email server is available. Set-up, configuration, and Administration are outside the scope of this software. Take neccessary precautions to insure that your server instance is secure enough to host a service of this nature.
