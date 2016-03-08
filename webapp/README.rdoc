@@ -59,17 +59,17 @@
     rails s -b $IP -p $PORT
 
 == Recaptcha
-For testing recaptcha on your machine you are going to first want to generate keys from google at:
+    For testing recaptcha on your machine you are going to first want to generate keys from google at:
 
-https://www.google.com/recaptcha/
+    https://www.google.com/recaptcha/
 
-Then you will need to (in Linux) export your public and private keys:
+    Then you will need to (in Linux) export your public and private keys:
 
-export RECAPTCHA_PUBLIC_KEY="6Lc6BAAAAAAAAChqRbQZcn_yyyyyyyyyyyyyyyyy"
+    export RECAPTCHA_PUBLIC_KEY="6Lc6BAAAAAAAAChqRbQZcn_yyyyyyyyyyyyyyyyy"
 
-export RECAPTCHA_PRIVATE_KEY="6Lc6BAAAAAAAAKN3DRm6VA_xxxxxxxxxxxxxxxxx"
+    export RECAPTCHA_PRIVATE_KEY="6Lc6BAAAAAAAAKN3DRm6VA_xxxxxxxxxxxxxxxxx"
 
 
-After that you should be ready to serve stuff up to localhost and test it out.
+    After that you should be ready to serve stuff up to localhost and test it out.
 
-This github project was helpful in the setup https://github.com/ambethia/recaptcha
+    This github project was helpful in the setup https://github.com/ambethia/recaptcha
