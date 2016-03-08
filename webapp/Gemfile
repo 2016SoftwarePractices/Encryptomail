@@ -30,7 +30,11 @@ end
 # Materialize to make things pretty
 gem 'materialize-sass'
 
+# Devise AuthN
 gem 'devise'
+
+# google Recaptcha
+gem 'recaptcha', require: 'recaptcha/rails'
 
 # CanCan authorization library
 gem "cancan"
