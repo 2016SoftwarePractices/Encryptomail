@@ -1,4 +1,4 @@
-== Setup
+== The Setup
 - Apache
     version -> 2.4.18-1
 - Passenger
@@ -58,32 +58,18 @@
 - Run Rails
     rails s -b $IP -p $PORT
 
+== Recaptcha
+For testing recaptcha on your machine you are going to first want to generate keys from google at:
 
-== README
+https://www.google.com/recaptcha/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Then you will need to (in Linux) export your public and private keys:
 
-Things you may want to cover:
+export RECAPTCHA_PUBLIC_KEY="6Lc6BAAAAAAAAChqRbQZcn_yyyyyyyyyyyyyyyyy"
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* Security: see https://www.owasp.org/index.php/Ruby_on_Rails_Cheatsheet 
+export RECAPTCHA_PRIVATE_KEY="6Lc6BAAAAAAAAKN3DRm6VA_xxxxxxxxxxxxxxxxx"
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+After that you should be ready to serve stuff up to localhost and test it out.
+
+This github project was helpful in the setup https://github.com/ambethia/recaptcha
