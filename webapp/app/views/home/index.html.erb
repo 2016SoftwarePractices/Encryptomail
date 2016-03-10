@@ -1,21 +1,53 @@
-<div class="slider fullscreen">
-	<ul class="slides">
-		<li>
-			<!-- all images need to have an alt value for compliance with accessability -->
-			<%= image_tag('EncryptoMailWallpaper.jpg', :alt => 'Encryptomail Background') %>
-			<div class="caption center-align">
-				<h3>EncryptoMail</h3>
-				<h5 class="light grey-text text-lighten-3">Time to get crypted.</h5>
-				<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_registration_path %>">
-					Register
-				</a>
-				<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_session_path %>">
-					Login
-				</a>
+
+<br><br>
+<h1 class="header center">EncryptoMail</h1>
+<div class="row center">
+	<h5 class="header col s12 light">Encrypted Group Email Relay</h5>
+</div>
+<br>
+
+<div class="section">
+	<!--   Icon Section   -->
+	<div class="row">
+		<div class="col s12 m4">
+			<div class="icon-block">
+				<h2 class="center"><i class="material-icons">lock</i></h2>
+				<h5 class="center">Secure</h5>
+
+				<p class="light">EncryptoMail was designed from the ground up to be the most secure group email relay service around. EncryptoMail supports full end to end cryption between you and your contacts.</p>
 			</div>
+		</div>
+
+		<div class="col s12 m4">
+			<div class="icon-block">
+				<h2 class="center"><i class="material-icons">group</i></h2>
+				<h5 class="center">Easy</h5>
+
+				<p class="light">Since it's inception the design focus of Encryptomail was for ease of use of the user. Most mail encryption services require a certain degree of technical knowledge, with EncryptoMail the hard work is done for you and the rest of the process is a breeze.</p>
 			</div>
-		</li>
-	</ul>
+		</div>
+
+		<div class="col s12 m4">
+			<div class="icon-block">
+				<h2 class="center"><i class="material-icons">settings</i></h2>
+				<h5 class="center">Accessible</h5>
+
+				<p class="light">Utilizing a responsive web design, and being compatible with all major email services makes EncryptoMail the ideal choice for you. Wether you log in from your phone or from your desktop, User and group management will always look good and be easy to use.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s12 center">
+		<h5 class="light">Time to get crypted.</h5>
+		<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_registration_path %>">
+			Register
+		</a>
+		<a class="waves-effect waves-light green darken-3 btn" href="<%= new_user_session_path %>">
+			Login
+		</a>
+	</div>
 </div>
 		
 <script>
