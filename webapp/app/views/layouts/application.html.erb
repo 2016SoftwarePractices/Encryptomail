@@ -6,6 +6,7 @@
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
 </head>
 
 <body class="grey lighten-2">
@@ -15,14 +16,14 @@
 			<ul class="right hide-on-med-and-down">
 				<% if user_signed_in? %>
 					<li>
-						Welcome Back, <%= current_user.email %>, you jerk!
-						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>					
+						Welcome Back, <%= current_user.email %>
+						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
+						<%= link_to('My Account', user_session_path, :class => "btn green darken-3 white-text") %>	
 					</li>
 				<% else %>
 					<li>
-						You're new here
-						<%= link_to('Sign Up', new_user_registration_path, :class => "btn green darken-3 white-text") %>
-						<%= link_to('Sign In', new_user_session_path, :class => "btn green darken-3 white-text") %>
+						<%= link_to('Register', new_user_registration_path, :class => "btn green darken-3 white-text") %>
+						<%= link_to('Login', new_user_session_path, :class => "btn green darken-3 white-text") %>
 					</li>
 				<% end %>
 			</ul>
@@ -32,8 +33,12 @@
 					<li>
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
 					</li>
+					<li>
+						<%= link_to('My Account', user_session_path, :class => "btn green darken-3 white-text") %>
+					</li>
 				<% else %>
 					<li>
+						<%= link_to('Register', new_user_registration_path, :class => "btn green darken-3 white-text") %>
 						<%= link_to('Login', new_user_session_path, :class => "btn green darken-3 white-text") %>
 					</li>
 				<% end %>
