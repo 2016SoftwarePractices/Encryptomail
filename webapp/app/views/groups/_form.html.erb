@@ -12,28 +12,22 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="col s12">
-		<div class="field">
-			<%= f.label :group_name %>
-			<%= f.text_field :group_name, {:onChange=>"emailMaker();"} %>
-		</div>
-	</div>
+
 	<div class="col s12">
 		<div class="field">
 			<input type="text" value="" name="group[email]" id="group_email" class="hide">
-		</div>
-	</div>
-	<div class="col s12">
-		<div class="field">
+			<%= f.label :group_name %>
+			<%= f.text_field :group_name, {:onChange=>"emailMaker();"} %>
 			<%= f.label :pub_key %>
 			<%= f.text_field :pub_key %>
-		</div>
-	</div>
-	
-	<div class="col s12">
-		<div class="field">
 			<%= f.label :description %>
 			<%= f.text_field :description %>
+
+			<label for="additionalUsers" class>
+				Additional Users
+			</label>
+			<input type="text" value="" name="group_add_user" id="group_add_user">
+			
 		</div>
 	</div>
 	
@@ -43,6 +37,7 @@
 			<%= f.submit nil, :class => "waves-effect waves-light btn green darken-3" %>
 		</div>
 	</div>
+	
 <% end %>
 
 
@@ -59,5 +54,5 @@
 		var groupEmail = groupName.concat("<%= $Domain %>");
 		form.elements["group_email"].value = groupEmail
 	}
-	
+																			
 </script>
