@@ -53,13 +53,13 @@ class Group
 		if email.nil?
 			false
 		else
-			if User.exists?(email: email) 
+			if User.where(email: email).exists?
 				u = User.find_by(email: email)
 			else
 				u = nil
 				#TBD: Send invite email to email
 			end
-			u.group_ids << :group
+			self.users << u
 		end
 	
 	end

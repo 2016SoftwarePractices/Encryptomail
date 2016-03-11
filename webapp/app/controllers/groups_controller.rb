@@ -22,6 +22,7 @@ class GroupsController < EndUserBaseController
 
 	# GET /groups/1/edit
 	def edit
+		@user = User.all
 	end
 
 	# POST /groups
@@ -51,6 +52,7 @@ class GroupsController < EndUserBaseController
 	def update
 		respond_to do |format|
 			if @group.update(group_params)
+				@group.addUser(params[:group_add_user])
 				format.html { redirect_to @group, notice: 'Group was successfully updated.' }
 				format.json { render :show, status: :ok, location: @group }
 			else
@@ -80,5 +82,9 @@ class GroupsController < EndUserBaseController
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def group_params
 			params.require(:group).permit(:group_name, :email, :pub_key, :description)
+		end
+	def group_edit_params
+			params.require(:group).permit(:group_name, :email, :pub_key, :description)
+			params.permit(:group_add_user)
 		end
 end
