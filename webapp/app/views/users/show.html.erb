@@ -4,7 +4,7 @@
 		<h6>Email: <%= @user.email %></h6>
 		<h6>Joined: <%= @user.register_date.strftime('%x') %> </h6>
 		<br>
-		<a href="<%= edit_user_path(@user) %>" class="waves-effect waves-light btn green darken-3"	id="edit">
+		<a href="<%= edit_user_registration_path(@user) %>" class="waves-effect waves-light btn green darken-3"	id="edit">
 			<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Profile 
 		</a>
 	</div>
