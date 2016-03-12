@@ -3,11 +3,6 @@ require 'openpgp'
 
 class Decrypter
     
-    def main
-        puts "HI"
-    end
-
-    
     #This method will receive an email and a passphrase from the user registration view
     def self.generatePGPkey (name, email, passphrase)
         
@@ -27,19 +22,18 @@ class Decrypter
     end
     
     
-    
     def decryptPGP (toBeDecrypted)
         require 'open-uri'
-        # text = open('http://openpgp.rubyforge.org/pgp.txt').read
-        text = open(toBeDecrypted).read
-        msg = OpenPGP::Message.parse(OpenPGP.dearmor(text))
+        msg = OpenPGP::Message.parse(OpenPGP.dearmor(toBeDecrypted))
         return msg
     end
-
-   
     
 end
 
+gpg = OpenPGP::Engine::GnuPG.new(:homedir => '~/.gnupg')
 puts "heres some shit"
-key_string = Decrypter.generatePGPkey('gofuckyourself', 'fuck@you.com', '12345')
+key_string = Decrypter.generatePGPkey('Some Guy', 'someguy@me.com', '12345')
 puts key_string
+
+msg = gpg.export(key_string)
+puts msg.to_s()
