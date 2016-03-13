@@ -21,6 +21,9 @@ class Decrypter
         return key_id
     end
     
+    def self.commandLinePGPkeygen (name, email, passphrase)
+        
+    end
     
     def decryptPGP (toBeDecrypted)
         require 'open-uri'
@@ -31,9 +34,11 @@ class Decrypter
 end
 
 gpg = OpenPGP::Engine::GnuPG.new(:homedir => '~/.gnupg')
-puts "heres some shit"
-key_string = Decrypter.generatePGPkey('Some Guy', 'someguy@me.com', '12345')
+puts "Trying to generate PGP key - this may take a while: "
+key_string = Decrypter.generatePGPkey('Some Guy 2', 'someguy2@me.com', '12345')
 puts key_string
 
 msg = gpg.export(key_string)
-puts msg.to_s()
+puts msg
+
+

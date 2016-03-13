@@ -12,10 +12,20 @@
 *   Ruby app to run the mail redirection service
 	
 	
-####Modules Used
+####PGP Encryption
+*GnuPG
+** https://wiki.gnupg.org/APIs
+** This is the Open Source PGP project GnuPG
+
+*GPGme
+** https://github.com/ueno/ruby-gpgme.git
+** This is the GnuPG official Ruby gem for Ruby implementation of GnuPG
+** $ sudo gem install gpgme
+** Keys generated are saved to the Linux keyring
+
 * OpenPGP Ruby Gem - https://github.com/bendiken/openpgp
-* This is a ruby gem which implements GnuPG encryption
+** This is a ruby gem which implements GnuPG encryption
 ** $ sudo gem install openpgp (Ruby 1.8.7+ or 1.9.x)
 ** $ sudo gem install backports openpgp (Ruby 1.8.1+)
-* http://openpgp.rubyforge.org/OpenPGP/Message.html
-* http://openpgp.rubyforge.org/OpenPGP/Engine/GnuPG.html
+** $ gpg -help (This lists all of the GPG commands on Linux)
+** Keys generated are saved to the Linux keyring
