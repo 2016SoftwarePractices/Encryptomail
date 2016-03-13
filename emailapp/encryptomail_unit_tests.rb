@@ -17,7 +17,7 @@ module EmailApp
         		puts key_string
         		puts "Attempting to export public key for Ross Baldwin"
         		pub_key_string = ctx.export_keys("Ross Baldwin")
-        		puts pub_key_string
+        		puts pub_key_string.to_s
     		end
     
     
@@ -28,12 +28,13 @@ module EmailApp
         		key_string = EmailApp::Decrypter.generatePGPkey('Some Guy 2', 'someguy2@me.com', '12345')
         		puts key_string
         		msg = gpg.export(key_string)
-        		puts msg
+        		print msg
     		end
 	end
 
 # Main()
-test EncryptomailUnitTests.testOpenPGP
-test EncryptomailUnitTests.testGPGme
+EncryptomailUnitTests.testGPGme
+EncryptomailUnitTests.testOpenPGP
+
 
 end
