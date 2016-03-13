@@ -17,9 +17,9 @@
 
 ### emailapp
 * Ruby app to run the mail redirection service
-	
-	
-####PGP Encryption
+
+
+#### PGP Encryption
 * GnuPG
     * https://wiki.gnupg.org/APIs
     * This is the Open Source PGP project GnuPG
