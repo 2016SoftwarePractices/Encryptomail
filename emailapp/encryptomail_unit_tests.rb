@@ -16,7 +16,7 @@ module EmailApp
         		puts "GPGme has successfully created a new keypair for GPGmetestuser"
     		end
     		
-    		def self.testGPGmeexport()
+    		def self.testGPGmeexportpublickey()
     			puts "Attempting to export public key for GPGmetestuser"
     			# ctx = GPGME::Ctx.new()
        			# pub_key_string = ctx.export_keys("GPGmetestuser")
@@ -27,6 +27,15 @@ module EmailApp
         		data.to_s
     		end
     		
+    		def self.testGPGmelistkeys()
+    			puts "Attempting to list all keys in the Linux keychain"
+       			pri_key = GPGME::Key.find :public
+       			# pub_key IS AN ARRAY OF GPGME::DATA OBJECTS
+       			pri_key.each do |key|
+       				data = key.export(:armor => true)
+       				data.to_s
+       			end
+    		end
     		
     		# def self.testOpenPGPkeygen()
       #  		puts "TEST: Attempting to test the creation and export of a key using OpenPGP"
@@ -46,9 +55,7 @@ module EmailApp
 
 # Main()
 # EncryptomailUnitTests.testGPGmekeygen
-EncryptomailUnitTests.testGPGmeexport()
-
-# EncryptomailUnitTests.testOpenPGPkeygen()
-# EncryptomailUnitTests.testOpenPGPexport()
+puts EncryptomailUnitTests.testGPGmeexportpublickey()
+puts EncryptomailUnitTests.testGPGmelistkeys()
 
 end
