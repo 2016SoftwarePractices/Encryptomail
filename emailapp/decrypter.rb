@@ -1,7 +1,10 @@
+
+module EmailApp
+
 require 'rubygems'
 require 'openpgp'
 
-class Decrypter
+class EmailApp::Decrypter
     
     #This method will receive an email and a passphrase from the user registration view
     def self.generatePGPkey (name, email, passphrase)
@@ -32,13 +35,3 @@ class Decrypter
     end
     
 end
-
-gpg = OpenPGP::Engine::GnuPG.new(:homedir => '~/.gnupg')
-puts "Trying to generate PGP key - this may take a while: "
-key_string = Decrypter.generatePGPkey('Some Guy 2', 'someguy2@me.com', '12345')
-puts key_string
-
-msg = gpg.export(key_string)
-puts msg
-
-

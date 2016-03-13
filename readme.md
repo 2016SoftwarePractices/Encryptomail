@@ -22,6 +22,7 @@
 ** This is the GnuPG official Ruby gem for Ruby implementation of GnuPG
 ** $ sudo gem install gpgme
 ** Keys generated are saved to the Linux keyring
+** Good Examples: http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/
 
 * OpenPGP Ruby Gem - https://github.com/bendiken/openpgp
 ** This is a ruby gem which implements GnuPG encryption
