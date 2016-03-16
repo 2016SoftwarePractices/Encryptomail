@@ -1,3 +1,5 @@
+require 'keygenerator'
+
 class GroupsController < EndUserBaseController
 	before_action :set_group, only: [:show, :edit, :update, :destroy]
 
@@ -28,6 +30,9 @@ class GroupsController < EndUserBaseController
 	# POST /groups
 	# POST /groups.json
 	def create
+    		puts("------------------------------before key generator-------------------------------------------------")
+		KeyGenerator::generatePGPkeyGPGme("whoa", "polarbear6@gmail.com", "asldkfjlksdjf")
+		
 		@group = Group.new(group_params)
 		
 		@group.users << current_user
