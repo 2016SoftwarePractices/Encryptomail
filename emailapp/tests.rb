@@ -61,7 +61,7 @@ class Tests3 < MiniTest::Test
 end
 
 class TestGroupLookup < MiniTest::Test
-	include GroupLookup
+	include EmailApp
 	def setup
 		
 	end	
