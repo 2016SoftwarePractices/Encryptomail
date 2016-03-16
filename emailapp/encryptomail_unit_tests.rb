@@ -6,14 +6,16 @@ module EmailApp
 
 	class EncryptomailUnitTests
 
+
           #test PGP keypair generation
     		def self.testGPGmekeygen(name, email, passphrase)
       		puts "TEST: Attempting to test the creation of a key using GPGme"
       		puts "(GPGme) Trying to generate PGP key - this may take a while: "
       		key_string = EmailApp::Encryptomail.generatePGPkeyGPGme(name, email, passphrase)
       		puts key_string
-      		puts "GPGme has successfully created a new keypair for GPGmetestuser"
+      		puts "GPGme has successfully created a new keypair for #{email}"
     		end
+    		
     		
     		  #test public key export
     		def self.testGPGmeexportpublickey(email)
@@ -44,10 +46,15 @@ module EmailApp
 
 	end
 
-# Main()
-puts EmailApp::EncryptomailUnitTests.testGPGmekeygen("Tester1", "tester1@test.com", "00010101")
-puts EmailApp::EncryptomailUnitTests.testGPGmeexportpublickey("tester1@test.com")
-puts EmailApp::EncryptomailUnitTests.testprivatekeyexport("tester1@test.com")
+#******* Main() ********
+#PARAMS
+name = "gpgmetestuser"
+email = "gpgmetestuser@encryptomail.xyz"
+passphrase = "hry785jB"
+#TESTS
+puts EmailApp::EncryptomailUnitTests.testGPGmekeygen(name, email, passphrase)
+puts EmailApp::EncryptomailUnitTests.testGPGmeexportpublickey(email)
+puts EmailApp::EncryptomailUnitTests.testprivatekeyexport(email)
 puts EmailApp::EncryptomailUnitTests.testGPGmelistkeys()
-#puts EmailApp::EncryptomailUnitTests.testkeydeletion("gpgmetestuser@test.com")
+#puts EmailApp::EncryptomailUnitTests.testkeydeletion("someguy@me.com")
 end

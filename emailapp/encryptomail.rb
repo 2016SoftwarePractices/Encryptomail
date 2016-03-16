@@ -8,7 +8,8 @@ module EmailApp
 
 	class Encryptomail
 		
-	            #Method to generate a PGP key; called from the frontend
+	            #Method to generate a PGP keypair
+	            #(String name, String email, String passphrase)
 		def self.generatePGPkeyGPGme(name, email, passphrase)
 		      puts "Attempting to create a PGP keypair via GPGme for #{name}, #{email}"
           		ctx = GPGME::Ctx.new()
@@ -21,7 +22,7 @@ module EmailApp
 		
 		
 		
-		      #Method to export public keys by email address
+		      #Method to export a public key by email address
 		def self.exportpublickeyGPGme(email)
     			puts "Attempting to export public key via GPGme for #{email}"
  			pub_key = GPGME::Key.find(:public, "#{email}")
@@ -36,7 +37,7 @@ module EmailApp
     		
     		
     		
-    		      #Method to export private keys by email address
+    		      #Method to export a private key by email address
     		def self.exportprivatekey(email)
     		      puts "Attempting to export private key for #{email}"
     		      pri_key = `gpg --export-secret-key --armor "#{email}"`
@@ -45,6 +46,7 @@ module EmailApp
     		
     		
     		
+    		      #Method lists public keys to the Linux terminal
             def self.listallpublickeys()
                   puts "Attempting to list all public keys in the Linux keychain"
                   puts "***PUBLIC KEYS***"
@@ -60,7 +62,7 @@ module EmailApp
     	      
     	      
     	      
-    	      
+    	            #Method lists private keys to the Linux terminal
             def self.listallprivatekeys()
                   puts "Attempting to list all private keys in the linux keychain"
                   puts "***PRIVATE KEYS***"
@@ -70,7 +72,8 @@ module EmailApp
             
             
             
-            
+                  #Method deletes both public and private keys for a user
+                  #BUGGED - REQUIRES INPUT FROM THE CONSOLE
             def self.deleteuserkeys(email)
                   puts "Attempting to delete public and private keys for #{email}"
                   output = `gpg --delete-secret-key "#{email}"`
