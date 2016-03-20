@@ -17,4 +17,5 @@
 password.txt
 
 # Ignore application specific stuff
-/public
+# Disabled this in order to save favicon.ico to the project github
+# /public
