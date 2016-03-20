@@ -5,7 +5,8 @@
     * Take neccessary precautions to insure that your server instance is secure enough to host a service of this nature.
 
 ## Encryptomail string formats:
-```fields = <GnupgKeyParms format="internal">
+```
+fields = <GnupgKeyParms format="internal">
       Key-Type: DSA
       Key-Length: 1024
       Subkey-Type: ELG-E
