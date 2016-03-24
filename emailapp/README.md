@@ -49,3 +49,4 @@ sub   4096R/5487B4BF 2016-02-26
 #### Sign the public key
 You will probably have multiple keys. Sign the imported key with the uid of a trusted group as follows:
     gpg --sign-key -u testgroup@helloworld.com test_unlocked_group_1@encryptomail.xyz
+
