@@ -33,3 +33,19 @@ def self.generatePGPkeyOpenPGP (name, email, passphrase)
       return key_id
    end
 ```
+## Import, verify, and sign a public key for testing:
+You can use the test key we provide on the MIT keyserver for a group: test_unlocked_group_1@encryptomail.xyz using the following command line arguments, after installing gpg on your local environment. This set of commands was tested on OS X 10.10.5.
+#### Import the public key
+    gpg --keyserver pgp.mit.edu  --search-keys test_unlocked_group_1@encryptomail.xyz
+#### Verify the public key
+    gpg --fingerprint test_unlocked_group_1@encryptomail.xyz
+should return the following:
+```
+pub   4096R/B9AA79AB 2016-02-26
+      Key fingerprint = AE19 DFF7 73FD 22EF 4D90  92A3 1806 4C09 B9AA 79AB
+uid                  test_unlocked_group_1 <test_unlocked_group_1@encryptomail.xyz>
+sub   4096R/5487B4BF 2016-02-26
+```
+#### Sign the public key
+You will probably have multiple keys. Sign the imported key with the uid of a trusted group as follows:
+    gpg --sign-key -u testgroup@helloworld.com test_unlocked_group_1@encryptomail.xyz
