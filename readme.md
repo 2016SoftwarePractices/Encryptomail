@@ -17,7 +17,10 @@
 
 ### emailapp
 * Ruby app to run the mail redirection service
-* Key generation requires entropy on your server. Here's a good guide to help out with that: https://www.digitalocean.com/community/tutorials/how-to-setup-additional-entropy-for-cloud-servers-using-haveged 
+* Key generation requires entropy on your server. Here's a good guide to help out with that: https://www.digitalocean.com/community/tutorials/how-to-setup-additional-entropy-for-cloud-servers-using-haveged
+* Check your entropy with the following (Linux only):
+    cat /proc/sys/kernel/random/entropy_avail
+the number needs to be > 1000
 
 #### PGP Encryption
 * GnuPG
