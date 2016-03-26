@@ -10,6 +10,14 @@
 
 <div class="row">
 	<div class="col s12">
+		<a class="waves-effect waves-light green darken-3 btn" href="<% @group.destroy %><%= home_index_path %>">
+			Delete Group
+		</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col s12">
 		<%= link_to 'Back', @group, :class => "waves-effect waves-light btn green darken-3" %>
 	</div>
 </div>
