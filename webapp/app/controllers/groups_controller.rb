@@ -30,8 +30,9 @@ class GroupsController < EndUserBaseController
 	# POST /groups
 	# POST /groups.json
 	def create
-    		puts("------------------------------before key generator-------------------------------------------------")
-		KeyGenerator::generatePGPkeyGPGme("whoa", "polarbear6@gmail.com", "asldkfjlksdjf")
+		#commented out Key generation until it works purrrrrrrfectly
+		#not sure why i went all 'cat' there
+		#KeyGenerator::generatePGPkeyGPGme("whoa", "polarbear6@gmail.com", "asldkfjlksdjf")
 		
 		@group = Group.new(group_params)
 		
@@ -72,7 +73,7 @@ class GroupsController < EndUserBaseController
 	def destroy
 		@group.destroy
 		respond_to do |format|
-			format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
+			format.html { redirect_to root_url, notice: 'Group was successfully destroyed.' }
 			format.json { head :no_content }
 		end
 	end
