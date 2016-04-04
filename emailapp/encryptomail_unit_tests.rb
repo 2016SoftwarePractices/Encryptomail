@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'gpgme'
 load 'encryptomail.rb'
+load 'encrypt_or_decrypt.rb'
 
 module EmailApp
 
@@ -20,20 +21,18 @@ module EmailApp
     		  #test public key export
     		def self.testGPGmeexportpublickey(email)
     		  puts "TEST: Attempting to export public key for #{email}"
-    		  # functions = Encryptomail.new
-    		  # functions.exportpublickeyGPGme(email)
      			EmailApp::Encryptomail.exportpublickeyGPGme(email)
     		end
     		
     		
-          #test private key export
+            #test private key export
     		def self.testprivatekeyexport(email)
     		    puts "TEST: Attempting to export private key for gpgmetestuser@test.com"
     		    EmailApp::Encryptomail.exportprivatekey(email)
     		end
     		
     		
-    		  #test key listing
+    		#test key listing
     		def self.testGPGmelistkeys()
     			EmailApp::Encryptomail.listallpublickeys()
     			EmailApp::Encryptomail.listallprivatekeys()
@@ -43,18 +42,53 @@ module EmailApp
     		def self.testkeydeletion(email)
     		  EmailApp::Encryptomail.deleteuserkeys(email)
     		end
+    		
+    		
+    		#test encrypting simple message
+    		def self.testEncryptMailString(message, email)
+      		puts "TEST: Attempting to test encrypting a message using GPGme"
+      		encrypted = EmailApp::EncryptOrDecrypt.encryptMailString(message, email)
+      		puts encrypted
+      		puts "GPGme has successfully encrypted a message for #{email}"
+    		end
+    		
+    		
+    		#test decrypting simple message
+    		def self.testDecryptMailString(messageToDecrypt)
+      		puts "TEST: Attempting to test decrypting a message using GPGme"
+      		decrypted = EmailApp::EncryptOrDecrypt.decryptMailString(messageToDecrypt)
+      		puts decrypted
+      		puts "GPGme has successfully decrypted a message for #{email}"
+    		end
 
 	end
 
 #******* Main() ********
+# TEST SET 1
 #PARAMS
 name = "gpgmetestuser"
 email = "gpgmetestuser@encryptomail.xyz"
 passphrase = "hry785jB"
-#TESTS
+#TEST SET 1 
 puts EmailApp::EncryptomailUnitTests.testGPGmekeygen(name, email, passphrase)
 puts EmailApp::EncryptomailUnitTests.testGPGmeexportpublickey(email)
 puts EmailApp::EncryptomailUnitTests.testprivatekeyexport(email)
 puts EmailApp::EncryptomailUnitTests.testGPGmelistkeys()
-#puts EmailApp::EncryptomailUnitTests.testkeydeletion("someguy@me.com")
+
+
+# TEST SET 2
+#PARAMS
+
+message = "Ned: Are you now or have you ever been a Norse God,\n
+Vampire, or Time Traveling Cyborg?\n
+Mike O' Donnell: I've known you since what, first grade?\n
+I think that maybe I would have told you!\n
+Ned Freedman: Vampire wouldn't tell, Cyborg wouldn't know."
+#Using email param from above
+
+#TESTS
+encryptedMessage = EmailApp::EncryptomailUnitTests.testEncryptMailString(message, email)
+puts encryptedMessage
+puts EmailApp::EncryptomailUnitTests.testDecryptMailString(encryptedMessage)
+#puts EmailApp::EncryptomailUnitTests.testkeydeletion(email)
 end
