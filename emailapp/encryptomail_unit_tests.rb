@@ -50,15 +50,16 @@ module EmailApp
       		encrypted = EmailApp::EncryptOrDecrypt.encryptMailString(message, email)
       		puts encrypted
       		puts "GPGme has successfully encrypted a message for #{email}"
+      		return encrypted
     		end
     		
     		
     		#test decrypting simple message
-    		def self.testDecryptMailString(messageToDecrypt)
+    		def self.testDecryptMailString(messageToDecrypt, passphrase)
       		puts "TEST: Attempting to test decrypting a message using GPGme"
-      		decrypted = EmailApp::EncryptOrDecrypt.decryptMailString(messageToDecrypt)
+      		decrypted = EmailApp::EncryptOrDecrypt.decryptMailString(messageToDecrypt, passphrase)
       		puts decrypted
-      		puts "GPGme has successfully decrypted a message for #{email}"
+      		puts "GPGme has successfully decrypted the message"
     		end
 
 	end
@@ -70,7 +71,7 @@ name = "gpgmetestuser"
 email = "gpgmetestuser@encryptomail.xyz"
 passphrase = "hry785jB"
 #TEST SET 1 
-puts EmailApp::EncryptomailUnitTests.testGPGmekeygen(name, email, passphrase)
+#puts EmailApp::EncryptomailUnitTests.testGPGmekeygen(name, email, passphrase)
 puts EmailApp::EncryptomailUnitTests.testGPGmeexportpublickey(email)
 puts EmailApp::EncryptomailUnitTests.testprivatekeyexport(email)
 puts EmailApp::EncryptomailUnitTests.testGPGmelistkeys()
@@ -89,6 +90,7 @@ Ned Freedman: Vampire wouldn't tell, Cyborg wouldn't know."
 #TESTS
 encryptedMessage = EmailApp::EncryptomailUnitTests.testEncryptMailString(message, email)
 puts encryptedMessage
-puts EmailApp::EncryptomailUnitTests.testDecryptMailString(encryptedMessage)
+puts EmailApp::EncryptomailUnitTests.testDecryptMailString(encryptedMessage, passphrase)
 #puts EmailApp::EncryptomailUnitTests.testkeydeletion(email)
-end
+
+end #END OF THE MODULE
