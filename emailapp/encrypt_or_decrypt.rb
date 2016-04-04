@@ -8,7 +8,7 @@ module EmailApp
             puts "Attempting to encrypt an email string for #{email}"
             crypto = GPGME::Crypto.new :armor => true, :always_trust => true
             encrypted = crypto.encrypt(message) 
-            puts encrypted
+            #puts encrypted
             return encrypted
         end
         
@@ -17,7 +17,7 @@ module EmailApp
             crypto = GPGME::Crypto.new :armor => true, :always_trust => true
             #TODO message = email, password = somevar
             decrypted = crypto.decrypt(message, :password => passphrase)
-            puts decrypted
+            #puts decrypted
         end
     
     end

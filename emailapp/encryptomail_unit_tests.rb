@@ -89,7 +89,6 @@ Ned Freedman: Vampire wouldn't tell, Cyborg wouldn't know."
 
 #TESTS
 encryptedMessage = EmailApp::EncryptomailUnitTests.testEncryptMailString(message, email)
-puts encryptedMessage
 puts EmailApp::EncryptomailUnitTests.testDecryptMailString(encryptedMessage, passphrase)
 #puts EmailApp::EncryptomailUnitTests.testkeydeletion(email)
 
