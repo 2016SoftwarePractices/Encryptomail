@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'gpgme'
 load 'encryptomail.rb'
-load 'encrypt_or_decrypt.rb'
 
 module EmailApp
 
@@ -47,7 +46,7 @@ module EmailApp
     		#test encrypting simple message
     		def self.testEncryptMailString(message, email)
       		puts "TEST: Attempting to test encrypting a message using GPGme"
-      		encrypted = EmailApp::EncryptOrDecrypt.encryptMailString(message, email)
+      		encrypted = EmailApp::Encryptomail.encryptMailString(message, email)
       		puts "GPGme has successfully encrypted a message for #{email}"
       		return encrypted
     		end
@@ -56,7 +55,7 @@ module EmailApp
     		#test decrypting simple message
     		def self.testDecryptMailString(messageToDecrypt, passphrase)
       		puts "TEST: Attempting to test decrypting a message using GPGme"
-      		decrypted = EmailApp::EncryptOrDecrypt.decryptMailString(messageToDecrypt, passphrase)
+      		decrypted = EmailApp::Encryptomail.decryptMailString(messageToDecrypt, passphrase)
       		puts "GPGme has successfully decrypted the message"
       		return decrypted
     		end
@@ -84,7 +83,6 @@ Vampire, or Time Traveling Cyborg?\n
 Mike O' Donnell: I've known you since what, first grade?\n
 I think that maybe I would have told you!\n
 Ned Freedman: Vampire wouldn't tell, Cyborg wouldn't know."
-#Using email param from above
 
 #TESTS
 encryptedMessage = EmailApp::EncryptomailUnitTests.testEncryptMailString(message, email)

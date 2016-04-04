@@ -11,4 +11,5 @@ module EmailApp
       client.close                 # Disconnect from the client
     }
   end
+  
 end

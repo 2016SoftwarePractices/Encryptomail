@@ -42,12 +42,9 @@ Ug==
 =uW07
 -----END PGP MESSAGE-----"
 
-parsed = p s.split('-----BEGIN PGP MESSAGE-----')[1].strip
-
+parsed = s.split('-----BEGIN PGP MESSAGE-----')[1].strip
 puts parsed
 
 file_size = size(smtp_message.rb)
 
-
 puts file_size
-    
