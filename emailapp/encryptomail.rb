@@ -96,8 +96,8 @@ module EmailApp
                   end
             end
             
-            #******************************************#
-            #**********Class Helper Functions**********#
+                  #******************************************#
+                  #**********Class Helper Functions**********#
             def self.buildparamsblock(name, email, passphrase)
                   block = []
                   block << '<GnupgKeyParms format="internal">'
@@ -116,12 +116,14 @@ module EmailApp
             end
             
             
+            
             def self.encryptMailString(message, email)
                   puts "Attempting to encrypt an email string for #{email}"
                   crypto = GPGME::Crypto.new :armor => true, :always_trust => true
                   encrypted = crypto.encrypt(message) 
                   return encrypted
             end
+              
               
               
             def self.decryptMailString(message, passphrase)
