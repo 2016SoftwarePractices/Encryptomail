@@ -30,15 +30,18 @@ class GroupsController < EndUserBaseController
 	# POST /groups
 	# POST /groups.json
 	def create
-		#commented out Key generation until it works purrrrrrrfectly
-		#not sure why i went all 'cat' there
-		#KeyGenerator::generatePGPkeyGPGme("whoa", "polarbear6@gmail.com", "asldkfjlksdjf")
 		
 		@group = Group.new(group_params)
 		
 		@group.users << current_user
 		@group.leaders = [current_user.id.to_s]
 		@group.email = @group.group_name + $Domain
+		
+		#commented out Key generation until it works purrrrrrrfectly
+		#not sure why i went all 'cat' there
+		puts "=============before key generator call====================="
+		KeyGenerator::generatePGPkeyGPGme(@group.group_name, @group.email, "asldkfjlksdjf")
+		puts "=============after key generator call======================"
 		
 		current_user.save	
 		
