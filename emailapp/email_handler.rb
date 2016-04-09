@@ -1,8 +1,26 @@
 #Email handling code
 #code is commented out until it gets converted from pseudocode to Ruby
 
-=begin
+module EmailApp
+    
+    class Email_handler
+        
+        def self.email_handler (rawEmail)
+            
+            
+        end
+    
+    end
+    
+end
 
+
+
+
+
+
+
+=begin
 module EmailApp
 
     class Email_handler
@@ -32,5 +50,4 @@ module EmailApp
     end
 
 end
-
 =end

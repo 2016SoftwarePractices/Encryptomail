@@ -29,10 +29,7 @@ module EmailApp
  			      # pub_key IS AN ARRAY OF GPGME::DATA OBJECTS
  			data = pub_key.first.export(:armor => true)
         		data.to_s
-              		#*******************TODO*********************
-              		#pub_key needs to be stored in the DB here
-              		#"data" above is just a string, and can be stored directly
-              		#or, this can be stored in the DB on the webapp calling side
+        		      # KEY IS NOT RETURNED - it is added to the linux keychain only!
     		end
     		
     		
@@ -97,7 +94,7 @@ module EmailApp
             end
             
                   #******************************************#
-                  #**********Class Helper Functions**********#
+                  #**********Class Helper Function**********#
             def self.buildparamsblock(name, email, passphrase)
                   block = []
                   block << '<GnupgKeyParms format="internal">'
@@ -114,11 +111,14 @@ module EmailApp
                   
                   return block.join("\n")
             end
+                  #******************************************#
+                  #**********Class Helper Function**********#
             
             
+            #*********************************************************
+            #*********Encryption and Decryption methods***************
             
             def self.encryptMailString(message, email)
-                  puts "Attempting to encrypt an email string for #{email}"
                   crypto = GPGME::Crypto.new :armor => true, :always_trust => true
                   encrypted = crypto.encrypt(message) 
                   return encrypted
@@ -127,10 +127,26 @@ module EmailApp
               
               
             def self.decryptMailString(message, passphrase)
-                  puts "Attempting to decrypt an email string"
                   crypto = GPGME::Crypto.new :armor => true, :always_trust => true
                   decrypted = crypto.decrypt(message, :password => passphrase)
                   return decrypted
             end
+            
+            
+            #**************************************************
+            #**************email size checker code*************
+            # method to check the size of an email
+            def self.check_email_size(email)
+                  email_size = File.size(email)
+                  bytesToMeg(email_size) #prints out size of email in Megabytes.
+            end
+
+
+            MEGABYTE = 1024.0 * 1024.0
+            # method to convert bytes to megabytes
+            def self.bytesToMeg bytes
+                  bytes /  MEGABYTE
+            end
+            
 	end
 end
