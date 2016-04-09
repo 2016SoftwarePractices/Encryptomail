@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'gpgme'
 load 'encryptomail.rb'
+load 'email_handler.rb'
 
 module EmailApp
 
@@ -188,6 +189,10 @@ Klsb4iM+nJ7L2EjXhBtl5zXuAfLTIjxAAFfuzNmAUA==
 #puts rawEmail_NoArmor
 #encryptedMessage = EmailApp::EncryptomailUnitTests.testEncryptMailString(message, email)
 #puts encryptedMessage
-decryptedMessage = EmailApp::EncryptomailUnitTests.testDecryptMailString(rawEmail_Armored, passphrase)
+#decryptedMessage = EmailApp::EncryptomailUnitTests.testDecryptMailString(rawEmail_Armored, passphrase)
+#puts decryptedMessage
+text = EmailApp::Email_handler.email_handler(rawEmail_Armored)
+puts text
+decryptedMessage = EmailApp::EncryptomailUnitTests.testDecryptMailString(text, passphrase)
 puts decryptedMessage
 end
