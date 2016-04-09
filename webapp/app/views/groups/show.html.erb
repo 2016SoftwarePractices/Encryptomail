@@ -16,7 +16,7 @@
 		<h3>Public Key:</h3>
 	</div>
 	<div class="col s12" id="pubkey">
-		<%= @group.pub_key %>
+        <%= KeyGenerator::exportpublickeyGPGme(@group.email) %>
 		<br>
 		<br>
 		<a class="waves-effect waves-light btn green darken-3"	id="pubkey_btn">
