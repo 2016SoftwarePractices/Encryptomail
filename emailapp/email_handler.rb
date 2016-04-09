@@ -2,6 +2,7 @@
     Email handling code
     This is the core business logic of the Encryptomail application
 =end
+#require "../webapp/config/environment"
 
 module EmailApp
     
