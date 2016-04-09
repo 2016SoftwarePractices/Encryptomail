@@ -21,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
 	def create
 		super
 
-		UserMailer.welcome_email(resource).deliver_now
+		#UserMailer.welcome_email(resource).deliver_now
 		
 		#insert pubkey into user
 		resource.pub_key = params[:pub_key]
@@ -31,4 +31,5 @@ class RegistrationsController < Devise::RegistrationsController
 	def update
 		super
 	end
+
 end 

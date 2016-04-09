@@ -10,8 +10,8 @@ pword = passwordFile.gets
 passwordFile.close
 
 ActionMailer::Base.smtp_settings = {
-	:address              => "smtp.gmail.com",
-	:domain               => "mail.gmail.com",
+	:address              => 'smtp.gmail.com',
+	:domain               => 'mail.gmail.com',
 	:port                 => 587,
 	:user_name            => 'encryptomail@gmail.com',
 	:password             => pword,
