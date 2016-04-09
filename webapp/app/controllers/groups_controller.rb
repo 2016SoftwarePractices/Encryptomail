@@ -36,14 +36,11 @@ class GroupsController < EndUserBaseController
 		@group.users << current_user
 		@group.leaders = [current_user.id.to_s]
 		@group.email = @group.group_name + $Domain
-		
-		#commented out Key generation until it works purrrrrrrfectly
-		#not sure why i went all 'cat' there
-		puts "=============before key generator call====================="
+        
+        # Passphrase for pgp keys is bull-s*** right now, may change later
 		KeyGenerator::generatePGPkeyGPGme(@group.group_name, @group.email, "asldkfjlksdjf")
-		puts "=============after key generator call======================"
-		
-		current_user.save	
+        
+		current_user.save
 		
 		respond_to do |format|
 			if @group.save
