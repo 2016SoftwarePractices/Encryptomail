@@ -49,12 +49,6 @@ module EmailApp
                   puts "***PUBLIC KEYS***"
                   pub_key_list = `gpg --list-keys`
                   puts pub_key_list.to_s
-                  # pub_key = GPGME::Key.find :public
-                  #  # pub_key IS AN ARRAY OF GPGME::DATA OBJECTS
-                  # pub_key.each do |pubkey|
-                  #     data = pubkey.export(:armor => true)
-                  #     puts data.to_s
-                  # end
             end
     	      
     	      
@@ -77,14 +71,11 @@ module EmailApp
                   puts output.to_s
                   output = `gpg --delete-keys "#{email}"`
                   puts output.to_s
-                  # ctx = GPGME::Ctx.new()
-                  # output = ctx.delete_key(email, true)
-                  # puts output.to_s
             end
     		
     		
     		
-    		
+    		      #Checks the DB for the group containing a specific email address
             def self.group_lookup(email)
                   if (Group.where(email: email).exists?) 
                     Group.find_by(email: email) 
