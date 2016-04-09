@@ -42,3 +42,5 @@ The number returned should be > 1000, otherwise, key generation may not work.
     * $ sudo gem install backports openpgp (Ruby 1.8.1+)
     * $ gpg -help (This lists all of the GPG commands on Linux)
     * Keys generated are saved to the Linux keyring
+
+(NOTE: in order to get quick key generation use rng-tools, instructions to set this up are located here: https://www.howtoforge.com/helping-the-random-number-generator-to-gain-enough-entropy-with-rng-tools-debian-lenny)

@@ -29,10 +29,7 @@ module EmailApp
  			      # pub_key IS AN ARRAY OF GPGME::DATA OBJECTS
  			data = pub_key.first.export(:armor => true)
         		data.to_s
-              		#*******************TODO*********************
-              		#pub_key needs to be stored in the DB here
-              		#"data" above is just a string, and can be stored directly
-              		#or, this can be stored in the DB on the webapp calling side
+        		      # KEY IS NOT RETURNED - it is added to the linux keychain only!
     		end
     		
     		
@@ -52,12 +49,6 @@ module EmailApp
                   puts "***PUBLIC KEYS***"
                   pub_key_list = `gpg --list-keys`
                   puts pub_key_list.to_s
-                  # pub_key = GPGME::Key.find :public
-                  #  # pub_key IS AN ARRAY OF GPGME::DATA OBJECTS
-                  # pub_key.each do |pubkey|
-                  #     data = pubkey.export(:armor => true)
-                  #     puts data.to_s
-                  # end
             end
     	      
     	      
@@ -80,14 +71,11 @@ module EmailApp
                   puts output.to_s
                   output = `gpg --delete-keys "#{email}"`
                   puts output.to_s
-                  # ctx = GPGME::Ctx.new()
-                  # output = ctx.delete_key(email, true)
-                  # puts output.to_s
             end
     		
     		
     		
-    		
+    		      #Checks the DB for the group containing a specific email address
             def self.group_lookup(email)
                   if (Group.where(email: email).exists?) 
                     Group.find_by(email: email) 
@@ -96,8 +84,8 @@ module EmailApp
                   end
             end
             
-            #******************************************#
-            #**********Class Helper Functions**********#
+                  #******************************************#
+                  #**********Class Helper Function**********#
             def self.buildparamsblock(name, email, passphrase)
                   block = []
                   block << '<GnupgKeyParms format="internal">'
@@ -114,5 +102,42 @@ module EmailApp
                   
                   return block.join("\n")
             end
+                  #******************************************#
+                  #**********Class Helper Function**********#
+            
+            
+            #*********************************************************
+            #*********Encryption and Decryption methods***************
+            
+            def self.encryptMailString(message, email)
+                  crypto = GPGME::Crypto.new :armor => true, :always_trust => true
+                  encrypted = crypto.encrypt(message) 
+                  return encrypted
+            end
+              
+              
+              
+            def self.decryptMailString(message, passphrase)
+                  crypto = GPGME::Crypto.new :armor => true, :always_trust => true
+                  decrypted = crypto.decrypt(message, :password => passphrase)
+                  return decrypted
+            end
+            
+            
+            #**************************************************
+            #**************email size checker code*************
+            # method to check the size of an email
+            def self.check_email_size(message)
+                  email_size = File.size(message)
+                  bytesToMeg(email_size) #prints out size of email in Megabytes.
+            end
+
+
+            MEGABYTE = 1024.0 * 1024.0
+            # method to convert bytes to megabytes
+            def self.bytesToMeg bytes
+                  bytes /  MEGABYTE
+            end
+            
 	end
 end

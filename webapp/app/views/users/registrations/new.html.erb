@@ -1,56 +1,35 @@
-<div class="row">
-	<div class="col s12 m6 offset-m3 center">
-		<h3>Sign Up</h3>
-	</div>
-</div>
+<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-	<%= devise_error_messages! %>
-	<div class="row field">
-		<div class="col s12 m6 offset-m3">
-			<%= f.label :email %>
-			<%= f.email_field :email, autofocus: true, placeholder: "Email" %>
+  <%= devise_error_messages! %>
 
-			<%= f.label :password %>
-			<% if @minimum_password_length %>
-			<em>(<%= @minimum_password_length %> characters minimum)</em>
-			<% end %>
-			<%= f.password_field :password, autocomplete: "off", class: "validate", onchange: "checkPasswords()", placeholder: "PassWord" %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
 
-			<%= f.label :password_confirmation %>
-			<%= f.password_field :password_confirmation, autocomplete: "off", class: "validate", onchange: "checkPasswords()", placeholder: "Confirm Password" %>
-			PGP Key
-			<div class="input-field">
-				<textarea placeholder="PASTE YOUR PGP KEY HERE" rows="8" id="pub_key" name="pub_key" class="validate" type="text" style="height:8em;resize: vertical;"></textarea>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col s12 m6 offset-m3">
-			<%= recaptcha_tags %>
-		</div>
-	</div>
-	<div class="row actions">
-		<div class="col s12 m6 offset-m3 center">
-			<button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
-				Register
-			</button>
-		</div>
-	</div>
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <%= recaptcha_tags %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
 <% end %>
 
-<script>
-  function checkPasswords(){
-    var form = document.forms["new_user"];
-    var pass = form.elements["user_password"].value;
-    var passConf = form.elements["user_password_confirmation"].value;
-    
-    if (pass === passConf && pass && passConf){
-			form.elements["user_password"].setAttribute("style", "border-bottom: 1px solid #4CAF50; box-shadow: 0 1px 0 0 #4CAF50");
-			form.elements["user_password_confirmation"].setAttribute("style", "border-bottom: 1px solid #4CAF50; box-shadow: 0 1px 0 0 #4CAF50");
-    } else {
-			form.elements["user_password"].setAttribute("style", "border-bottom: 1px solid #F44336; box-shadow: 0 1px 0 0 #F44336");
-			form.elements["user_password_confirmation"].setAttribute("style", "border-bottom: 1px solid #F44336; box-shadow: 0 1px 0 0 #F44336");      
-    }
-  };
-</script>
+<%= render "users/shared/links" %>
