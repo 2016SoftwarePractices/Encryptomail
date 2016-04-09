@@ -5,8 +5,10 @@ module EmailApp
     
     class Email_handler
         
+        ##Method takes email in as raw string, with headers and ASCII armor
         def self.email_handler (rawEmail)
             
+            return rawEmail
             
         end
     
@@ -21,6 +23,10 @@ end
 
 
 =begin
+
+#input = $stdin.read
+#puts input
+
 module EmailApp
 
     class Email_handler
