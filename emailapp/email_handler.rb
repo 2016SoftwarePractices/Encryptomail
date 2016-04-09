@@ -1,6 +1,9 @@
 #Email handling code
 #code is commented out until it gets converted from pseudocode to Ruby
 
+#require "../webapp/config/environment"
+#load 'encryptomail.rb'
+
 module EmailApp
     
     class Email_handler

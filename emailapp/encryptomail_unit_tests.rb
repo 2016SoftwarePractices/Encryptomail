@@ -2,6 +2,7 @@ require 'rubygems'
 require 'gpgme'
 load 'encryptomail.rb'
 load 'email_handler.rb'
+require "../webapp/config/environment"
 
 module EmailApp
 

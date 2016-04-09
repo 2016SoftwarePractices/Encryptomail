@@ -1,6 +1,7 @@
 # require 'rubygems'
 # require 'gpgme'
-# require "../webapp/config/environment"
+load 'email_handler.rb'
+require "../webapp/config/environment"
 
 #Written by P. Ross Baldwin
 
@@ -77,10 +78,10 @@ module EmailApp
     		
     		      #Checks the DB for the group containing a specific email address
             def self.group_lookup(email)
-                  if (Group.where(email: email).exists?) 
-                    Group.find_by(email: email) 
-                  else 
-                    nil
+                  if (Group.where(email: email).exists?)
+                        Group.find_by(email: email) 
+                  else
+                        nil
                   end
             end
             
