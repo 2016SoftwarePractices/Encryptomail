@@ -136,8 +136,8 @@ module EmailApp
             #**************************************************
             #**************email size checker code*************
             # method to check the size of an email
-            def self.check_email_size(email)
-                  email_size = File.size(email)
+            def self.check_email_size(message)
+                  email_size = File.size(message)
                   bytesToMeg(email_size) #prints out size of email in Megabytes.
             end
 
