@@ -144,7 +144,7 @@ module EmailApp
         def self.email_handler (rawEmail)
             passphrase = "hry785jB"
             matches = rawEmail.match(/^To: .*/)
-            #puts matches[0]
+            puts matches[0]
             groupEmailAddress = matches[0].split(" ")
             puts groupEmailAddress[1]
             decryptedMessage = EmailApp::Email_handler.decryptMailString(rawEmail, passphrase)
@@ -157,9 +157,13 @@ module EmailApp
         def self.sendLoop(plaintextEmail, groupEmailAddress)
             #groupMemberList = Find members of groupEmailAddress
             groupObject = EmailApp::Email_handler.group_lookup(groupEmailAddress)
+            puts Group.all
+            if(groupObject == nil)
+                puts "Group not found"
+                return
+            end
             groupObject.users.each do |user|
                 userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
-                #Send to postfix somehow
                 #send(userSpecificEncryptedEmail, user)
             end
         end

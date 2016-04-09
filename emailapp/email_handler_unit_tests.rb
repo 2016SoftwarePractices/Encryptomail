@@ -191,7 +191,13 @@ Klsb4iM+nJ7L2EjXhBtl5zXuAfLTIjxAAFfuzNmAUA==
 #puts encryptedMessage
 #decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(rawEmail_Armored, passphrase)
 #puts decryptedMessage
+
+##TEST SET 3 - Email_handler
 EmailApp::Email_handler.email_handler(rawEmail_Armored)
 #decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(text, passphrase)
 #puts decryptedMessage
 end
+
+##Test Global scoping
+#allgroups = Group.all
+#puts allgroups
