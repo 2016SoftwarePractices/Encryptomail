@@ -191,8 +191,7 @@ Klsb4iM+nJ7L2EjXhBtl5zXuAfLTIjxAAFfuzNmAUA==
 #puts encryptedMessage
 #decryptedMessage = EmailApp::EncryptomailUnitTests.testDecryptMailString(rawEmail_Armored, passphrase)
 #puts decryptedMessage
-text = EmailApp::Email_handler.email_handler(rawEmail_Armored)
-puts text
-decryptedMessage = EmailApp::EncryptomailUnitTests.testDecryptMailString(text, passphrase)
-puts decryptedMessage
+EmailApp::Email_handler.email_handler(rawEmail_Armored)
+#decryptedMessage = EmailApp::EncryptomailUnitTests.testDecryptMailString(text, passphrase)
+#puts decryptedMessage
 end
