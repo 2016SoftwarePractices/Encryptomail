@@ -53,7 +53,7 @@
     bundle install
 
 - Setup the local mongo database for C9
-    mongod --bind_ip=$IP --dbpath=data --rest "$@"
+    mongod --bind_ip=$IP --dbpath=data --rest --smallfiles "$@"
 
 - Run Rails
     rails s -b $IP -p $PORT
