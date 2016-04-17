@@ -65,8 +65,6 @@ db = Mongo::Client.new("mongodb://jlazerus-encryptomail-2927415:27017/encryptoma
 # pp coll.find({'c' => /f/}).explain
 
 puts "----------------------------\n"
-puts "----------------------------\n"
-puts "----------------------------\n"
 
 # user_list = db[:users]
 # puts "Find all user records:"
