@@ -1,3 +1,6 @@
+#jeff@jefflazerus.com
+# This is a helper file to produce objects from the mongodb that the emailapp can use
+
 require 'mongo'
 require 'pp'
 
