@@ -9,9 +9,6 @@ include Mongo
 host = ENV["C9_HOSTNAME"]
 port = '27017'
 
-# @db = Mongo::Client.new('mongodb://jlazerus-encryptomail-2927415:27017/encryptomail_development')
-# @collection = @db['users']
-
 puts "Connecting to #{host}:#{port}"
 
 # TODO: replace hard-coded URI with variables pointing to the host (doesn't work on C9)
