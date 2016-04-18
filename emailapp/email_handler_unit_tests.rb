@@ -2,6 +2,14 @@ require 'rubygems'
 require 'gpgme'
 load 'email_handler.rb'
 require "../webapp/config/environment"
+#require mongoid
+#load '../webapp/app/models/models/group.rb'
+#db = Mongoid.load!("../webapp/config/mongoid.yml", :production)
+
+#require mongoid
+#load models
+#require "../webapp/config/mongoid.yml"
+
 
 module EmailApp
 
@@ -71,25 +79,17 @@ module EmailApp
 	end
 
 ##******* Main() ********
-##TEST SET 1
-##PARAMS
+##TEST SET 1 PARAMS
 name = "gpgmetestuser"
 email = "gpgmetestuser@encryptomail.xyz"
 passphrase = "hry785jB"
-##TEST SET 1 
-#puts EmailApp::Email_handlerUnitTests.testGPGmekeygen(name, email, passphrase)
-#puts EmailApp::Email_handlerUnitTests.testGPGmeexportpublickey(email)
-#puts EmailApp::Email_handlerUnitTests.testprivatekeyexport(email)
-#puts EmailApp::Email_handlerUnitTests.testGPGmelistkeys()
 
+##TEST SET 2 PARAMS
 
-##TEST SET 2
-##PARAMS
-
-message = "Ned: Are you now or have you ever been a Norse God,\n
-Vampire, or Time Traveling Cyborg?\n
-Mike O' Donnell: I've known you since what, first grade?\n
-I think that maybe I would have told you!\n
+message = "Ned: Are you now or have you ever been a Norse God,
+Vampire, or Time Traveling Cyborg?
+Mike O' Donnell: I've known you since what, first grade?
+I think that maybe I would have told you!
 Ned Freedman: Vampire wouldn't tell, Cyborg wouldn't know."
 
 rawEmail_NoArmor = "Return-Path: <pi@encryptomail.xyz>
@@ -176,7 +176,22 @@ Klsb4iM+nJ7L2EjXhBtl5zXuAfLTIjxAAFfuzNmAUA==
 =fMjx
 -----END PGP MESSAGE-----\n."
 
+##Message Generators
+#puts rawEmail_NoArmor
+#encryptedMessage = EmailApp::Email_handlerUnitTests.testEncryptMailString(message, email)
+#puts encryptedMessage
+#decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(rawEmail_Armored, passphrase)
+#puts decryptedMessage
+
 ##TESTS
+
+###TEST SET 1 - Key generation and listing
+puts EmailApp::Email_handlerUnitTests.testGPGmekeygen(name, email, passphrase)
+puts EmailApp::Email_handlerUnitTests.testGPGmeexportpublickey(email)
+puts EmailApp::Email_handlerUnitTests.testprivatekeyexport(email)
+puts EmailApp::Email_handlerUnitTests.testGPGmelistkeys()
+
+###TEST SET 2 - Message encryption and decryption
 #encryptedMessage = EmailApp::Email_handlerUnitTests.testEncryptMailString(message, email)
 #puts encryptedMessage
 #size = EmailApp::Email_handlerUnitTests.testEmailSize(message)
@@ -185,19 +200,8 @@ Klsb4iM+nJ7L2EjXhBtl5zXuAfLTIjxAAFfuzNmAUA==
 #puts decryptedMessage
 #puts EmailApp::Email_handlerUnitTests.testkeydeletion(email)
 
-##Message Generators
-#puts rawEmail_NoArmor
-#encryptedMessage = EmailApp::Email_handlerUnitTests.testEncryptMailString(message, email)
-#puts encryptedMessage
-#decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(rawEmail_Armored, passphrase)
-#puts decryptedMessage
-
-##TEST SET 3 - Email_handler
-EmailApp::Email_handler.email_handler(rawEmail_Armored)
+###TEST SET 3 - Email_handler
+#EmailApp::Email_handler.email_handler(rawEmail_Armored)
 #decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(text, passphrase)
 #puts decryptedMessage
 end
-
-##Test Global scoping
-#allgroups = Group.all
-#puts allgroups

@@ -1,8 +1,7 @@
-=begin
-    Email handling code
-    This is the core business logic of the Encryptomail application
-=end
-#require "../webapp/config/environment"
+#
+#    Email handling code
+#    This is the core business logic of the Encryptomail application
+#
 
 module EmailApp
     
@@ -78,9 +77,9 @@ module EmailApp
 		      #Checks the DB for the group containing a specific email address
         def self.group_lookup(email)
               if (Group.where(email: email).exists?)
-                    Group.find_by(email: email) 
+                    return Group.find_by(email: email) 
               else
-                    nil
+                    return nil
               end
         end
         
@@ -139,15 +138,17 @@ module EmailApp
               bytes /  MEGABYTE
         end
         
-        
+        ############################################
+        ####### Base Email Handling Code ###########
         ##Method takes email in as raw string, with headers and ASCII armor
         def self.email_handler (rawEmail)
             passphrase = "hry785jB"
             matches = rawEmail.match(/^To: .*/)
-            puts matches[0]
+            puts "\n'To:' line match: " + matches[0]
             groupEmailAddress = matches[0].split(" ")
-            puts groupEmailAddress[1]
+            puts "\nParsed out group email: " + groupEmailAddress[1]
             decryptedMessage = EmailApp::Email_handler.decryptMailString(rawEmail, passphrase)
+            print "\n"
             puts decryptedMessage
             sendLoop(decryptedMessage, groupEmailAddress)
         end
@@ -157,9 +158,11 @@ module EmailApp
         def self.sendLoop(plaintextEmail, groupEmailAddress)
             #groupMemberList = Find members of groupEmailAddress
             groupObject = EmailApp::Email_handler.group_lookup(groupEmailAddress)
+            print "\n"
             puts Group.all
             if(groupObject == nil)
-                puts "Group not found"
+                print "\n"
+                puts "Group not found\n"
                 return
             end
             groupObject.users.each do |user|
