@@ -16,8 +16,8 @@
 	<div class="col s12">
 		<div class="field">
 			<input type="text" value="" name="group[email]" id="group_email" class="hide">
-			<%= f.label :group_name %>
-			<%= f.text_field :group_name, {:onChange=>"emailMaker();"} %>
+            <%= f.label :group_name if @group.new_record? %>
+            <%= f.text_field :group_name, {:onChange=>"emailMaker();"} if @group.new_record?%>
 			<%= f.label :description %>
 			<%= f.text_field :description %>
 
