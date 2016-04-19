@@ -5,7 +5,7 @@ require 'open-uri'
 class KeyGenerator
 	
 	def self.generatePGPkeyGPGme(name, email, passphrase)
-		puts "Attempting to create a PGP keypair via GPGme for #{name}, #{email}"
+		puts "Attempting to create a PGP keypair via GPGme for #{name}, #{email}, #{passphrase}"
 		ctx = GPGME::Ctx.new()
 		
 		fields = buildparamsblock(name, email, passphrase)

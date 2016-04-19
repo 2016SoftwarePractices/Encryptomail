@@ -2,14 +2,6 @@ require 'rubygems'
 require 'gpgme'
 load 'email_handler.rb'
 require "../webapp/config/environment"
-#require mongoid
-#load '../webapp/app/models/models/group.rb'
-#db = Mongoid.load!("../webapp/config/mongoid.yml", :production)
-
-#require mongoid
-#load models
-#require "../webapp/config/mongoid.yml"
-
 
 module EmailApp
 
