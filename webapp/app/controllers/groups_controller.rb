@@ -71,6 +71,8 @@ class GroupsController < EndUserBaseController
 	# DELETE /groups/1
 	# DELETE /groups/1.json
 	def destroy
+		KeyGenerator::deletekey(@group.email)
+		
 		@group.destroy
 		respond_to do |format|
 			format.html { redirect_to root_url, notice: 'Group was successfully destroyed.' }
@@ -88,6 +90,9 @@ class GroupsController < EndUserBaseController
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def group_params
 			params.require(:group).permit(:group_name, :email, :pub_key, :description)
+			
+			#gr_name = params.require(:group).group_name
+			
 		end
 	def group_edit_params
 			params.require(:group).permit(:group_name, :email, :pub_key, :description)

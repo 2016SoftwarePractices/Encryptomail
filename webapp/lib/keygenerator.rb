@@ -30,7 +30,7 @@ class KeyGenerator
 		puts "Attempting to delete public key for: #{email}"
 		pub_key = GPGME::Key.find(:public, "#{email}")
 		ctx = GPGME::Ctx.new()
-		ctx.delete_key(pub_key[0], allow_secret = false)
+		ctx.delete_key(pub_key[0], allow_secret = true)
 	end
 
 	def self.buildparamsblock(name, email, passphrase)
