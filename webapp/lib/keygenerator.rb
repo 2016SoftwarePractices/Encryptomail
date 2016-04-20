@@ -3,23 +3,34 @@ require 'gpgme'
 require 'open-uri'
 
 class KeyGenerator
-	
+
 	def self.generatePGPkeyGPGme(name, email, passphrase)
 		puts "Attempting to create a PGP keypair via GPGme for #{name}, #{email}, #{passphrase}"
 		ctx = GPGME::Ctx.new()
-		
+
 		fields = buildparamsblock(name, email, passphrase)
-		
+
 		# If pubkey and seckey are both set to nil, it stores the generated key pair into your key ring.
 		# KEY IS NOT RETURNED, it is added to the Linux local keychain
 		ctx.generate_key(fields, nil, nil)
 	end
 
-	#Method to export a public key by email address
 	def self.exportpublickeyGPGme(email)
 		puts "Attempting to export public key via GPGme for #{email}"
 		pub_key = GPGME::Key.find(:public, "#{email}")
 		data = pub_key.first.export(:armor => true)
+	end
+
+	def self.importkey(pubkey)
+		puts "Attempting to import public key #{pubkey}"
+		GPGME::Key.import(pubkey)
+	end
+
+	def self.deletekey(email)
+		puts "Attempting to delete public key for: #{email}"
+		pub_key = GPGME::Key.find(:public, "#{email}")
+		ctx = GPGME::Ctx.new()
+		ctx.delete_key(pub_key[0], allow_secret = false)
 	end
 
 	def self.buildparamsblock(name, email, passphrase)
@@ -37,5 +48,5 @@ class KeyGenerator
 		block << '</GnupgKeyParms>'
 		return block.join("\n")
 	end
-	
+
 end
