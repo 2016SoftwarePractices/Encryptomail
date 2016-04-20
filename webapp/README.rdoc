@@ -52,8 +52,8 @@
 - Run bundle, this downloads all the gems that we are currently using
     bundle install
 
-- Setup the local mongo database for C9
-    mongod --bind_ip=$IP --dbpath=data --rest --smallfiles "$@"
+- Setup the local mongo database for C9. Navigate to the /webapp folder, then do:
+    mongod --dbpath=data --rest --smallfiles "$@"
 
 - Run Rails
     rails s -b $IP -p $PORT
