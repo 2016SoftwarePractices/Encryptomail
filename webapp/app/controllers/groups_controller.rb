@@ -35,7 +35,13 @@ class GroupsController < EndUserBaseController
 		
 		@group.users << current_user
 		@group.leaders = [current_user.id.to_s]
-		@group.email = @group.group_name + $Domain
+		#The created group email should be "group-name + group-id", this will prevent people making groups of the same name
+		# with matching emails. Also this makes it so we don't have to return a "this group already exists" error, which would
+		# allow people to infer the name of groups on the system
+		#We must save first to get an id generated however
+		@group.save
+		
+		@group.email = @group.group_name.gsub(/\s/, "") + "+" + @group.id + $Domain
         
         # Passphrase for pgp keys is bull-s*** right now, may change later
 		KeyGenerator::generatePGPkeyGPGme(@group.group_name, @group.email, "asldkfjlksdjf")
@@ -71,6 +77,8 @@ class GroupsController < EndUserBaseController
 	# DELETE /groups/1
 	# DELETE /groups/1.json
 	def destroy
+		KeyGenerator::deletekey(@group.email)
+		
 		@group.destroy
 		respond_to do |format|
 			format.html { redirect_to root_url, notice: 'Group was successfully destroyed.' }
@@ -88,6 +96,9 @@ class GroupsController < EndUserBaseController
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def group_params
 			params.require(:group).permit(:group_name, :email, :pub_key, :description)
+			
+			#gr_name = params.require(:group).group_name
+			
 		end
 	def group_edit_params
 			params.require(:group).permit(:group_name, :email, :pub_key, :description)
