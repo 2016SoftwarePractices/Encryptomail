@@ -26,8 +26,7 @@ module EmailApp
             pub_key = GPGME::Key.find(:public, "#{email}")
             # pub_key IS AN ARRAY OF GPGME::DATA OBJECTS
             data = pub_key.first.export(:armor => true)
-            data.to_s
-            # KEY IS NOT RETURNED - it is added to the linux keychain only!
+            return data.to_s
         end
 		
 		
@@ -128,7 +127,7 @@ module EmailApp
             decryptedMessage = EmailApp::Email_handler.decryptMailString(rawEmail, passphrase)
             print "\n"
             puts decryptedMessage
-            sendLoop(decryptedMessage, groupEmailAddress)
+            EmailApp::sendLoop(decryptedMessage, groupEmailAddress)
         end
         
         
