@@ -44,6 +44,7 @@
 <script>
 	function emailMaker() {
 		var form = document.forms["new_group"];
+		form.elements["group_group_name"].value.replace(/[<|>|)|(|%]/g, '');
 		var groupName = form.elements["group_group_name"].value;
 		//var groupEmail = form.elements["group_email"].value;
 		//strip white space
