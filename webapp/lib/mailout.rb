@@ -95,6 +95,9 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	# Also we have a list of the groups user id's so we can iterate through those now
 	# and encrypt a copy of the email for each of them.
 	
+	decrypted_message = EmailApp::Email_handler.decryptMailString(data, "asldkfjlksdjf")
+	puts decrypted_message
+	
 
 
 
