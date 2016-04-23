@@ -4,34 +4,40 @@
 	</div>
 </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-	<%= devise_error_messages! %>
 
 	<div class="row field">
-		<div class="col s12 m6 offset-m3">
-			<%= f.label :email %>
-			<%= f.email_field :email, autofocus: true %>
+		<div class="col s12 m6 offset-m3 card-panel blue-grey-darken-3-alpha">
+			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+				<%= devise_error_messages! %>
+				<div class="input-field">
+					<%= f.email_field :email, autofocus: true, class:"validate" %>
+					<%= f.label :email, for:"user_email" %>
+				</div>
 
-			<%= f.label :password %>
-			<%= f.password_field :password, autocomplete: "off" %>
-			<% if devise_mapping.rememberable? -%>
+				<div class="input-field">
+					<%= f.password_field :password, autocomplete: "off", class:"validate" %>
+					<%= f.label :password, for:"user_password"%>
+					<% if devise_mapping.rememberable? -%>
+				</div>
 
-			<%= f.check_box :remember_me %>
-			<%= f.label :remember_me %>
+				<%= f.check_box :remember_me %>
+				<%= f.label :remember_me %>
 			<% end -%>
+			
+			<div class="row actions">
+				<div class="col s12 m6 offset-m3 center">
+					<button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
+						Log In
+					</button>
+				</div>
+			</div>
+
+			<div style="text-align:center">
+				<%= render "users/shared/links" %>
+			</div>
 		</div>
+		
 	</div>
 
-	<div class="row actions">
-		<div class="col s12 m6 offset-m3 center">
-			<button class="white-text waves-effect waves-light green darken-3 btn" onclick="submit">
-				Log In
-			</button>
-		</div>
-	</div>
-	
-	<div style="text-align:center">
-    	<%= render "users/shared/links" %>
-  	</div>
 	
 <% end %>
