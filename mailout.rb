@@ -10,7 +10,7 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	file = File.open('/home/infiniterecursion/Maildir/new/' + item, "r")
 	data = file.read
 	from = data.scan(/From:\s[\w].*<([A-Za-z0-9@_.+].+)>/)
-	to = data.scan(/\sTo:\s([A-Za-z0-9_@]+\+([A-Fa-f0-9]+)@[A-za-z0-9_+.]+)\s/)
+	to = data.scan(/\sTo:\s([A-Za-z0-9_@]+\+([A-Fa-f0-9]{24})@[A-za-z0-9_+.]+)\s/)
 	file.close
 	#add file to delete queue
 	puts "======================================================"
