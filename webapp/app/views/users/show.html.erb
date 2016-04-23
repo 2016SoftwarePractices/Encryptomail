@@ -10,27 +10,17 @@
 	</div>
 	 
 	<div class="col s6 card small blue-grey-darken-3-alpha" >
-		<h3>Public Key:</h3>
-	
-		<ul class="collapsible blue-grey-darken-3-alpha-2" data-collapsible="accordion">
-			<li>
-				<div class="collapsible-header blue-grey-darken-3-alpha">
-					<i class="material-icons right">more_vert</i>
-					<span class="right">(Click to expand)</span>
-					<a class="waves-effect waves-light btn green darken-3"	id="pubkey_btn">
-						<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
-					</a>
-
-				</div>
-				<div class="collapsible-body blue-grey-darken-3-alpha">
-					<textarea rows="8" id="pub_key" name="pub_key" class="validate" type="text" style="height:8em;resize: vertical;">
+		<h5>Public Key:</h5>
+		<a class="waves-effect waves-light btn green darken-3"	id="pubkey_btn">
+			<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
+		</a>
+				
+		<textarea rows="16" id="pub_key" name="pub_key" class="validate pgptext tinytext" type="text">
 <%= @user.pub_key %>
-					</textarea>
+		</textarea>
 
-				</div>
-			</li>
+				
 
-		</ul>
 	
 	</div>
 	
