@@ -45,7 +45,7 @@
 	function groupCheck() {
 		console.log("here");
 		var form = document.forms["new_group"];
-		form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@]/g, '');
+		form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@|/|*|-|#|]/g, '');
 		if(form.elements["group_group_name"].value){
 			console.log("TRUE");
 			console.log(form.elements["group_group_name"].value);
