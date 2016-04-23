@@ -1,11 +1,17 @@
 require 'rubygems'
 require 'gpgme'
 load 'email_handler.rb'
-require "../webapp/config/environment"
+#require "../webapp/config/environment"
 
 module EmailApp
 
 	class Email_handlerUnitTests
+	        
+	        
+	        #System tests for new user creation
+	                #Incorrect PGP key information / catch anything not a PGP key
+                def self.usercreate_badkey()
+                        name 
 
 
                 #test PGP keypair generation
