@@ -97,16 +97,10 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	
 	decrypted_message = EmailApp::Email_handler.decryptMailString(data, "asldkfjlksdjf")
 	puts decrypted_message
-	EmailApp::Email_handler.sendLoop(decrypted_message, groupMembersList)
-	
-
-
-
-	#Decrypt body with groups private key
-
+	#Decrypt body with Each individual member private key
 	#Re-encrypt email for each member of the group (using their public key)
-
 	#Send out emails to the members
+	EmailApp::Email_handler.sendLoop(decrypted_message, groupMembersList)
 
 end
 
