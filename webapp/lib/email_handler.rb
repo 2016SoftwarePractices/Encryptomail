@@ -2,6 +2,7 @@
 #    Email handling and PGP key functions
 #    This is the core business logic of the Encryptomail application
 #
+require 'gpgme'
 
 module EmailApp
     
@@ -119,33 +120,24 @@ module EmailApp
         ####### Base Email Handling Code ###########
         ##Method takes email in as raw string, with headers and ASCII armor
         def self.email_handler (rawEmail)
-            passphrase = "hry785jB"
-            matches = rawEmail.match(/^To: .*/)
-            puts "\n'To:' line match: " + matches[0]
-            groupEmailAddress = matches[0].split(" ")
-            puts "\nParsed out group email: " + groupEmailAddress[1]
-            decryptedMessage = EmailApp::Email_handler.decryptMailString(rawEmail, passphrase)
-            print "\n"
-            puts decryptedMessage
-            EmailApp::sendLoop(decryptedMessage, groupEmailAddress)
+            passphrase = "asldkfjlksdjf"
+            #matches = rawEmail.match(/^To: .*/)
+            #puts "\n'To:' line match: " + matches[0]
+            #groupEmailAddress = matches[0].split(" ")
+            #puts "\nParsed out group email: " + groupEmailAddress[1]
+            #decryptedMessage = EmailApp::Email_handler.decryptMailString(rawEmail, passphrase)
+            #print "\n"
+            #puts decryptedMessage
+            #EmailApp::sendLoop(decryptedMessage, groupEmailAddress)
         end
         
         
         
-        def self.sendLoop(plaintextEmail, groupEmailAddress)
-            #groupMemberList = Find members of groupEmailAddress
-            groupObject = EmailApp::Email_handler.group_lookup(groupEmailAddress)
-            print "\n"
-            puts Group.all
-            if(groupObject == nil)
-                print "\n"
-                puts "Group not found\n"
-                return
-            end
-            groupObject.users.each do |user|
-                userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
-                EmailApp::Email_handler.send(userSpecificEncryptedEmail, user)
-            end
+        def self.sendLoop(plaintextEmail, groupMembersList)
+        #    groupObject.users.each do |user|
+        #        userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
+        #        EmailApp::Email_handler.send(userSpecificEncryptedEmail, user)
+        #    end
         end
         
             #Takes the encrypted content, and a User object as params
