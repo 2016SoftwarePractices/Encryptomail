@@ -1,24 +1,37 @@
 <div class="row">
-	<div class="col s6 card small blue-grey-darken-3-alpha">
-		<h5>User: <%= @user.email[/[^@]+/] %></h5>
-		<h6>Email: <%= @user.email %></h6>
-		<h6>Joined: <%= @user.register_date.strftime('%x') %> </h6>
+	<div class="col s12 card blue-grey-darken-3-alpha">
+		<h3>User: <%= @user.email[/[^@]+/] %></h3>
+	</div>
+	
+	<div class="col s12 m6 card small blue-grey-darken-3-alpha">
+		<p>
+			Email: 
+			<div class="blue-grey-darken-4-alpha-2 amber-text"><%= @user.email %></div>
+		</p>
+	
+		<p>Joined: <%= @user.register_date.strftime('%x') %> </p>
+		<div class="amber divider"></div>
 		<br>
 		<a href="<%= edit_user_registration_path(@user) %>" class="waves-effect waves-light btn green darken-3"	id="edit">
 			<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Profile 
 		</a>
 	</div>
 	 
-	<div class="col s6 card small blue-grey-darken-3-alpha" >
-		<h5>Public Key:</h5>
-		<a class="waves-effect waves-light btn green darken-3"	id="pubkey_btn">
-			<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
-		</a>
-				
-		<textarea rows="16" id="pub_key" name="pub_key" class="validate pgptext tinytext" type="text">
+	<div class="col s12 m6 card small blue-grey-darken-3-alpha" >
+		<div class="row">
+			
+			<div class="col s12 center">
+				<h5 class="left">Public Key:</h5>
+				<a class="waves-effect waves-light right btn green darken-3" id="pubkey_btn">
+					<i class="material-icons right" value="copy" type="button">vpn_key</i>Copy 
+				</a>
+			</div>
+		</div>
+		<div class="center">
+			<textarea rows="16" id="pub_key" name="pub_key" class="validate pgptext tinytext" type="text" readonly>
 <%= @user.pub_key %>
-		</textarea>
-
+			</textarea>
+		</div>
 				
 
 	
@@ -34,8 +47,7 @@
 		</a>
 	</div>
 	<% @user.groups.each do |g| %>
-		<div class="col s6 m4 l4">
-			<div class="card grey darken-3">
+		<div class="col s6 m4 l4 card  blue-grey-darken-4-alpha-2">
 				<div class="card-content white-text">
 					<span class="card-title"><%= g.group_name %></span>
 					<p><%= g.description %></p>
@@ -45,7 +57,6 @@
 						Group Page <i class="material-icons right">keyboard_arrow_right</i>
 					</a>
 				</div>
-			</div>
 		</div>
 	<% end %>
 	<div class="col s12 center"><h5>. . . . .</h5></div>
@@ -56,7 +67,7 @@
 	<!-- Code from http://codetheory.in/javascript-copy-to-clipboard-without-flash-using-cut-and-copy-commands-with-document-execcommand/ -->
 	var copyBtn = document.querySelector('#pubkey_btn');
 	copyBtn.addEventListener('click', function () {
-		var urlField = document.querySelector('#pubkey');
+		var urlField = document.querySelector('#pub_key');
 		// create a Range object
 		var range = document.createRange();	
 		// set the Node to select the "range"

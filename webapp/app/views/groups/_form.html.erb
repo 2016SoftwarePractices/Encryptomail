@@ -2,7 +2,7 @@
 	<div class="col s12">
 		<% if @group.errors.any? %>
 			<div id="error_explanation">
-				<h2><%= pluralize(@group.errors.count, "error") %> prohibited this user from being saved:</h2>
+				<h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
 				<ul>
 				<% @group.errors.full_messages.each do |message| %>
@@ -16,16 +16,26 @@
 	<div class="col s12">
 		<div class="field">
 			<input type="text" value="" name="group[email]" id="group_email" class="hide">
-            <%= f.label :group_name if @group.new_record? %>
-            <%= f.text_field :group_name if @group.new_record?%>
-			<%= f.label :description %>
-			<%= f.text_field :description %>
-
-			<label for="additionalUsers" class>
-				Additional Users
-			</label>
-			<input type="text" value="" name="group_add_user" id="group_add_user">
 			
+			<% if @group.new_record? %>
+
+				<div class="input-field">
+					<%= f.label :group_name, for:"group_group_name" %>
+					<%= f.text_field :group_name, class:"validate" %>
+					
+				</div>
+			
+			<% end %>
+			
+			<div class="input-field">
+				<%= f.label :description, for:"group_description" %>
+				<%= f.text_field :description, class:"validate" %>
+			</div>
+			
+			<div class="input-field">
+				<label for="group_add_user">Additional Users</label>
+				<input type="text" value="" name="group_add_user" id="group_add_user" class="validate">
+			</div>
 		</div>
 	</div>
 	
