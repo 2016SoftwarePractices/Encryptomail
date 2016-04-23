@@ -2,6 +2,8 @@ require 'mongoid'
 require 'mongo'
 require 'json'
 
+#This is an embarassing ruby script
+
 #For some reason this supresses mongoDB debug messages.... so yeah
 Mongoid.load!("/var/www/Encryptomail/webapp/config/mongoid.yml", :production)
 
@@ -12,6 +14,7 @@ db = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'encryptomail_test')
 
 # Lets loop through the directory where the emails live
 Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
+	$check_var = false
 	#ignore these
 	next if item == '.' or item == '..'
 	#Lets open each file in the directory as we get to them
@@ -44,7 +47,7 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 		groups.find(:_id => BSON::ObjectId(to[1])).each do |data|
 			this_group = data.to_h
 		end
-		puts "[!] Group found in database."
+		puts "\n[!] Group found in database."
 		#puts this_group["user_ids"][0]
 	rescue Exception => e
 		puts "\n[!] No group found."
@@ -59,30 +62,33 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 		puts "\n[!] Checking User"
 		this_user = Hash.new
 		#Lets get the list of user id's from the group the email is going to
-		groups_users = []
 		groups_users = this_group["user_ids"]
 		#Now lets loop through these id's until we find one with a matching email as the sender
 		groups_users.each { |x|
+			if $check_var then
+				next
+			end
 			users = db[:users]
 			users.find(:_id => BSON::ObjectId(x)).each do |data|
 				temphash = data.to_h
-				puts temphash["email"]
-				puts from[0][0]
 				if from[0][0] == temphash["email"] then
-					puts "[!] The sender is part of that group."
-				else
-					puts "[!] Sender NOT part of the group."
+					puts "\n[!] The sender is part of that group."
+					$check_var = true
 				end
 			end
 		}
 	rescue Exception => e
-		puts "\n[!] User unknown to group."
+		puts "\n[!] The sender is not part of that group."
 		puts e.message
 		puts e.backtrace.inspect
 		next
 	end
 
-
+	if $check_var == false then
+		puts "\n[!] The sender is not part of that group."
+		next
+	end
+	
 	#IF we have got to here we know a few things
 	#	1. The group exists
 	#	2. The person who sent the email is part of the group
