@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<style>
+.bodybg {
+	background-image: url(<%= asset_path 'bg.jpg' %>);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+.tinytext { font-size: .15em; }
+.blue-grey-darken-4-alpha { background-color: rgba(38, 50, 56, .8) !important; }
+.blue-grey-darken-3-alpha { background-color: rgba(55, 71, 79, .8) !important; }
+.blue-grey-darken-3-alpha-2 { background-color: rgba(55, 71, 79, .5) !important; }
+		
+.pgptext {
+	height:200px !important;
+	resize: vertical !important;
+	font-size: .15em; 
+}
+
+		
+	
+	</style>
 	<title>Encryptomail</title>
 	<%= stylesheet_link_tag		'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -9,10 +31,12 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
 </head>
 
-<body class="grey lighten-2">
+<body class="bodybg">
 	
-	<nav class="grey darken-3" role="navigation">
+	<nav class="blue-grey darken-3" role="navigation">
+		
 		<div class="nav-wrapper container"><a id="logo-container" href="<%= home_index_path %>" class="brand-logo">EncryptoMail</a>
+			
 			<ul class="right hide-on-med-and-down">
 				<% if user_signed_in? %>
 					<li>
@@ -49,7 +73,7 @@
 		</div>
 	</nav>
 	
-	<div class="container black-text">
+	<div class="container white-text">
 
 		<div class="col s12 center-align">
 			<!-- I made alerts red, and let notices be green. Since usually alerts bad and notices are not -->

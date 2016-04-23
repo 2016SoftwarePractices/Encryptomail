@@ -1,11 +1,72 @@
 require 'rubygems'
 require 'gpgme'
 load 'email_handler.rb'
-require "../webapp/config/environment"
+#require "../webapp/config/environment"
 
 module EmailApp
 
 	class Email_handlerUnitTests
+	        
+	        def self.testimportdryrun()
+	                test_key = "-----BEGIN PGP PUBLIC KEY BLOCK-----
+                                Version: Mailvelope v1.3.6
+                                Comment: https://www.mailvelope.com
+                                
+                                xsFNBFb8QuEBEAC4AtyBOm75ZwSexijrC7nO0JPQGlVdHtC/DgFhflN4ZsCF
+                                gpCkdtUCKE7fDciLVwnM3RAERZKGj3foLslwUdLwxrHGjWVvAE0eK8DVoMBJ
+                                rSHxxpELOjJ9AK+RjYHK8dA/itxRNCKsCkQYbR+KwXCDtv+MJgsu7gN1FOnG
+                                HrMijp2mpQkYXh+g1VTcE/3z5tBmCyWGVO88Sb1FmEdR5HPAb6beQUOqYzA0
+                                4PvNS0sn8kS3ESdSCAqDxsu4zOVLiGp94UWBcJCr3rSBYd6ZzhAyLFrzmnxU
+                                tlXRlzkSuovq2LQpA5uEOuQEX+fm5sEnKQNPxoD4DOLdZ9JOugYYdYVFAbLg
+                                xuAk3kqaVneq09mRk0A4sS9kkh7xA1GgQN3WghgZdwxQfA6a6z5XtSYi1483
+                                hiCxGNhqlpkdhkstDQ77vQsE3ohaL6uUKNq29UozOGrn/l8/5eVpQyXJvdGG
+                                PmOl/pq08ivK2YVvkjwHgLKPAtTkLoq1sRgIIJT0HrU1B/gYAqST+FmDzvd6
+                                jr/dkbllLw5tCn4CZn9g7r4jBRBK9a13MqX+VA7xprPC/N4VPLciG+HDE5fR
+                                cuBI4hgAhXvPA13AleSo5FRsbFuC/FVgPcUWqCHv+Be+aUYscDPr/SxYZn5J
+                                yuUotRFMqNvF2WFNSYnwJk0MKiGKC0lG5I1P5QARAQABzSNSb3NzIEJhbGR3
+                                aW4gPHJvc3NAcm9zc2JhbGR3aW4uY29tPsLBdQQQAQgAKQUCVvxC4gYLCQgH
+                                AwIJECBkWi/AaiHIBBUIAgoDFgIBAhkBAhsDAh4BAAAh/A//UsbuSeOP1EX0
+                                WxE+DYeW+xCB2FpjJ6+Nef7AXxvjjba7EfFjCzEBZuI7MVoyfpuCxQDQU/Kj
+                                1WEhmAsEzET6P2+3W23ED8jz73EO9cEv4LjQyOkYURV8TINvL339X6T2F+nQ
+                                yvukboGlGKMbQ69T4eRoVh9MhqWkH98gISZXB316DGUK3YhFLbWXgaGSf6rv
+                                TZUwy/k/eM4nFgFywzQbh/a6QZoxj9xK/HnXSRlchvktAKGyEUFnkwRVQWK/
+                                v5yjYHKB4qClzgH38KoFd4lNV9O3CPRxxQpIvW/XfCzGcVXhB2zxfe2o+Q6x
+                                wp/+GXXcI0ADCqHawREuxam3WmZ+NflzU9qGkbDCMYRBniA//mC2zR4n/M3C
+                                2+rlNM5FQszl1oUENBTFcdz1NKyI1hoFfqkIM4yyB0eSqN7PQfWWK4CdEEmU
+                                WtNIwQX6s9wDXV6FNHSILHAKM349t/C9iB+At6E3ojFYjp9yJxV3lzoZPY2m
+                                rLEvKlLHMytwWBLVO6hO7P9DTluFn/mIOLHwsQLbsMsaVGLA0Vd3jLbZaUiy
+                                c/pTyTtBnIbG2WRy8yU8qJSGQpBnjK0tx+7ETUUsnj0GUx8GUkFhifMbCfer
+                                jBjyTqbUKq/3c+mbOvBzkdnR6+K0bKvCGJ6COv+B4BmAPKwiKZidhHKBLVOV
+                                DR/B4fYL39fOwU0EVvxC4QEQALggs7dG9A7vL6+4udR5Kf1tvOhNISNdyD2+
+                                OaacHLVW5PBfPkcFEPeIEj6EUqREqV/gMjkLpTD6r/M0WUW+6rIxugAYcbBZ
+                                hug7/vnYZ8AvxTCmVnP08nFK7ayG4toQiinvd0ZWF2aE/KReG3Xz2g6g8NNL
+                                CqrmNXbVUxQSDdrGS2pIoQtm0ROqPwIYpUyGOKjH1RQM79Y4H9/LrKMlvGaw
+                                y2QR5pQbFjuqY+4kPkgyuQUp4ze4/S85nWiV/kHsla0OvDENIynhhv5HgW0N
+                                XGzN8J6g2L0CXu2niMc6gVniZfGLEhJBkN7qJiCaRIiFK/1CJ6bPXqQUzCXJ
+                                4O2Tcqw+x2YHLdTUuETXqKvj5qQB9d0rlfrBZX/e3UXfomWjhdNx5+lEGaEv
+                                Mpf/UZ2DD8JavrQn6x8/Oi+doQ+9B8P+18AinbqDK/WfrOko0QrVxyXg32tb
+                                E67oocpbib4vLUCCgwFegV2NYU+uPCJTPni6MHuwKiBTWbnANRDLx9D9Lg+u
+                                Y+gXvg0YWPNW6zLuGkV4cKXySgKrepkN2GsrTye4QET+Pt2ieEHbST3Bw5aV
+                                0SeYgVB8fAjU+69cEv3UTgt0CXCEyuLmUlr9kcomcvYW37nuFtiKgya8dNo+
+                                hEy6dfVhQ6TKyQ/vXTqJBd5vdCGisb0hh5rIDubQhpLOC89dABEBAAHCwV8E
+                                GAEIABMFAlb8QuQJECBkWi/AaiHIAhsMAADNzg//XPmgrMDP/izwFzc1LoXc
+                                QJ8IWAYPVjYdE/t1lDkJKJUJUwTqct0OlJ7fiY0L9urjbh6fBgO2cBebYQK4
+                                UNz+Ex21wfD/xhMAtacjjQ5Zpene6V6zg+oLKWo7PPKTorGwIgMJYBR/rPvA
+                                xuXs8tltyLq06DyIirzOw5KyEGY2DFHsBARnA1EyhvaMzYz/M/YOmVaHWtlP
+                                pF889DNzT0yD+dafgUp9k/N6P59hZj3fmwB6kNmy17/cMKpHzxmk+Nbt8MYG
+                                8hmewwYw9Av0ytZTxwcZ0V/5R1MmT0rSC2i9GErkHXPnyHSouBJy2HrLyvvU
+                                051yck1a6qIMMyj+5GVfggPm9pklVa2Czd9qN0ks/c3lpOlV2av+EXQfzI37
+                                0MEC/JvKUiD0K51agraMe/JzMimn62cZjSh1375aT/RN7dsFyg5jSKZ3CniW
+                                01K1AtkYw56P91DJvDwT/d8bxxBhV6N2dv8RIZAYLTQSzg4fgGJk8O/LvcAx
+                                HFIU+nG7zqQSv0r3e29cPEp3edKH+yfnqaTlGkbtw4qI9CYZThlEa1NZSthg
+                                PZL0OMaKnMiRJ7AxJfMo1CHs2tEyXxNynN13HL17HOPq5okVpzA/6hQiILt/
+                                zqhKGvAheoeduWigCJZAK7DB29at3rb7eoOn/C2BX/EbScmCSGr3mzupgQGa
+                                oTY=
+                                =onlC
+                                -----END PGP PUBLIC KEY BLOCK-----
+                                "
+                        output = `gpg --dry-run --import #{test_key}`
+                end
 
 
                 #test PGP keypair generation
@@ -258,5 +319,7 @@ m68cEw7yVTZI
 #EmailApp::Email_handler.importkey(ross_prikey)
 #decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(ross_encrypted_message, ross_passphrase)
 #puts decryptedMessage
+
+EmailApp::Email_handlerUnitTests.testimportdryrun
 
 end

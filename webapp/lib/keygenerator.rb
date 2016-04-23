@@ -5,7 +5,6 @@ require 'open-uri'
 class KeyGenerator
 
 	def self.generatePGPkeyGPGme(name, email, passphrase)
-		puts "Attempting to create a PGP keypair via GPGme for #{name}, #{email}, #{passphrase}"
 		ctx = GPGME::Ctx.new()
 
 		fields = buildparamsblock(name, email, passphrase)
@@ -16,18 +15,15 @@ class KeyGenerator
 	end
 
 	def self.exportpublickeyGPGme(email)
-		puts "Attempting to export public key via GPGme for #{email}"
 		pub_key = GPGME::Key.find(:public, "#{email}")
 		data = pub_key.first.export(:armor => true)
 	end
-
+	
 	def self.importkey(pubkey)
-		puts "Attempting to import public key #{pubkey}"
 		GPGME::Key.import(pubkey)
 	end
 
 	def self.deletekey(email)
-		puts "Attempting to delete public key for: #{email}"
 		pub_key = GPGME::Key.find(:public, "#{email}")
 		ctx = GPGME::Ctx.new()
 		ctx.delete_key(pub_key[0], allow_secret = true)

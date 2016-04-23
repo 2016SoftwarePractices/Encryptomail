@@ -26,8 +26,7 @@ module EmailApp
             pub_key = GPGME::Key.find(:public, "#{email}")
             # pub_key IS AN ARRAY OF GPGME::DATA OBJECTS
             data = pub_key.first.export(:armor => true)
-            data.to_s
-            # KEY IS NOT RETURNED - it is added to the linux keychain only!
+            return data.to_s
         end
 		
 		
@@ -62,14 +61,12 @@ module EmailApp
         
         
             #Method deletes both public and private keys for a user
-            #BUGGED - REQUIRES INPUT FROM THE CONSOLE
-        def self.deleteuserkeys(email)
-            puts "Attempting to delete public and private keys for #{email}"
-            output = `gpg --delete-secret-key "#{email}"`
-            puts output.to_s
-            output = `gpg --delete-keys "#{email}"`
-            puts output.to_s
-        end
+    	def self.deletekey(email)
+    		puts "Attempting to delete public key for: #{email}"
+    		pub_key = GPGME::Key.find(:public, "#{email}")
+    		ctx = GPGME::Ctx.new()
+    		ctx.delete_key(pub_key[0], allow_secret = true)
+    	end
         
             #Method imports a either a public or private key to the Linux keychain
             #pubkey must be a string
@@ -130,7 +127,7 @@ module EmailApp
             decryptedMessage = EmailApp::Email_handler.decryptMailString(rawEmail, passphrase)
             print "\n"
             puts decryptedMessage
-            sendLoop(decryptedMessage, groupEmailAddress)
+            EmailApp::sendLoop(decryptedMessage, groupEmailAddress)
         end
         
         
@@ -151,8 +148,8 @@ module EmailApp
             end
         end
         
-        
-        def self.send(encryptedEmail, userEmail)
+            #Takes the encrypted content, and a User object as params
+        def self.send(encryptedEmail, user)
             puts "IMPLEMENT ME - Tried to send a message, but you haven't written my code yet!"
             #Do stuff - send to postfix somehow
         end
