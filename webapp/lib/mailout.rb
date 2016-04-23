@@ -65,16 +65,16 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 		groups_users.each { |x|
 			users = db[:users]
 			users.find(:_id => BSON::ObjectId(x)).each do |data|
-   				temphash = data.to_h
-				if temphash["email"] == from then
+				temphash = data.to_h
+				puts temphash["email"]
+				puts from[0][0]
+				if from[0][0] == temphash["email"] then
 					puts "[!] The sender is part of that group."
 				else
-					puts "[!] Sender not part of the group."
+					puts "[!] Sender NOT part of the group."
 				end
 			end
 		}
-		puts "\n[!] User matches group member email."
-		#puts this_user
 	rescue Exception => e
 		puts "\n[!] User unknown to group."
 		puts e.message
