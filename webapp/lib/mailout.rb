@@ -96,14 +96,22 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	#	2. The person who sent the email is part of the group
 	# Also we have a list of the groups user id's so we can iterate through those now
 	# and encrypt a copy of the email for each of them.
+	groups_users_emails = []
+	groups_users.each { |x|
+        	users = db[:users]
+                users.find(:_id => BSON::ObjectId(x)).each do |data|
+                	temphash = data.to_h
+			groups_users_emails << temphash["email"]
+	        end
+        }
 	
 	decrypted_message = EmailApp::Email_handler.decryptMailString(data, "asldkfjlksdjf")
 	puts decrypted_message
 	#Decrypt body with Each individual member private key
 	#Re-encrypt email for each member of the group (using their public key)
 	#Send out emails to the members
-	EmailApp::Email_handler.sendLoop(decrypted_message, groups_users)
-
+	EmailApp::Email_handler.sendLoop(decrypted_message, groups_users_emails)
+	
 end
 
 #After looping through all the emails in the directory we will go through

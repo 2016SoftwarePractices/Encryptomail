@@ -2,6 +2,7 @@
 #    Email handling and PGP key functions
 #    This is the core business logic of the Encryptomail application
 #
+require 'gpgme'
 
 module EmailApp
     
@@ -133,10 +134,10 @@ module EmailApp
         
         
         def self.sendLoop(plaintextEmail, groupMembersList)
-            groupObject.users.each do |user|
-                userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
-                EmailApp::Email_handler.send(userSpecificEncryptedEmail, user)
-            end
+        #    groupObject.users.each do |user|
+        #        userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
+        #        EmailApp::Email_handler.send(userSpecificEncryptedEmail, user)
+        #    end
         end
         
             #Takes the encrypted content, and a User object as params
