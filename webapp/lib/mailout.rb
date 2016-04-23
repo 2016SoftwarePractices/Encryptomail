@@ -91,6 +91,7 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	
 	decrypted_message = EmailApp::Email_handler.decryptMailString(data, "asldkfjlksdjf")
 	puts decrypted_message
+	EmailApp::Email_handler.sendLoop(decrypted_message, groupMembersList)
 	
 
 
