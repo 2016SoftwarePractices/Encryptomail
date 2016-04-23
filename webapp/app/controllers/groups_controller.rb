@@ -39,24 +39,34 @@ class GroupsController < EndUserBaseController
 		# with matching emails. Also this makes it so we don't have to return a "this group already exists" error, which would
 		# allow people to infer the name of groups on the system
 		#We must save first to get an id generated however
-		@group.save
 		
-		@group.email = @group.group_name.gsub(/\s/, "") + "+" + @group.id + $Domain
-        
-        # Passphrase for pgp keys is bull-s*** right now, may change later
-		KeyGenerator::generatePGPkeyGPGme(@group.group_name, @group.email, "asldkfjlksdjf")
-        
-		current_user.save
+		gname = @group.group_name.gsub(/\s/, "")
 		
-		respond_to do |format|
-			if @group.save
-				format.html { redirect_to @group, notice: 'Group was successfully created.' }
-				format.json { render :show, status: :created, location: @group }
-			else
-				format.html { render :new }
-				format.json { render json: @group.errors, status: :unprocessable_entity }
+		if gname =~ /^[a-zA-Z0-9]+$/
+			@group.save
+			
+			@group.email = gname + "+" + @group.id + $Domain
+			# Passphrase for pgp keys is bull-s*** right now, may change later
+			KeyGenerator::generatePGPkeyGPGme(@group.group_name, @group.email, "asldkfjlksdjf")
+
+			current_user.save
+
+			
+			respond_to do |format|
+				if @group.save
+					format.html { redirect_to @group, notice: 'Group was successfully created.' }
+					format.json { render :show, status: :created, location: @group }
+				else
+					format.html { render :new }
+					format.json { render json: @group.errors, status: :unprocessable_entity }
+				end
+			end
+		else
+			respond_to do |format|
+				format.html { redirect_to root_url, notice: 'Group was NOT created. Group name must be alpha-numeric characters.'}
 			end
 		end
+
 	end
 
 	# PATCH/PUT /groups/1
