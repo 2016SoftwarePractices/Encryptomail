@@ -1,6 +1,8 @@
 require 'mongoid'
 require 'mongo'
 require 'json'
+load 'email_handler.rb'
+
 
 #This is an embarassing ruby script
 
