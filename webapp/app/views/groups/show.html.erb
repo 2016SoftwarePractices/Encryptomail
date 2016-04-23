@@ -15,7 +15,7 @@
 	<div class="col s12" >
 		<h3>Public Key:</h3>
 	</div>
-	<div class="col s12" id="pubkey">
+	<div class="col s12 truncate" id="pubkey">
         <%= KeyGenerator::exportpublickeyGPGme(@group.email) %>
 		<br>
 		<br>
@@ -34,7 +34,7 @@
 			<div class="card grey darken-3">
 				<div class="card-content white-text" style="word-wrap: break-word;">
 					<span class="card-title"><%= user.email %></span>
-					<p><%= user.pub_key %></p>
+					<p class="truncate"><%= user.pub_key %></p>
 				</div>
 				<div class="card-action">
 				</div>

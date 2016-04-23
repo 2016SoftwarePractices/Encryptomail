@@ -1,4 +1,4 @@
-<%= form_for(@group) do |f| %>
+<%= form_for(@group, :html=> {:onsubmit=>'return groupCheck()'}) do |f| %>
 	<div class="col s12">
 		<% if @group.errors.any? %>
 			<div id="error_explanation">
@@ -17,7 +17,7 @@
 		<div class="field">
 			<input type="text" value="" name="group[email]" id="group_email" class="hide">
             <%= f.label :group_name if @group.new_record? %>
-            <%= f.text_field :group_name, {:onChange=>"emailMaker();"} if @group.new_record?%>
+            <%= f.text_field :group_name if @group.new_record?%>
 			<%= f.label :description %>
 			<%= f.text_field :description %>
 
@@ -42,16 +42,19 @@
 
 
 <script>
-	function emailMaker() {
+	function groupCheck() {
+		console.log("here");
 		var form = document.forms["new_group"];
-		form.elements["group_group_name"].value.replace(/[<|>|)|(|%]/g, '');
-		var groupName = form.elements["group_group_name"].value;
-		//var groupEmail = form.elements["group_email"].value;
-		//strip white space
-		groupName = groupName.replace(/\s+/g, '');
-		
-		var groupEmail = groupName.concat("<%= $Domain %>");
-		form.elements["group_email"].value = groupEmail
+		form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@]/g, '');
+		if(form.elements["group_group_name"].value){
+			console.log("TRUE");
+			console.log(form.elements["group_group_name"].value);
+			return true;
+		}
+		else {
+			console.log("FALSE");
+		//	return false;
+		}
 	}
 																			
 </script>

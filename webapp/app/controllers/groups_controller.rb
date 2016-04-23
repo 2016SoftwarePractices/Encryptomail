@@ -35,7 +35,13 @@ class GroupsController < EndUserBaseController
 		
 		@group.users << current_user
 		@group.leaders = [current_user.id.to_s]
-		@group.email = @group.group_name + $Domain
+		#The created group email should be "group-name + group-id", this will prevent people making groups of the same name
+		# with matching emails. Also this makes it so we don't have to return a "this group already exists" error, which would
+		# allow people to infer the name of groups on the system
+		#We must save first to get an id generated however
+		@group.save
+		
+		@group.email = @group.group_name.gsub(/\s/, "") + "+" + @group.id + $Domain
         
         # Passphrase for pgp keys is bull-s*** right now, may change later
 		KeyGenerator::generatePGPkeyGPGme(@group.group_name, @group.email, "asldkfjlksdjf")
