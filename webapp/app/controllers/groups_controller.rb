@@ -105,13 +105,13 @@ class GroupsController < EndUserBaseController
 
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def group_params
-			params.require(:group).permit(:group_name, :email, :pub_key, :description)
+			params.require(:group).permit(:group_name, :pub_key, :description)
 			
 			#gr_name = params.require(:group).group_name
 			
 		end
 	def group_edit_params
-			params.require(:group).permit(:group_name, :email, :pub_key, :description)
+			params.require(:group).permit(:group_name, :pub_key, :description)
 			params.permit(:group_add_user)
 		end
 end
