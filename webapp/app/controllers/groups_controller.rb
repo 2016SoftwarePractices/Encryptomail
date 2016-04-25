@@ -39,13 +39,17 @@ class GroupsController < EndUserBaseController
 		# with matching emails. Also this makes it so we don't have to return a "this group already exists" error, which would
 		# allow people to infer the name of groups on the system
 		#We must save first to get an id generated however
-		
+		puts "DEBUG==============="
 		gname = @group.group_name.gsub(/\s/, "")
-		
+		puts gname
+		puts "===================="
 		if gname =~ /^[a-zA-Z0-9]+$/
 			@group.save
 			
 			@group.email = gname + "+" + @group.id + $Domain
+			puts "DEBUG======2========"
+			puts @group.email
+			puts "===================="
 			# Passphrase for pgp keys is bull-s*** right now, may change later
 			KeyGenerator::generatePGPkeyGPGme(@group.group_name, @group.email, "asldkfjlksdjf")
 

@@ -1,8 +1,9 @@
 require 'mongoid'
 require 'mongo'
 require 'json'
-load 'email_handler.rb'
+require 'net/smtp'
 
+load 'email_handler.rb'
 
 #This is an embarassing ruby script
 
@@ -13,6 +14,9 @@ Mongoid.load!("/var/www/Encryptomail/webapp/config/mongoid.yml", :production)
 include Mongo
 
 db = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'encryptomail_test')
+
+#Delete Queue
+del_queue = []
 
 # Lets loop through the directory where the emails live
 Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
@@ -55,6 +59,7 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 		puts "\n[!] No group found."
 		puts e.message
 		puts e.backtrace.inspect
+		del_queue << item
 		next
 	end
 
@@ -83,11 +88,13 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 		puts "\n[!] The sender is not part of that group."
 		puts e.message
 		puts e.backtrace.inspect
+		del_queue << item
 		next
 	end
 
 	if $check_var == false then
 		puts "\n[!] The sender is not part of that group."
+		del_queue << item
 		next
 	end
 	
@@ -96,23 +103,39 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	#	2. The person who sent the email is part of the group
 	# Also we have a list of the groups user id's so we can iterate through those now
 	# and encrypt a copy of the email for each of them.
-	groups_users_emails = []
+	
+        decrypted_message = EmailApp::Email_handler.decryptMailString(data, "asldkfjlksdjf")
+
 	groups_users.each { |x|
         	users = db[:users]
                 users.find(:_id => BSON::ObjectId(x)).each do |data|
                 	temphash = data.to_h
-			groups_users_emails << temphash["email"]
-	        end
-        }
-	
-	decrypted_message = EmailApp::Email_handler.decryptMailString(data, "asldkfjlksdjf")
-	puts decrypted_message
-	#Decrypt body with Each individual member private key
-	#Re-encrypt email for each member of the group (using their public key)
-	#Send out emails to the members
-	EmailApp::Email_handler.sendLoop(decrypted_message, to[0], groups_users_emails)
-	
-end
+			encrypted_message = EmailApp::Email_handler.encryptMailString(decrypted_message, temphash["email"])
+			begin
+				message = <<MESSAGE_END
+				From: Private Person <#{to[0]}>
+				To: A Test User <#{temphash["email"]}>
+				MIME-Version: 1.0
+				Content-type: text/html
+				Subject: SMTP e-mail test
 
+				This #{encrypted_message}
+MESSAGE_END
+
+				Net::SMTP.start('localhost') do |smtp|
+  					smtp.send_message message, to[0], temphash["email"]
+				end
+			rescue Exception => e
+				puts e.message
+				puts e.backtrace.inspect
+			end
+	        end	
+        }
+	del_queue << item	
+end
 #After looping through all the emails in the directory we will go through
 # our delete queue and remove them
+
+del_queue.each { |item| 
+	File.delete("~/Maildir/new/" + item)
+}

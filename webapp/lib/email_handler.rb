@@ -90,9 +90,14 @@ module EmailApp
         #*********Encryption and Decryption methods***************
         
         def self.encryptMailString(message, email)
-            crypto = GPGME::Crypto.new :armor => true, :always_trust => true
-            encrypted = crypto.encrypt(message, :recipients => email)
-            return encrypted
+            	begin
+	    		crypto = GPGME::Crypto.new :armor => true, :always_trust => true
+            		encrypted = crypto.encrypt(message, :recipients => email)
+            		return encrypted
+		rescue Exception => e
+			puts e.message
+			puts e.backtrace.inspect
+		end
         end
           
         def self.decryptMailString(message, passphrase)
