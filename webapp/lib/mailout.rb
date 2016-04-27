@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'mongoid'
 require 'mongo'
 require 'json'
