@@ -51,9 +51,11 @@
 				function submitButton_OnClick() {
 			        $("#gsb").val("***CREATING***");
 			        $("#gsb").attr("disabled", "disabled");
-			        $("#new_group").submit();
-			     }
-			
+				    if ($("form")) {
+				    	$("form").first().submit();
+				    }
+				}
+				
 			    $(document).ready(function() {
 			        $("#gsb").click(submitButton_OnClick);
 			    });
@@ -69,15 +71,16 @@
 	function groupCheck() {
 		console.log("here");
 		var form = document.forms["new_group"];
-		form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@|/|*|-|#|]/g, '');
-		if(form.elements["group_group_name"].value){
-			console.log("TRUE");
-			console.log(form.elements["group_group_name"].value);
-			return true;
-		}
-		else {
-			console.log("FALSE");
-		//	return false;
+		if(form){
+			form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@|/|*|-|#|]/g, '');
+			if(form.elements["group_group_name"].value){
+				console.log("TRUE");
+				console.log(form.elements["group_group_name"].value);
+				return true;
+			}
+			else {
+				console.log("FALSE")
+			}
 		}
 	}
 																			
