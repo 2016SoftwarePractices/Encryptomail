@@ -44,13 +44,22 @@
 		</div>
 	</div>
 	
-	
 	<div class="col s12">
 		<div class="actions">
-			<%= f.submit nil, :class => "waves-effect waves-light btn green darken-3" %>
+			<%= f.submit nil, class: "waves-effect waves-light btn green darken-3", id: "gsb" %>
+			<script>
+				function submitButton_OnClick() {
+			        $("#gsb").val("***CREATING***");
+			        $("#gsb").attr("disabled", "disabled");
+			        $("#new_group").submit();
+			     }
+			
+			    $(document).ready(function() {
+			        $("#gsb").click(submitButton_OnClick);
+			    });
+			</script>
 		</div>
-	</div>
-	
+	</div>	
 <% end %>
 
 
