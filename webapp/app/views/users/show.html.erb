@@ -4,17 +4,19 @@
 	</div>
 	
 	<div class="col s12 m6 card small blue-grey-darken-3-alpha">
-		<p>
+		<p class="center-align">
 			Email: 
-			<div class="blue-grey-darken-4-alpha-2 amber-text"><%= @user.email %></div>
+			<div class="blue-grey-darken-4-alpha-2 amber-text center-align"><%= @user.email %></div>
 		</p>
 	
-		<p>Joined: <%= @user.register_date.strftime('%x') %> </p>
+		<p class="center-align">Joined: <%= @user.register_date.strftime('%x') %> </p>
 		<div class="amber divider"></div>
 		<br>
-		<a href="<%= edit_user_registration_path(@user) %>" class="waves-effect waves-light btn green darken-3"	id="edit">
-			<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Profile 
-		</a>
+		<div  class="center-align">
+			<a href="<%= edit_user_registration_path(@user) %>" class="waves-effect waves-light btn green darken-3"	id="edit">
+				<i class="material-icons right" value="copy" type="button">mode_edit</i>Edit Profile 
+			</a>
+		</div>
 	</div>
 	 
 	<div class="col s12 m6 card small blue-grey-darken-3-alpha" >
