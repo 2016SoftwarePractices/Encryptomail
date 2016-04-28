@@ -22,6 +22,8 @@ db = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'encryptomail_test')
 #Delete Queue, we will add up our emails after they are dealt with and then delete them after we are done
 del_queue = []
 
+puts "[!] Running Encryptomail Mail Handler."
+
 # Lets loop through the directory where the emails live
 Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	$check_var = false
