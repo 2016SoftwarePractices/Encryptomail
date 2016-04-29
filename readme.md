@@ -1,5 +1,7 @@
-# Software Engineering Practices - CS4260
-### A web application built using Ruby on Rails
+[logo]: https://github.com/2016SoftwarePractices/Encryptomail/blob/master/webapp/public/mstile-144x144.png
+# ![logo] *Encryptomail* 
+* CS4260 - Software Engineering Practices
+* Metropolitan State University of Denver, 2016
 
 ---
 
