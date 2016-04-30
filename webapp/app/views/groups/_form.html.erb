@@ -24,13 +24,21 @@
 					<%= f.text_field :group_name, class:"validate" %>
 					
 				</div>
+				<div class="input-field">
+					<%= f.label :description, for:"group_description" %>
+					<%= f.text_field :description, class:"validate" %>
+				</div>
+			
+			<% else %>
+				<div class="input-field">
+					<%= f.label :description, for:"group_description" %>
+					<%= f.text_field :description, class:"validate", autofocus: true %>
+				</div>
+			
+				
 			
 			<% end %>
 			
-			<div class="input-field">
-				<%= f.label :description, for:"group_description" %>
-				<%= f.text_field :description, class:"validate" %>
-			</div>
 			
 			<% if !@group.new_record? %>
 			
