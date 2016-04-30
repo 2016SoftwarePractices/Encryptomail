@@ -3,7 +3,6 @@ require 'keygenerator'
 class RegistrationsController < Devise::RegistrationsController
 	prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
 
-  
 	def check_captcha
 		if verify_recaptcha
 			true
@@ -14,17 +13,21 @@ class RegistrationsController < Devise::RegistrationsController
 		end 
 	end
 
-	
-	
 	def new
 		super
 	end
 
 	def create
-		super
         KeyGenerator::importkey(params[:pub_key])
-		resource.pub_key = params[:pub_key]
-		resource.save
+		if KeyGenerator::keyFinder(params[:user][:email]) != nil
+			super
+			resource.pub_key = params[:pub_key]
+			resource.save
+		else
+			respond_to do |format|
+				format.html { redirect_to root_url, notice: 'Account was NOT created. Email and PGP key did NOT match.'}
+			end
+		end
 	end
   
     def destroy
