@@ -2,7 +2,13 @@
 	<div class="col s12 m6 offset-m3 card blue-grey-darken-3-alpha center">
 		<h1>New Group</h1>
 	
-		<%= render 'form' %>
-		<br />
+		<div class="col s12">
+			<%= render 'form' %>
+		</div>
+		
+		<div class="col s12">
+			<%= link_to "Back", @user, class: "waves-effect waves-light btn green darken-3" %>
+		</div>
+			
 	</div>
 </div>
