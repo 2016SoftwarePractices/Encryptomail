@@ -1,3 +1,5 @@
+require 'keygenerator'
+
 class RegistrationsController < Devise::RegistrationsController
 	prepend_before_action :check_captcha, only: [:create] # Change this to be any actions you want to protect.
 
@@ -20,15 +22,18 @@ class RegistrationsController < Devise::RegistrationsController
 
 	def create
 		super
-
-		UserMailer.welcome_email(resource).deliver_now
-		
-		#insert pubkey into user
+        KeyGenerator::importkey(params[:pub_key])
 		resource.pub_key = params[:pub_key]
 		resource.save
+	end
+  
+    def destroy
+		KeyGenerator::deletekey(@user.email)
+		super
 	end
 	
 	def update
 		super
 	end
+
 end 

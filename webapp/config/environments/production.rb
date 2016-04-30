@@ -20,6 +20,13 @@ Rails.application.configure do
 	# NGINX, varnish or squid.
 	# config.action_dispatch.rack_cache = true
 
+        # ActionMailer Config
+        config.action_mailer.raise_delivery_errors = true
+        config.action_mailer.delivery_method = :sendmail
+        config.action_mailer.default :charset => "utf-8"
+        config.action_mailer.perform_deliveries = true
+        # SMTP settings for gmail
+
 	# Disable serving static files from the `/public` folder by default since
 	# Apache or NGINX already handles this.
 	config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
@@ -74,4 +81,7 @@ Rails.application.configure do
 
 	# Use default logging formatter so that PID and timestamp are not suppressed.
 	config.log_formatter = ::Logger::Formatter.new
+	
+	# Default Mailer Host
+  	Rails.application.routes.default_url_options[:host] = 'encryptomail.xyz'
 end
