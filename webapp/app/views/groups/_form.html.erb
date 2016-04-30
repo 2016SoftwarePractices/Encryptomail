@@ -1,3 +1,23 @@
+
+<script>
+	function groupCheck() {
+		console.log("here");
+		var form = document.forms["new_group"];
+		if(form){
+			form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@|/|*|-|#|]/g, '');
+			if(form.elements["group_group_name"].value){
+				console.log("TRUE");
+				console.log(form.elements["group_group_name"].value);
+				return true;
+			}
+			else {
+				console.log("FALSE")
+			}
+		}
+	}
+																			
+</script>
+
 <%= form_for(@group, :html=> {:onsubmit=>'return groupCheck()'}) do |f| %>
 	<div class="col s12">
 		<% if @group.errors.any? %>
@@ -20,29 +40,31 @@
 			<% if @group.new_record? %>
 
 				<div class="input-field">
+					<i class="material-icons prefix">assignment_ind</i>
 					<%= f.label :group_name, for:"group_group_name" %>
 					<%= f.text_field :group_name, class:"validate" %>
-					
 				</div>
+				
 				<div class="input-field">
+					<i class="material-icons prefix">mode_edit</i>
 					<%= f.label :description, for:"group_description" %>
 					<%= f.text_field :description, class:"validate" %>
 				</div>
 			
 			<% else %>
+			
 				<div class="input-field">
+					<i class="material-icons prefix">mode_edit</i>
 					<%= f.label :description, for:"group_description" %>
 					<%= f.text_field :description, class:"validate", autofocus: true %>
 				</div>
 			
-				
-			
 			<% end %>
-			
 			
 			<% if !@group.new_record? %>
 			
 			<div class="input-field">
+				<i class="material-icons prefix">recent_actors</i>
 				<label for="group_add_user">Additional Users</label>
 				<input type="text" value="" name="group_add_user" id="group_add_user" class="validate">
 			</div>
@@ -51,51 +73,22 @@
 			
 		</div>
 	</div>
+		<div class="row actions">
+			<div class="col s12">   
+				<%= f.submit nil, class: "waves-effect waves-light btn green darken-3", id: "gsb" %>
+				<script>
+						function submitButton_OnClick() {
+								$("#gsb").val("***CREATING***");
+								$("#gsb").attr("disabled", "disabled");
+								if ($("form")) {
+										$("form").first().submit();
 
-    <div class="col s12">
-      <%= link_to "Back", @group, class: "waves-effect waves-light btn green darken-3" %>
-    </div>
+						}
 
-<div style="margin: 10px">
-	<div class="col s12">
-		<div class="actions">
-			<%= f.submit nil, class: "waves-effect waves-light btn green darken-3", id: "gsb" %>
-			<script>
-				function submitButton_OnClick() {
-			        $("#gsb").val("***CREATING***");
-			        $("#gsb").attr("disabled", "disabled");
-				    if ($("form")) {
-				    	$("form").first().submit();
-				    }
-				}
-				
-			    $(document).ready(function() {
-			        $("#gsb").click(submitButton_OnClick);
-			    });
-			</script>
+						$(document).ready(function() {
+								$("#gsb").click(submitButton_OnClick);
+						});
+				</script>
+			</div>	
 		</div>
-    </div>
-</div>	
 <% end %>
-
-
-
-
-<script>
-	function groupCheck() {
-		console.log("here");
-		var form = document.forms["new_group"];
-		if(form){
-			form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@|/|*|-|#|]/g, '');
-			if(form.elements["group_group_name"].value){
-				console.log("TRUE");
-				console.log(form.elements["group_group_name"].value);
-				return true;
-			}
-			else {
-				console.log("FALSE")
-			}
-		}
-	}
-																			
-</script>
