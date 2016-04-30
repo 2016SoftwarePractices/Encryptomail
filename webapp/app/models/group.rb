@@ -35,9 +35,6 @@ class Group
 	
 	field :leaders, type: Array
 	
-	
-	validates_uniqueness_of :group_name
-	
 	index({ group_name: 1 }, { unique: true, name: "group_name_index" })
 	index({ email: 1 }, { unique: true, name: "email_index" })	
 	
