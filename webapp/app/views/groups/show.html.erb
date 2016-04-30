@@ -45,7 +45,7 @@
 			</a>
 		</div>
 		<div class="center">
-        	<textarea rows="16" id="pub_key" name="pub_key" class="validate pgptext tinytext" type="text" readonly>
+        	<textarea rows="16" id="pub_key" name="pub_key" class="validate pgptext tinytext" type="text" style="word-wrap: break-work;" readonly>
 <%= KeyGenerator::exportpublickeyGPGme(@group.email) %>
 			</textarea>
 		</div>
