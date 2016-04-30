@@ -19,6 +19,7 @@ class GroupsController < EndUserBaseController
 
 	# GET /groups/new
 	def new
+		@user = current_user
 		@group = Group.new
 	end
 
