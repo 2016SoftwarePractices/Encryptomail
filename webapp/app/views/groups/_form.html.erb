@@ -56,8 +56,8 @@
       <%= link_to "Back", @group, class: "waves-effect waves-light btn green darken-3" %>
     </div>
 
-<div style="margin: 10px">
-	<div class="col s12">
+<div class="col s12">   
+     <div style="margin: 10px">
 		<div class="actions">
 			<%= f.submit nil, class: "waves-effect waves-light btn green darken-3", id: "gsb" %>
 			<script>
@@ -66,7 +66,7 @@
 			        $("#gsb").attr("disabled", "disabled");
 				    if ($("form")) {
 				    	$("form").first().submit();
-				    }
+				    
 				}
 				
 			    $(document).ready(function() {
