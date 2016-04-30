@@ -10,11 +10,13 @@
 			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 				<%= devise_error_messages! %>
 				<div class="input-field">
+					<i class="material-icons prefix">account_circle</i>
 					<%= f.email_field :email, autofocus: true, class:"validate" %>
 					<%= f.label :email, for:"user_email" %>
 				</div>
 
 				<div class="input-field">
+					<i class="material-icons prefix">vpn_key</i>
 					<%= f.password_field :password, autocomplete: "off", class:"validate" %>
 					<%= f.label :password, for:"user_password"%>
 					<% if devise_mapping.rememberable? -%>
@@ -36,8 +38,5 @@
 				<%= render "users/shared/links" %>
 			</div>
 		</div>
-		
 	</div>
-
-	
-<% end %>
+				<% end %>
