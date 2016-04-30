@@ -2,6 +2,7 @@
 #    Email handling and PGP key functions
 #    This is the core business logic of the Encryptomail application
 #
+require 'gpgme'
 
 module EmailApp
     
@@ -89,9 +90,14 @@ module EmailApp
         #*********Encryption and Decryption methods***************
         
         def self.encryptMailString(message, email)
-            crypto = GPGME::Crypto.new :armor => true, :always_trust => true
-            encrypted = crypto.encrypt(message, :recipients => email)
-            return encrypted
+            	begin
+	    		crypto = GPGME::Crypto.new :armor => true, :always_trust => true
+            		encrypted = crypto.encrypt(message, :recipients => email)
+            		return encrypted
+		rescue Exception => e
+			puts e.message
+			puts e.backtrace.inspect
+		end
         end
           
         def self.decryptMailString(message, passphrase)
@@ -133,10 +139,10 @@ module EmailApp
         
         
         def self.sendLoop(plaintextEmail, groupMembersList)
-            groupObject.users.each do |user|
-                userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
-                EmailApp::Email_handler.send(userSpecificEncryptedEmail, user)
-            end
+        #    groupObject.users.each do |user|
+        #        userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
+        #        EmailApp::Email_handler.send(userSpecificEncryptedEmail, user)
+        #    end
         end
         
             #Takes the encrypted content, and a User object as params
