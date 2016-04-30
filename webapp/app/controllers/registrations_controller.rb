@@ -5,13 +5,13 @@ class RegistrationsController < Devise::RegistrationsController
 
   
 	def check_captcha
-		if verify_recaptcha
+	#	if verify_recaptcha
 			true
-		else
-			self.resource = resource_class.new sign_up_params
-			redirect_to new_user_registration_path, alert: "You didn't pass the captcha"
+	#	else
+	#		self.resource = resource_class.new sign_up_params
+	#		redirect_to new_user_registration_path, alert: "You didn't pass the captcha"
 			#respond_with_navigational(resource) { render :new }
-		end 
+	#	end 
 	end
 
 	
