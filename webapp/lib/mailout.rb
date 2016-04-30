@@ -39,6 +39,11 @@ Dir.foreach('/home/infiniterecursion/Maildir/new') do |item|
 	to = data.scan(/\sTo:\s([A-Za-z0-9_@]+\+([A-Fa-f0-9]{24})@[A-za-z0-9_+.]+)\s/).flatten
 	file.close
 
+	#If the from field is empty its a system generated email.
+	if from.nil? || from.empty? || from.blank?
+		next
+	end
+
 	#Some output
 	puts "\n[!] Processing"
 	puts "From:"

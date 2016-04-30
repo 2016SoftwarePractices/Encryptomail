@@ -24,7 +24,7 @@
 	<div class="col s12 m6 card small blue-grey-darken-3-alpha">
 		<p style="text-align: center">
 			Email: 
-			<div class="blue-grey-darken-4-alpha-2 amber-text center-align"><%= @group.email %></div>
+			<div class="blue-grey-darken-4-alpha-2 amber-text center-align" style="word-wrap: break-word;"><%= @group.email %></div>
 		</p>
 		<% if @group.leader? current_user %>
 			<div class="amber divider"></div>
@@ -37,7 +37,7 @@
 	  	<% end %>
 	</div>
 	
-	<div class="col s12 m6 card small blue-grey-darken-3-alpha" >
+	<div class="col s12 m6 card small blue-grey-darken-3-alpha">
 		<div class="row">
 			<h5 class="left" style="margin: 15px 0px 0px 15px" >Public Key:</h5>
 			<a class="waves-effect waves-light right btn green darken-3" id="pubkey_btn" style="margin: 15px 15px 0px 0px" >
@@ -45,7 +45,7 @@
 			</a>
 		</div>
 		<div class="center">
-        	<textarea rows="16" id="pub_key" name="pub_key" class="validate pgptext tinytext" type="text" style="word-wrap: break-work;" readonly>
+        	<textarea rows="16" id="pub_key" name="pub_key" class="validate pgptext tinytext" type="text" readonly>
 <%= KeyGenerator::exportpublickeyGPGme(@group.email) %>
 			</textarea>
 		</div>
