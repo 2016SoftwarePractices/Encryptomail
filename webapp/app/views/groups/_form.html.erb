@@ -49,11 +49,15 @@
 			
 			<% end %>
 			
+			<div class="col s12">
+				<%= link_to "Back", @group, class: "waves-effect waves-light btn green darken-3" %>
+			
 		</div>
 	</div>
 	
 	<div class="col s12">
-		<div class="actions">
+        <div style="margin :10px">
+		  <div class="actions">
 			<%= f.submit nil, class: "waves-effect waves-light btn green darken-3", id: "gsb" %>
 			<script>
 				function submitButton_OnClick() {
@@ -68,7 +72,8 @@
 			        $("#gsb").click(submitButton_OnClick);
 			    });
 			</script>
-		</div>
+		  </div>
+        </div>
 	</div>	
 <% end %>
 
