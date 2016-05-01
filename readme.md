@@ -1,5 +1,5 @@
-[logo]: https://github.com/2016SoftwarePractices/Encryptomail/blob/master/webapp/public/mstile-144x144.png
-# *Encryptomail* ![logo]
+[logo]: Encryptomail/webapp/public/EncryptologoSml.png
+# ![logo]
 * CS4260 - Software Engineering Practices
 * Metropolitan State University of Denver, 2016
 
