@@ -46,7 +46,6 @@
 			<ul class="right hide-on-med-and-down">
 				<% if user_signed_in? %>
 					<li>
-						Welcome Back, <%= current_user.email %>
 						<%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => "btn red darken-3 white-text") %>
 						<%= link_to('My Account', user_session_path, :class => "btn green darken-3 white-text") %>	
 					</li>
