@@ -1,29 +1,8 @@
-
-<script>
-	function groupCheck() {
-		console.log("here");
-		var form = document.forms["new_group"];
-		if(form){
-			form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@|/|*|-|#|]/g, '');
-			if(form.elements["group_group_name"].value){
-				console.log("TRUE");
-				console.log(form.elements["group_group_name"].value);
-				return true;
-			}
-			else {
-				console.log("FALSE")
-			}
-		}
-	}
-																			
-</script>
-
 <%= form_for(@group, :html=> {:onsubmit=>'return groupCheck()'}) do |f| %>
 	<div class="col s12">
 		<% if @group.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
 				<ul>
 				<% @group.errors.full_messages.each do |message| %>
 					<li><%= message %></li>
@@ -73,22 +52,41 @@
 			
 		</div>
 	</div>
-		<div class="row actions">
-			<div class="col s12">   
-				<%= f.submit nil, class: "waves-effect waves-light btn green darken-3", id: "gsb" %>
-				<script>
-						function submitButton_OnClick() {
-								$("#gsb").val("***CREATING***");
-								$("#gsb").attr("disabled", "disabled");
-								if ($("form")) {
-										$("form").first().submit();
-
-						}
-
-						$(document).ready(function() {
-								$("#gsb").click(submitButton_OnClick);
-						});
-				</script>
-			</div>	
-		</div>
+	<div class="row actions">
+		<div class="col s12">   
+			<%= f.submit nil, class: "waves-effect waves-light btn green darken-3", id: "gsb" %>
+		</div>	
+	</div>
 <% end %>
+
+<script>
+	function groupCheck() {
+		console.log("here");
+		var form = document.forms["new_group"];
+		if(form){
+			form.elements["group_group_name"].value = form.elements["group_group_name"].value.replace(/[<|>|)|(|@|/|*|-|#|]/g, '');
+			if(form.elements["group_group_name"].value){
+				console.log("TRUE");
+				console.log(form.elements["group_group_name"].value);
+				return true;
+			}
+			else {
+				console.log("FALSE")
+			}
+		}
+	}
+</script>
+<script>
+	$(document).ready(function() {
+		$("#gsb").click(submitButton_OnClick);
+	});
+	
+	function submitButton_OnClick() {
+		$("#gsb").val("***CREATING***");
+		$("#gsb").attr("disabled", "disabled");
+		console.log("Test");
+		if ($("form")) {
+			$("form").first().submit();
+		}
+	}
+</script>
