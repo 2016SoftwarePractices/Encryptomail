@@ -24,7 +24,7 @@ Metropolitan State University of Denver, 2016
 ```
 * The number returned should be > 1000, otherwise, key generation may not work.
 
-#### PGP Encryption
+### PGP Encryption
 * GnuPG
     * https://wiki.gnupg.org/APIs
     * This is the Open Source PGP project GnuPG
@@ -46,7 +46,7 @@ Metropolitan State University of Denver, 2016
     * Set-up, configuration, and Administration are outside the scope of this software. 
     * Take neccessary precautions to insure that your server instance is secure enough to host a service of this nature.
 
-## Encryptomail string formats:
+### Encryptomail string formats:
 ```
 fields = <GnupgKeyParms format="internal">
       Key-Type: DSA
@@ -75,28 +75,28 @@ def self.generatePGPkeyOpenPGP (name, email, passphrase)
       return key_id
    end
 ```
-## Import, verify, and sign a public key for testing:
-You can use the test key we provide on the MIT keyserver for a group: test_unlocked_group_1@encryptomail.xyz using the following command line arguments, after installing gpg on your local environment. This set of commands was tested on OS X 10.10.5.
-#### Import the public key
+### Import, verify, and sign a public key for testing:
+* You can use the test key we provide on the MIT keyserver for a group: test_unlocked_group_1@encryptomail.xyz using the following command line arguments, after installing gpg on your local environment. This set of commands was tested on OS X 10.10.5.
+### Import the public key
     gpg --keyserver pgp.mit.edu  --search-keys test_unlocked_group_1@encryptomail.xyz
-#### Verify the public key
+### Verify the public key
     gpg --fingerprint test_unlocked_group_1@encryptomail.xyz
-should return the following:
+* should return the following:
 ```
 pub   4096R/B9AA79AB 2016-02-26
       Key fingerprint = AE19 DFF7 73FD 22EF 4D90  92A3 1806 4C09 B9AA 79AB
 uid                  test_unlocked_group_1 <test_unlocked_group_1@encryptomail.xyz>
 sub   4096R/5487B4BF 2016-02-26
 ```
-#### Sign the public key
-You will probably have multiple keys. Sign the imported key with the uid of a trusted group as follows:
+### Sign the public key
+* You will probably have multiple keys. Sign the imported key with the uid of a trusted group as follows:
 ```
 gpg --sign-key -u testgroup@helloworld.com test_unlocked_group_1@encryptomail.xyz
 ``` 
 
 # Web Application Setup
 
-## Required Modules
+### Required Modules
 * Apache
     * ```version -> 2.4.18-1```
 * Passenger
@@ -117,7 +117,7 @@ gpg --sign-key -u testgroup@helloworld.com test_unlocked_group_1@encryptomail.xy
 * Materialize - CSS and HTML framework
     * http://materializecss.com/
 
-## Linux
+### Linux
 * We assume that an email server is available. Set-up, configuration, and Administration are outside the scope of this software. Take neccessary precautions to insure that your server instance is secure enough to host a service of this nature. 
 * Make a directory for the project
     * mkdir Encryptomail
@@ -145,7 +145,7 @@ gpg --sign-key -u testgroup@helloworld.com test_unlocked_group_1@encryptomail.xy
 * Serve the rails project
     * rails s
 
-## Cloud9
+### Cloud9
 * Pull code in from git 
 * Run bundle, this downloads all the gems that we are currently using
     * bundle install
@@ -154,7 +154,7 @@ gpg --sign-key -u testgroup@helloworld.com test_unlocked_group_1@encryptomail.xy
 * Run Rails
     * rails s -b $IP -p $PORT
 
-## Recaptcha
+### Recaptcha
 * For testing recaptcha on your machine you are going to first want to generate keys from google at:
 ```
     https://www.google.com/recaptcha/
