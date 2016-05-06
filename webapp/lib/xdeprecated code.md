@@ -465,3 +465,38 @@ end
             #Do stuff - send to postfix somehow
         end
         
+	# ##Message Generators
+	# puts rawEmail_NoArmor
+	# encryptedMessage = EmailApp::Email_handlerUnitTests.testEncryptMailString(message, email)
+	# puts encryptedMessage
+	# decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(rawEmail_Armored, passphrase)
+	# puts decryptedMessage
+	
+	# ##TESTS
+	
+	# ###TEST SET 1 - Key generation and listing
+	# puts EmailApp::Email_handlerUnitTests.testGPGmekeygen(name, email, passphrase)
+	# puts EmailApp::Email_handlerUnitTests.testGPGmeexportpublickey(email)
+	# puts EmailApp::Email_handlerUnitTests.testprivatekeyexport(email)
+	# puts EmailApp::Email_handlerUnitTests.testGPGmelistkeys()
+	
+	# ###TEST SET 2 - Message encryption and decryption
+	# encryptedMessage = EmailApp::Email_handlerUnitTests.testEncryptMailString(message, )
+	# puts encryptedMessage
+	# size = EmailApp::Email_handlerUnitTests.testEmailSize(message)
+	# puts size
+	# decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(ross_encrypted_message, ross_passphrase)
+	# puts decryptedMessage
+	# puts EmailApp::Email_handlerUnitTests.testkeydeletion(email)
+	
+	# ###TEST SET 3 - Email_handler
+	# EmailApp::Email_handler.email_handler(rawEmail_Armored)
+	# decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(ross_test_message, ross_passphrase)
+	# puts decryptedMessage
+	
+	
+	# EmailApp::Email_handler.importkey(ross_prikey)
+	# decryptedMessage = EmailApp::Email_handlerUnitTests.testDecryptMailString(ross_encrypted_message, ross_passphrase)
+	# puts decryptedMessage
+	
+	# EmailApp::Email_handlerUnitTests.testimportdryrun
