@@ -9,12 +9,13 @@ class KeyGeneratorTests
         KeyGenerator::generatePGPkeyGPGme(name, email, passphrase)
     end
 
-##******* Main() ********
-##TEST SET 1 PARAMS
-name = "test1"
-email = "test1@encryptomail.xyz"
-passphrase = "hry785jB"
-
-##MAIN##
-self.testKeyGenCreate(name, email, passphrase)
+    ##******* Main() ********
+    ##TEST SET 1 PARAMS
+    name = "test1"
+    email = "test1@encryptomail.xyz"
+    passphrase = "hry785jB"
+    
+    ##MAIN##
+    self.testKeyGenCreate(name, email, passphrase)
+    
 end

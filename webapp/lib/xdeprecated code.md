@@ -399,3 +399,69 @@ module EmailApp
   end
   
 end
+
+@rawEmail_Armored = 
+	"Return-Path: <pi@encryptomail.xyz>
+	X-Original-To: test_user1@encryptomail.xyz
+	Delivered-To: test_user1@encryptomail.xyz
+	Received: by mail.encryptomail.xyz (Postfix, from userid 1001)
+	        id A27401606A4; Mon,  4 Apr 2016 16:46:50 -0600 (MDT)
+	Date: Mon, 04 Apr 2016 16:46:50 -0600
+	To: test_user1@encryptomail.xyz
+	Subject: THIS IS THE SUBJECT LINE
+	User-Agent: mail v14.8.8
+	Message-Id: <20160404224650.A27401606A4@mail.encryptomail.xyz>
+	From: pi@encryptomail.xyz
+	
+	-----BEGIN PGP MESSAGE-----
+	Version: Mailvelope v1.3.6
+	Comment: https://www.mailvelope.com
+	
+	wcFMA08VbIv4T3H0AQ/7BoCLyQbFKzqbWBgfj3DAxtZO9I50yWmtEYP1XAib
+	/L6+ityg3t2LeAsA9tk8lHTvVqeqbRhInkVxEsUU8j0ekY4i0s0AyRaURPr8
+	MHyWUYvtjjCHPAEB7ajKOVJlHS7/eHX3gfm6zjPWjfzZSA3ICLjq/jLPJZxk
+	HDqe/qsnScO0HVNBum/o27uM/aXc1Vb9figRC39sK61SN4QwfvbgClN15bhj
+	VIPqQZO/tBjE9UyWkfEDLgc/LHv0tyzQ/OzbBHVydRhsR4pBFXK+EoVef0NZ
+	tueWhJsVL13G4nGnskO/xSOIM2vkpvdtftKFCLvZNBuKerywtncgviAwyLKW
+	npNZKuHY52fLkZ1gKxMA0YXwbNLX8Lz8a+JKwShP+zzJz8KhirX7ypmbaZlT
+	GXni3+D3akOromQyn3SkyogvhsLGzSalkURMKsWzf/xyf+fr411rpjSUdJc+
+	j/RxLZhljd0bBxjXrjzpc6ugox3Eic+eeyIdvCnl8kPmiggaH5PDgLcrJfPE
+	Il4b0kwMm3lDgTPWzrxBFM/91/vsB7itg4eVEYjsanByEmWzxv547b7XZ/7Q
+	YRhf0Zf82N0BAKARDN4mI1XWs4J57Fi5JhvPWNm/cyh8Egif0qR7pHZ8MW7+
+	kaBpfkvfZXsZ3OYTzdYIwOlMpixZjucrcOkSoHSsOtLSTwGlFUN/ek0J1FXy
+	d5bpcuxrqrcGtOWwCHMab0bUtFWWu4Nm1bPd8nbBL6aVRfxzoRdGuF8EE50P
+	lrUW000/qIDCYii1ATqQB2PJNIK//Vo=
+	=rGsI
+	-----END PGP MESSAGE-----\n."
+	
+	
+	############################################
+        ####### Base Email Handling Code ###########
+        ##Method takes email in as raw string, with headers and ASCII armor
+        def self.email_handler (rawEmail)
+            passphrase = "asldkfjlksdjf"
+            #matches = rawEmail.match(/^To: .*/)
+            #puts "\n'To:' line match: " + matches[0]
+            #groupEmailAddress = matches[0].split(" ")
+            #puts "\nParsed out group email: " + groupEmailAddress[1]
+            #decryptedMessage = EmailApp::Email_handler.decryptMailString(rawEmail, passphrase)
+            #print "\n"
+            #puts decryptedMessage
+            #EmailApp::sendLoop(decryptedMessage, groupEmailAddress)
+        end
+        
+        
+        
+        def self.sendLoop(plaintextEmail, groupMembersList)
+        #    groupObject.users.each do |user|
+        #        userSpecificEncryptedEmail = EmailApp::Email_handler.encryptMailString(plaintextEmail, user)
+        #        EmailApp::Email_handler.send(userSpecificEncryptedEmail, user)
+        #    end
+        end
+        
+            #Takes the encrypted content, and a User object as params
+        def self.send(encryptedEmail, user)
+            puts "IMPLEMENT ME - Tried to send a message, but you haven't written my code yet!"
+            #Do stuff - send to postfix somehow
+        end
+        
