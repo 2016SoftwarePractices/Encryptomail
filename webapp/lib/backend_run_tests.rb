@@ -14,7 +14,7 @@ include Test::Unit::Assertions
 
 class RunTests
 	
-	assert(BackendUnitTests::testGPGmekeygen(), "TEST 1 HAS FAILED")
+	assert(BackendUnitTests::testgeneratePGPkey(), "TEST 1 HAS FAILED")
 	puts "OK - Test 1 passed"
 	
 	assert(BackendUnitTests::testpublickeyexport(), "TEST 2 HAS FAILED")
@@ -38,6 +38,7 @@ class RunTests
 	assert(BackendUnitTests::testkeydeletion(), "TEST 8 HAS FAILED")
 	puts "OK - Test 8 passed"
 	
-	# Backend::nuke()
+	# Uncomment the line below to delete all the keys in your local keychain
+	#Backend::nuke()
 	
 end

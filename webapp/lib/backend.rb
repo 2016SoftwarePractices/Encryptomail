@@ -55,20 +55,23 @@ class Backend
 		#Method lists public keys to the Linux terminal
     def self.listallpublickeys()
         pub_key_list = `gpg --list-keys`
-        return pub_key_list.to_s
+        return pub_key_list
     end
     
     
         #Method lists private keys to the Linux terminal
     def self.listallprivatekeys()
         pri_key_list = `gpg --list-secret-keys`
-        return pri_key_list.to_s
+        return pri_key_list
     end
     
     
         #Method deletes both public and private keys for a user
 	def self.deletekey(email)
 		pub_key = GPGME::Key.find(:public, "#{email}")
+		if(pub_key[0] == nil)
+			return
+		end
 		ctx = GPGME::Ctx.new()
 		ctx.delete_key(pub_key[0], allow_secret = true)
 	end

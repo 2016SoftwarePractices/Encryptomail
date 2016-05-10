@@ -1,3 +1,6 @@
+# Unit tests for backend code
+# See 'backend_run_tests.rb' for instructions on running the test suite
+
 require 'rubygems'
 require 'gpgme'
 load 'backend.rb'
@@ -15,38 +18,59 @@ class BackendUnitTests
 	
 	
 	#test PGP keypair generation
-	def self.testGPGmekeygen()
+	def self.testgeneratePGPkey()
 		vp "TEST: Attempting to test the creation of a PGP key"
 		vp "	Generating PGP key - this may take a while: "
-		key_string = Backend.generatePGPkey(@name, @email, @passphrase)
-		vp key_string
-		vp "	successfully created a new keypair for #{@email}"
-		return true
+		Backend.generatePGPkey(@name, @email, @passphrase)
+		pubkey = Backend.exportpublickey(@email)
+		prikey = Backend.exportprivatekey(@email)
+		if(pubkey && prikey)
+			vp "	successfully created a new keypair for #{@email}"
+			vp pubkey
+			vp prikey
+			return true
+		end
+		return false
 	end
 	
 	
 	#test public key export
 	def self.testpublickeyexport()
 		vp "TEST: Attempting to export public key for #{@email}"
-		Backend.exportpublickey(@email)
+		pubkey = Backend.exportpublickey(@email)
+		if(pubkey)
+			vp pubkey
+			vp "	successfully exported a public key for #{@email}"
+			return true
+		end
+		return false
 	end
 	
 	
 	#test private key export
 	def self.testprivatekeyexport()
 		vp "TEST: Attempting to export private key for #{@email}"
-		Backend.exportprivatekey(@email)
+		prikey = Backend.exportprivatekey(@email)
+		if(prikey)
+			vp prikey
+			vp "	successfully exported a private key for #{@email}"
+			return true
+		end
+		return false
 	end
 	
 	
 	#test key listing
 	def self.testkeylisting()
-		Backend.listallpublickeys()
-		Backend.listallprivatekeys()
+		vp "TEST: Attempting to list all keys in the keychain"
+		vp Backend.listallpublickeys()
+		vp Backend.listallprivatekeys()
+		return true
 	end
 	
 	
 	def self.testkeydeletion()
+		vp "TEST: Attempting to delete keypair for #{@email}"
 		Backend.deletekey(@email)
 		return true
 	end
@@ -56,8 +80,11 @@ class BackendUnitTests
 	def self.testEncryptMailString()
 		vp "TEST: Attempting to encrypt a message with PGP"
 		@encryptedMessage = Backend.encryptMailString(@message, @email)
-		vp "	successfully encrypted a message for #{@email}"
-		return @encryptedMessage
+		if(@encryptedMessage != " ")
+			vp "	successfully encrypted a message for #{@email}"
+			return true
+		end
+		return false
 	end
 	
 	
@@ -65,8 +92,11 @@ class BackendUnitTests
 	def self.testDecryptMailString()
 		vp "TEST: Attempting to decrypt a message encrypted with PGP"
 		decrypted = Backend.decryptMailString(@encryptedMessage, @passphrase)
-		vp "	successfully decrypted the message"
-		return decrypted
+		if(decrypted)
+			vp "	successfully decrypted the message"
+			return true
+		end
+		return false
 	end
 	
 	
@@ -74,7 +104,10 @@ class BackendUnitTests
 	def self.testEmailSize()
 		vp "TEST: Verifying email size"
 		size = Backend.check_email_size(@email)
-		return size
+		if(size <= 25)
+			return true
+		end
+		return false
 	end
 	
 	
